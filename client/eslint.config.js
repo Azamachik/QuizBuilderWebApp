@@ -31,7 +31,7 @@ export default defineConfig([
       'prettier/prettier': 2,
     },
     plugins: {
-      prettier: pluginObject
-    }
+      prettier: prettier  
+    },
   },
 ])
