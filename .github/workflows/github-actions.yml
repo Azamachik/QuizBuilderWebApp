@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: install modules
         run: pnpm install
         working-directory: client
@@ -38,10 +40,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: install modules
         run: pnpm install
         working-directory: client
-     
+      - name: run tests
+        run: pnpm run test
+        working-directory: client
 
   build:
     name: Building
@@ -55,6 +61,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: install modules
         run: pnpm install
         working-directory: client
