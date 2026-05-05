@@ -17,11 +17,14 @@ jobs:
           node-version: '22.x'
       - name: install modules
         run: pnpm install
+        working-directory: client
       - name: linting typescript
         run: pnpm run lint:ts
+        working-directory: client
         if: always()
       - name: linting css
         run: pnpm run lint:css
+        working-directory: client
         if: always()
 
   test:
@@ -37,6 +40,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install modules
         run: pnpm install
+        working-directory: client
      
 
   build:
@@ -53,5 +57,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install modules
         run: pnpm install
+        working-directory: client
       - name: build production project
         run: pnpm run build
+        working-directory: client
