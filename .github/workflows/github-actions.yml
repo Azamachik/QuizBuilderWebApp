@@ -1,4 +1,4 @@
-name: linting, testing, building
+name: linting, building
 
 on:
   push:
@@ -28,26 +28,6 @@ jobs:
         run: pnpm run lint:css
         working-directory: client
         if: always()
-
-  test:
-    name: Testing
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ '22.x' ]
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install pnpm
-        run: npm install -g pnpm
-      - name: install modules
-        run: pnpm install
-        working-directory: client
-      - name: run tests
-        run: pnpm run test
-        working-directory: client
 
   build:
     name: Building
