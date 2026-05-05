@@ -28,6 +28,10 @@ export default defineConfig([
       ],
       'react/react-in-jsx-scope': 'off',
       'react-refresh/only-export-components': 'off',
+      'prettier/prettier': 2,
     },
+    plugins: [
+      'prettier'
+    ],
   },
 ])

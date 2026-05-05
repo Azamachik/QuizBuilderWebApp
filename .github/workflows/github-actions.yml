@@ -1,0 +1,57 @@
+name: linting, testing, building
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: install modules
+        run: pnpm install
+      - name: linting typescript
+        run: pnpm run lint:ts
+        if: always()
+      - name: linting css
+        run: pnpm run lint:css
+        if: always()
+
+  test:
+    name: Testing
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ '22.x' ]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: pnpm install
+     
+
+  build:
+    name: Building
+    runs-on: ubuntu-latest
+    needs: [ lint, test ]
+    strategy:
+      matrix:
+        node-version: [ '22.x' ]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: pnpm install
+      - name: build production project
+        run: pnpm run build
