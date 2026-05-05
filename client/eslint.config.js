@@ -30,8 +30,5 @@ export default defineConfig([
       'react-refresh/only-export-components': 'off',
       'prettier/prettier': 2,
     },
-    plugins: {
-      prettier: prettier  
-    },
   },
 ])
