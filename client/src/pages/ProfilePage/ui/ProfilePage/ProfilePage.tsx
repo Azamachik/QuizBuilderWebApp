@@ -5,6 +5,7 @@ import { StatCard } from '@/shared/ui/StatCard/StatCard'
 import { ActivityHeatmap } from '../ActivityHeatmap/ActivityHeatmap'
 import { EditProfileModal, type ProfileData } from '../EditProfileModal/EditProfileModal'
 import { ShareModal } from '../ShareModal/ShareModal'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Tooltip'
 
 const INITIAL_PROFILE: ProfileData = {
     firstName: 'Elena',
@@ -17,7 +18,7 @@ function getInitials(firstName: string, lastName: string): string {
     return `${firstName[0] ?? ''}${lastName[0] ?? ''}`.toUpperCase()
 }
 
-export function Dashboard() {
+export default function ProfilePage() {
     const [profile, setProfile] = useState<ProfileData>(INITIAL_PROFILE)
     const [editOpen, setEditOpen] = useState(false)
     const [shareOpen, setShareOpen] = useState(false)
@@ -25,8 +26,6 @@ export function Dashboard() {
     return (
         <main className="min-h-[calc(100vh-3.5rem)] bg-background">
             <div className="mx-auto max-w-5xl space-y-5 px-6 py-10">
-
-                {/* Profile */}
                 <div className="flex items-start justify-between">
                     <div className="flex items-center gap-5">
                         <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-muted">
@@ -55,18 +54,24 @@ export function Dashboard() {
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                         <Button variant="action" onClick={() => setEditOpen(true)}>Редактировать</Button>
-                        <Button variant="secondary" size="icon" onClick={() => setShareOpen(true)}>
-                            <Share2 />
-                        </Button>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button variant="secondary" size="icon" onClick={() => setShareOpen(true)}>
+                                    <Share2 />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Поделиться</p>
+                            </TooltipContent>
+                        </Tooltip>
                     </div>
                 </div>
 
-                {/* Stats */}
                 <div className="grid grid-cols-5 gap-3">
                     <StatCard value={42} label="Создано" />
                     <StatCard value={38} label="Опубликовано" />
                     <StatCard value={4} label="Черновики" />
-                    <StatCard value={128} label="Прохождений(-ие)" />
+                    <StatCard value={128} label="Прохождений" />
                     <StatCard value="94%" label="Средний результат" highlight progress={94} />
                 </div>
 
