@@ -1,9 +1,11 @@
-import { ToggleTheme } from '@/features/ToggleTheme'
+import { Header } from "@/widgets/Header"
+import { Dashboard } from "@/pages/ProfilePage"
 
 function App() {
     return (
         <>
-            <ToggleTheme />
+            <Header />
+            <Dashboard />
         </>
     )
 }
