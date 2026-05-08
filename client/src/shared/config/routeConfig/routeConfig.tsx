@@ -1,26 +1,30 @@
+import type { ReactNode } from 'react';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { QuizzesPage } from '@/pages/QuizzesPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { RegisterPage } from '@/pages/RegisterPage';
 import { LandingPage } from '@/pages/LandingPage';
 import { QuizEditorPage } from '@/pages/QuizEditorPage';
-import type { RouteProps } from 'react-router-dom';
 import { NotFoundPage } from '@/pages/NotFoundPage/ui/NotFoundPage';
 
-export interface AppRouteProps extends RouteProps {
+export interface AppRouteProps {
+    path: string;
+    element: ReactNode;
     authOnly?: boolean;
     guestOnly?: boolean;
 }
 
-export enum AppRoutes {
-    MAIN = 'main',
-    PROFILE = 'profile',
-    QUIZZES = 'quizzes',
-    QUIZ_EDITOR = 'quiz_editor',
-    LOGIN = 'login',
-    REGISTER = 'register',
-    NOT_FOUND = 'not_found'
-}
+export const AppRoutes = {
+    MAIN: 'main',
+    PROFILE: 'profile',
+    QUIZZES: 'quizzes',
+    QUIZ_EDITOR: 'quiz_editor',
+    LOGIN: 'login',
+    REGISTER: 'register',
+    NOT_FOUND: 'not_found',
+} as const;
+
+export type AppRoutes = (typeof AppRoutes)[keyof typeof AppRoutes];
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
@@ -29,41 +33,41 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.QUIZ_EDITOR]: '/quizzes/:id',
     [AppRoutes.LOGIN]: '/login',
     [AppRoutes.REGISTER]: '/register',
-    [AppRoutes.NOT_FOUND]: '*'
+    [AppRoutes.NOT_FOUND]: '*',
 };
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath[AppRoutes.MAIN],
-        element: <LandingPage />
+        element: <LandingPage />,
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath[AppRoutes.PROFILE],
         element: <ProfilePage />,
-        authOnly: true
+        authOnly: true,
     },
     [AppRoutes.QUIZZES]: {
         path: RoutePath[AppRoutes.QUIZZES],
         element: <QuizzesPage />,
-        authOnly: true
+        authOnly: true,
     },
     [AppRoutes.QUIZ_EDITOR]: {
         path: RoutePath[AppRoutes.QUIZ_EDITOR],
         element: <QuizEditorPage />,
-        authOnly: true
+        authOnly: true,
     },
     [AppRoutes.LOGIN]: {
         path: RoutePath[AppRoutes.LOGIN],
         element: <LoginPage />,
-        guestOnly: true
+        guestOnly: true,
     },
     [AppRoutes.REGISTER]: {
         path: RoutePath[AppRoutes.REGISTER],
         element: <RegisterPage />,
-        guestOnly: true
+        guestOnly: true,
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath[AppRoutes.NOT_FOUND],
-        element: <NotFoundPage />
-    }
+        element: <NotFoundPage />,
+    },
 };

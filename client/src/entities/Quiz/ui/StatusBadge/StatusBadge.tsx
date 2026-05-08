@@ -1,4 +1,4 @@
-import type { Quiz } from '../model/types/Quiz';
+import type { Quiz } from '../../model/types/Quiz';
 
 export function StatusBadge({ status }: { status: Quiz['status'] }) {
     return (

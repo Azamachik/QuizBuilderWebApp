@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Copy, GripVertical, MoreVertical, Trash2 } from 'lucide-react';
 import { cn } from '@/shared/lib/utils/utils';
 import { Button } from '@/shared/ui/Button/Button';

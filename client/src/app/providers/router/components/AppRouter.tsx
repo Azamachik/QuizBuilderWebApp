@@ -1,8 +1,7 @@
-import { Suspense, useCallback } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { type AppRouteProps, routeConfig, RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
+import { useCallback } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { type AppRouteProps, routeConfig } from '@/shared/config/routeConfig/routeConfig';
 
-// Replace with auth context/store when auth is implemented
 const useAuth = () => ({ isAuthenticated: true });
 
 const AppRouter = () => {
@@ -10,13 +9,7 @@ const AppRouter = () => {
 
     const renderRoute = useCallback(
         (route: AppRouteProps) => {
-            const element = (
-                <Suspense fallback=''>
-                    {route.authOnly && !isAuthenticated ? <Navigate to={RoutePath[AppRoutes.MAIN]} replace /> : route.element}
-                </Suspense>
-            );
-
-            return <Route key={route.path} path={route.path} element={element} />;
+            return <Route key={route.path} path={route.path} element={route.element} />;
         },
         [isAuthenticated]
     );
