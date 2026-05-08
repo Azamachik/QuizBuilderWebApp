@@ -1,10 +1,10 @@
-import { NavLink as RouterNavLink } from 'react-router-dom'
-import type { NavLinkProps as RouterNavLinkProps } from 'react-router-dom'
-import { cn } from '@/shared/lib/utils/utils'
+import { NavLink as RouterNavLink } from 'react-router-dom';
+import type { NavLinkProps as RouterNavLinkProps } from 'react-router-dom';
+import { cn } from '@/shared/lib/utils/utils';
 
 type NavLinkProps = Omit<RouterNavLinkProps, 'className'> & {
-    className?: string
-}
+    className?: string;
+};
 
 export function NavLink({ className, ...props }: NavLinkProps) {
     return (
@@ -18,5 +18,5 @@ export function NavLink({ className, ...props }: NavLinkProps) {
             }
             {...props}
         />
-    )
+    );
 }

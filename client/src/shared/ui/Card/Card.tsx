@@ -1,14 +1,8 @@
-import * as React from 'react'
-import { cn } from '@/shared/lib/utils/utils'
+import * as React from 'react';
+import { cn } from '@/shared/lib/utils/utils';
 
 function Card({ className, ...props }: React.ComponentProps<'div'>) {
-    return (
-        <div
-            data-slot="card"
-            className={cn('rounded-xl border border-border bg-card text-card-foreground', className)}
-            {...props}
-        />
-    )
+    return <div data-slot='card' className={cn('rounded-xl border border-border bg-card text-card-foreground', className)} {...props} />;
 }
 
-export { Card }
+export { Card };

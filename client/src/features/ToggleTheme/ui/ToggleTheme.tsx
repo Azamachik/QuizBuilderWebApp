@@ -1,10 +1,10 @@
-import { Moon, Sun } from 'lucide-react'
-import { useTheme } from '@/shared/lib/helpers/hooks/useTheme/useTheme'
-import { Button } from '@/shared/ui/Button/Button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/shared/ui/DropdownMenu/DropdownMenu'
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/shared/lib/helpers/hooks/useTheme/useTheme';
+import { Button } from '@/shared/ui/Button/Button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/shared/ui/DropdownMenu/DropdownMenu';
 
 export function ToggleTheme() {
-    const { setTheme } = useTheme()
+    const { setTheme } = useTheme();
 
     return (
         <DropdownMenu>
@@ -20,5 +20,5 @@ export function ToggleTheme() {
                 <DropdownMenuItem onClick={() => setTheme('system')}>Как в системе</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-    )
+    );
 }

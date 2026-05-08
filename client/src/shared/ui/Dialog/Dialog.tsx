@@ -1,14 +1,14 @@
-import * as React from 'react'
-import { Dialog as DialogPrimitive } from 'radix-ui'
-import { X } from 'lucide-react'
-import { cn } from '@/shared/lib/utils/utils'
+import * as React from 'react';
+import { Dialog as DialogPrimitive } from 'radix-ui';
+import { X } from 'lucide-react';
+import { cn } from '@/shared/lib/utils/utils';
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
-    return <DialogPrimitive.Root {...props} />
+    return <DialogPrimitive.Root {...props} />;
 }
 
 function DialogPortal({ ...props }: React.ComponentProps<typeof DialogPrimitive.Portal>) {
-    return <DialogPrimitive.Portal {...props} />
+    return <DialogPrimitive.Portal {...props} />;
 }
 
 function DialogOverlay({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
@@ -20,7 +20,7 @@ function DialogOverlay({ className, ...props }: React.ComponentProps<typeof Dial
             )}
             {...props}
         />
-    )
+    );
 }
 
 function DialogContent({ className, children, ...props }: React.ComponentProps<typeof DialogPrimitive.Content>) {
@@ -35,25 +35,20 @@ function DialogContent({ className, children, ...props }: React.ComponentProps<t
                 {...props}
             >
                 {children}
-                <DialogPrimitive.Close className="absolute right-4 top-4 rounded-lg p-1 text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                    <X className="size-4" />
+                <DialogPrimitive.Close className='absolute right-4 top-4 rounded-lg p-1 text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'>
+                    <X className='size-4' />
                 </DialogPrimitive.Close>
             </DialogPrimitive.Content>
         </DialogPortal>
-    )
+    );
 }
 
 function DialogHeader({ className, ...props }: React.ComponentProps<'div'>) {
-    return <div className={cn('mb-5 space-y-1', className)} {...props} />
+    return <div className={cn('mb-5 space-y-1', className)} {...props} />;
 }
 
 function DialogTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
-    return (
-        <DialogPrimitive.Title
-            className={cn('text-lg font-semibold', className)}
-            {...props}
-        />
-    )
+    return <DialogPrimitive.Title className={cn('text-lg font-semibold', className)} {...props} />;
 }
 
-export { Dialog, DialogContent, DialogHeader, DialogTitle }
+export { Dialog, DialogContent, DialogHeader, DialogTitle };

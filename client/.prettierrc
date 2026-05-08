@@ -7,5 +7,5 @@
     "trailingComma": "none",
     "bracketSpacing": true,
     "jsxSingleQuote": true,
-    "semi": false
+    "semi": true
 }

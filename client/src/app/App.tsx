@@ -1,27 +1,24 @@
-import { Suspense } from 'react'
-import { useLocation } from 'react-router-dom'
-import { Header } from '@/widgets/Header'
-import AppRouter from './providers/router/components/AppRouter'
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig'
+import { Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Header } from '@/widgets/Header';
+import AppRouter from './providers/router/components/AppRouter';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 
-const HEADERLESS_ROUTES = new Set([
-    RoutePath[AppRoutes.LOGIN],
-    RoutePath[AppRoutes.REGISTER],
-])
+const HEADERLESS_ROUTES = new Set([RoutePath[AppRoutes.LOGIN], RoutePath[AppRoutes.REGISTER]]);
 
 function AppLayout() {
-    const { pathname } = useLocation()
+    const { pathname } = useLocation();
 
     return (
-        <Suspense fallback="">
+        <Suspense fallback=''>
             {!HEADERLESS_ROUTES.has(pathname) && <Header />}
             <AppRouter />
         </Suspense>
-    )
+    );
 }
 
 function App() {
-    return <AppLayout />
+    return <AppLayout />;
 }
 
-export default App
+export default App;

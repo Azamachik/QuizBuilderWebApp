@@ -1,1 +1,1 @@
-export { ThemeProvider } from './components/ThemeProvider'
+export { ThemeProvider } from './components/ThemeProvider';
