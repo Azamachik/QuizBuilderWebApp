@@ -2,19 +2,15 @@ import { useState, type ReactNode, type ChangeEvent, type FormEvent } from 'reac
 import { Button } from '@/shared/ui/Button/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Dialog/Dialog';
 import { cn } from '@/shared/lib/utils/utils';
+import type { Profile } from '@/entities/Profile';
 
-export interface ProfileData {
-    firstName: string;
-    lastName: string;
-    avatarUrl: string;
-    email: string;
-}
+export type { Profile as ProfileData };
 
 interface EditProfileModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    initialData: ProfileData;
-    onSave: (data: ProfileData) => void;
+    initialData: Profile;
+    onSave: (data: Profile) => void;
 }
 
 function Field({ label, className, children }: { label: string; className?: string; children: ReactNode }) {
@@ -30,9 +26,9 @@ const inputClass =
     'w-full rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/30';
 
 export function EditProfileModal({ open, onOpenChange, initialData, onSave }: EditProfileModalProps) {
-    const [form, setForm] = useState<ProfileData>(initialData);
+    const [form, setForm] = useState<Profile>(initialData);
 
-    function handleChange(field: keyof ProfileData) {
+    function handleChange(field: keyof Profile) {
         return (e: ChangeEvent<HTMLInputElement>) => setForm((prev) => ({ ...prev, [field]: e.target.value }));
     }
 
@@ -56,21 +52,22 @@ export function EditProfileModal({ open, onOpenChange, initialData, onSave }: Ed
                 <form onSubmit={handleSubmit} className='space-y-4'>
                     <div className='grid grid-cols-2 gap-3'>
                         <Field label='Имя'>
-                            <input className={inputClass} value={form.firstName} onChange={handleChange('firstName')} placeholder='Имя' />
+                            <input
+                                className={inputClass}
+                                value={form.firstName}
+                                onChange={handleChange('firstName')}
+                                placeholder='Имя'
+                            />
                         </Field>
                         <Field label='Фамилия'>
-                            <input className={inputClass} value={form.lastName} onChange={handleChange('lastName')} placeholder='Фамилия' />
+                            <input
+                                className={inputClass}
+                                value={form.lastName}
+                                onChange={handleChange('lastName')}
+                                placeholder='Фамилия'
+                            />
                         </Field>
                     </div>
-                    <Field label='Почта'>
-                        <input
-                            className={inputClass}
-                            type='email'
-                            value={form.email}
-                            onChange={handleChange('email')}
-                            placeholder='example@mail.ru'
-                        />
-                    </Field>
                     <Field label='Ссылка на аватар'>
                         <input
                             className={inputClass}

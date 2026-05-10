@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "email": "root@mail.ru",
+      "password": "1234",
+      "token": "token_admin",
+      "avatar": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
+      "createdAt": "12.10.2023"
+    },
+    {
+      "id": "1778433741252",
+      "username": "root",
+      "email": "root@ma.ru",
+      "password": "1234",
+      "avatar": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
+      "token": "token_1778433741252",
+      "createdAt": "10.05.2026"
+    }
+  ],
+  "profile": [
+    {
+      "id": "1",
+      "firstName": "Азамат_",
+      "lastName": "sdf",
+      "avatarUrl": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
+      "createdAt": "12.10.2023"
+    },
+    {
+      "id": "1778433741252",
+      "firstName": "Root",
+      "lastName": "",
+      "avatarUrl": "",
+      "createdAt": "10.05.2026"
+    }
+  ]
+}

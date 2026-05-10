@@ -1,24 +1,12 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@/shared/ui/Button/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Dialog/Dialog';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 import Favicon from '@/shared/assets/icons/favicon.svg?react';
-
-const inputClass =
-    'w-full rounded-2xl bg-muted px-4 py-3.5 text-sm outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring/30';
+import { LoginForm } from '@/features/AuthByEmail';
 
 export default function LoginPage() {
-    const [form, setForm] = useState({ email: '', password: '' });
     const [warningOpen, setWarningOpen] = useState(false);
-
-    function handleChange(field: keyof typeof form) {
-        return (e: { target: { value: string } }) => setForm((prev) => ({ ...prev, [field]: e.target.value }));
-    }
-
-    function handleSubmit(e: FormEvent) {
-        e.preventDefault();
-    }
 
     return (
         <div className='flex min-h-screen flex-col items-center justify-center bg-background px-4'>
@@ -36,26 +24,7 @@ export default function LoginPage() {
                     <p className='text-sm text-muted-foreground'>Войдите, чтобы создавать и проходить тесты</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className='space-y-4'>
-                    <div className='space-y-1.5'>
-                        <label className='text-sm'>Адрес эл.почты</label>
-                        <input
-                            type='email'
-                            className={inputClass}
-                            value={form.email}
-                            onChange={handleChange('email')}
-                            placeholder='name@example.com'
-                            required
-                        />
-                    </div>
-                    <div className='space-y-1.5'>
-                        <label className='text-sm'>Пароль</label>
-                        <input type='password' className={inputClass} value={form.password} onChange={handleChange('password')} required />
-                    </div>
-                    <Button type='submit' variant='action' className='mt-1 h-12 w-full rounded-2xl text-sm font-semibold'>
-                        Продолжить
-                    </Button>
-                </form>
+                <LoginForm />
 
                 <div className='flex items-center gap-3'>
                     <div className='flex-1 border-t border-border' />
@@ -67,14 +36,14 @@ export default function LoginPage() {
                     <button
                         type='button'
                         onClick={() => setWarningOpen(true)}
-                        className='flex h-12 w-12 items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors hover:bg-yandex hover:text-white cursor-pointer'
+                        className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors hover:bg-yandex hover:text-white'
                     >
                         Я
                     </button>
                     <button
                         type='button'
                         onClick={() => setWarningOpen(true)}
-                        className='flex h-12 w-12 items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors hover:bg-vk hover:text-white cursor-pointer'
+                        className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors hover:bg-vk hover:text-white'
                     >
                         VK
                     </button>

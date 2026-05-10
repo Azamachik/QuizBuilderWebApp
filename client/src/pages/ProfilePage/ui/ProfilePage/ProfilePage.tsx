@@ -1,27 +1,77 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CalendarDays, Share2 } from 'lucide-react';
 import { Button } from '@/shared/ui/Button/Button';
 import { StatCard } from '@/shared/ui/StatCard/StatCard';
-import { ActivityHeatmap } from '../ActivityHeatmap/ActivityHeatmap';
-import { EditProfileModal, type ProfileData } from '../EditProfileModal/EditProfileModal';
-import { ShareModal } from '../ShareModal/ShareModal';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Tooltip';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useDynamicModuleLoader, type ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import {
+    getProfileData,
+    getProfileIsLoading,
+    getProfileCreatedAt,
+    profileReducer,
+    fetchProfileData,
+    updateProfileData,
+} from '@/entities/Profile';
+import type { Profile } from '@/entities/Profile';
+import { getUserData } from '@/entities/User';
+import { ActivityHeatmap } from '../ActivityHeatmap/ActivityHeatmap';
+import { EditProfileModal } from '../EditProfileModal/EditProfileModal';
+import { ShareModal } from '../ShareModal/ShareModal';
+import { ProfilePageSkeleton } from './ProfilePageSkeleton';
 
-const INITIAL_PROFILE: ProfileData = {
-    firstName: 'Elena',
-    lastName: 'Sokolova',
-    email: 'elena@mail.ru',
-    avatarUrl: ''
-};
+const reducers: ReducersList = { profile: profileReducer };
 
 function getInitials(firstName: string, lastName: string): string {
     return `${firstName[0] ?? ''}${lastName[0] ?? ''}`.toUpperCase();
 }
 
 export default function ProfilePage() {
-    const [profile, setProfile] = useState<ProfileData>(INITIAL_PROFILE);
+    useDynamicModuleLoader(reducers, false);
+
+    const dispatch = useAppDispatch();
+    const userData = useAppSelector(getUserData);
+    const profileData = useAppSelector(getProfileData);
+    const isLoading = useAppSelector(getProfileIsLoading);
+    const createdAt = useAppSelector(getProfileCreatedAt);
+
     const [editOpen, setEditOpen] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
+
+    useEffect(() => {
+        if (userData?.id) {
+            dispatch(fetchProfileData(userData.id));
+        }
+    }, [dispatch, userData?.id]);
+
+    if (isLoading || !profileData) {
+        return <ProfilePageSkeleton />;
+    }
+
+    const display: Profile = profileData;
+
+    const displayDate = createdAt || userData?.createdAt || '—';
+
+    function handleSave(data: Profile) {
+        if (!userData?.id) return;
+        dispatch(updateProfileData({
+            userId: userData.id,
+            data: {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                avatarUrl: data.avatarUrl,
+            },
+        }));
+    }
+
+    const displayName = display.firstName || display.lastName
+        ? `${display.firstName} ${display.lastName}`.trim()
+        : userData?.username ?? '—';
+
+    const shareUsername = `${display.firstName}.${display.lastName}`
+        .toLowerCase()
+        .replace(/^\.+|\.+$/g, '') || userData?.username || 'user';
 
     return (
         <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
@@ -29,27 +79,29 @@ export default function ProfilePage() {
                 <div className='flex items-start justify-between'>
                     <div className='flex items-center gap-5'>
                         <div className='flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-muted'>
-                            {profile.avatarUrl ? (
-                                <img src={profile.avatarUrl} alt='avatar' className='h-full w-full object-cover' />
+                            {display.avatarUrl ? (
+                                <img src={display.avatarUrl} alt='avatar' className='h-full w-full object-cover' />
                             ) : (
                                 <span className='text-2xl font-semibold text-muted-foreground'>
-                                    {getInitials(profile.firstName, profile.lastName)}
+                                    {getInitials(display.firstName, display.lastName) || (userData?.username?.[0]?.toUpperCase() ?? '?')}
                                 </span>
                             )}
                         </div>
                         <div className='space-y-2'>
-                            <h1 className='text-2xl font-bold'>
-                                {profile.firstName} {profile.lastName}
-                            </h1>
-                            <p className='text-sm text-muted-foreground'>{profile.email}</p>
+                            {isLoading ? (
+                                <div className='h-7 w-48 animate-pulse rounded-lg bg-muted' />
+                            ) : (
+                                <h1 className='text-2xl font-bold'>{displayName}</h1>
+                            )}
+                            <p className='text-sm text-muted-foreground'>{userData?.email}</p>
                             <div className='inline-flex items-center gap-1.5 rounded-lg bg-muted px-3 py-1.5 text-xs text-muted-foreground'>
                                 <CalendarDays className='size-3.5 shrink-0' />
-                                <span>Дата регистрации 12.10.2023</span>
+                                <span>Дата регистрации {displayDate}</span>
                             </div>
                         </div>
                     </div>
                     <div className='flex shrink-0 items-center gap-2'>
-                        <Button variant='action' onClick={() => setEditOpen(true)}>
+                        <Button variant='action' onClick={() => setEditOpen(true)} disabled={isLoading}>
                             Редактировать
                         </Button>
                         <Tooltip>
@@ -76,8 +128,13 @@ export default function ProfilePage() {
                 <ActivityHeatmap />
             </div>
 
-            <EditProfileModal open={editOpen} onOpenChange={setEditOpen} initialData={profile} onSave={setProfile} />
-            <ShareModal open={shareOpen} onOpenChange={setShareOpen} username={`${profile.firstName}.${profile.lastName}`.toLowerCase()} />
+            <EditProfileModal
+                open={editOpen}
+                onOpenChange={setEditOpen}
+                initialData={display}
+                onSave={handleSave}
+            />
+            <ShareModal open={shareOpen} onOpenChange={setShareOpen} username={shareUsername} />
         </main>
     );
 }

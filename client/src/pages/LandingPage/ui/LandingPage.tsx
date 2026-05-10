@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart2, CheckSquare, List, Lock, Timer } from 'lucide-react';
+import { ArrowRight, BarChart2, CheckSquare, List, Lock, Timer, Users, Zap, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/shared/ui/Button/Button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/Accordion/Accordion';
@@ -8,38 +8,81 @@ const FEATURES = [
     {
         icon: List,
         title: 'Множественный выбор',
-        desc: 'Удобные настройки вариантов ответов с поддержкой медиафайлов.'
+        desc: 'Удобные настройки вариантов ответов с поддержкой медиафайлов.',
     },
     {
         icon: Timer,
         title: 'Глубокая аналитика',
-        desc: 'Следите за конверсией, временем прохождения и сложными вопросами.'
+        desc: 'Следите за конверсией, временем прохождения и сложными вопросами.',
     },
     {
         icon: Lock,
         title: 'Приватность',
-        desc: 'Ваши данные и ответы пользователей зашифрованы и надёжно защищены.'
-    }
+        desc: 'Ваши данные и ответы пользователей зашифрованы и надёжно защищены.',
+    },
+];
+
+const CASES = [
+    {
+        icon: Users,
+        title: 'HR и онбординг',
+        desc: 'Проверяйте знания новых сотрудников и упрощайте адаптацию с помощью интерактивных тестов.',
+    },
+    {
+        icon: Zap,
+        title: 'Образование',
+        desc: 'Создавайте курсы и контрольные работы с мгновенной проверкой результатов.',
+    },
+    {
+        icon: Shield,
+        title: 'Маркетинг и вовлечение',
+        desc: 'Квизы, опросы и викторины для захвата лидов и удержания аудитории.',
+    },
+];
+
+const PRICING = [
+    {
+        name: 'Бесплатно',
+        price: '0 ₽',
+        features: ['До 5 тестов', 'До 100 ответов в месяц', 'Базовая аналитика'],
+        action: RoutePath[AppRoutes.REGISTER],
+        primary: false,
+    },
+    {
+        name: 'Про',
+        price: '990 ₽ / мес',
+        features: ['Неограниченные тесты', 'Неограниченные ответы', 'Расширенная аналитика', 'Экспорт данных'],
+        action: RoutePath[AppRoutes.REGISTER],
+        primary: true,
+    },
+    {
+        name: 'Команда',
+        price: '2 490 ₽ / мес',
+        features: ['Всё из Про', 'До 10 пользователей', 'Совместная работа', 'Приоритетная поддержка'],
+        action: RoutePath[AppRoutes.REGISTER],
+        primary: false,
+    },
 ];
 
 const FAQ = [
     {
         q: 'Как добавить картинку в вопрос?',
-        a: 'В редакторе вопроса нажмите на иконку вложения и выберите изображение с устройства или вставьте URL.'
+        a: 'В редакторе вопроса нажмите на иконку вложения и выберите изображение с устройства или вставьте URL.',
     },
     {
         q: 'Можно ли интегрировать форму на сайт?',
-        a: 'Да, после публикации теста вы получите ссылку и iframe-код для встраивания на любой сайт.'
+        a: 'Да, после публикации теста вы получите ссылку и iframe-код для встраивания на любой сайт.',
     },
     {
         q: 'Сколько стоит использование?',
-        a: 'Базовый план бесплатен. Для расширенной аналитики и неограниченного числа вопросов доступны платные тарифы.'
-    }
+        a: 'Базовый план бесплатен. Для расширенной аналитики и неограниченного числа вопросов доступны платные тарифы.',
+    },
 ];
 
 export default function LandingPage() {
     return (
         <div className='min-h-screen bg-background'>
+            {/* Hero */}
             <section className='mx-auto max-w-4xl px-6 pb-16 pt-8 text-center'>
                 <div className='mb-8 inline-flex items-center gap-2 rounded-full border border-action/30 bg-action/10 px-4 py-1.5 text-xs text-action'>
                     <span className='size-1.5 rounded-full bg-action' />
@@ -85,7 +128,8 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className='mx-auto max-w-4xl px-6 py-8 text-center'>
+            {/* Возможности */}
+            <section id='features' className='mx-auto max-w-4xl px-6 py-16 text-center'>
                 <h2 className='mb-2 text-3xl font-bold'>Все, что нужно для аналитики</h2>
                 <p className='mb-12 text-muted-foreground'>Никакого визуального шума, только важные инструменты.</p>
 
@@ -102,16 +146,70 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className='mx-auto max-w-2xl px-6 py-8'>
-                <h2 className='mb-10 text-center text-3xl font-bold'>Вопрос — Ответ</h2>
-                <Accordion type='single' collapsible className='space-y-3'>
-                    {FAQ.map(({ q, a }) => (
-                        <AccordionItem key={q} value={q}>
-                            <AccordionTrigger>{q}</AccordionTrigger>
-                            <AccordionContent>{a}</AccordionContent>
-                        </AccordionItem>
+            {/* Кейсы */}
+            <section id='cases' className='bg-muted/40 py-16'>
+                <div className='mx-auto max-w-4xl px-6 text-center'>
+                    <h2 className='mb-2 text-3xl font-bold'>Кейсы использования</h2>
+                    <p className='mb-12 text-muted-foreground'>QuizBuilder подходит для самых разных задач.</p>
+
+                    <div className='grid grid-cols-3 gap-4'>
+                        {CASES.map(({ icon: Icon, title, desc }) => (
+                            <div key={title} className='rounded-2xl border border-border bg-card p-6 text-left'>
+                                <div className='mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-action/10'>
+                                    <Icon className='size-5 text-action' />
+                                </div>
+                                <h3 className='mb-2 font-semibold'>{title}</h3>
+                                <p className='text-sm text-muted-foreground'>{desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Цены */}
+            <section id='pricing' className='mx-auto max-w-4xl px-6 py-16 text-center'>
+                <h2 className='mb-2 text-3xl font-bold'>Простые и честные цены</h2>
+                <p className='mb-12 text-muted-foreground'>Начните бесплатно, масштабируйтесь по мере роста.</p>
+
+                <div className='grid grid-cols-3 gap-4'>
+                    {PRICING.map(({ name, price, features, action, primary }) => (
+                        <div
+                            key={name}
+                            className={`flex flex-col rounded-2xl border p-6 text-left ${
+                                primary ? 'border-action bg-action/5' : 'border-border'
+                            }`}
+                        >
+                            <h3 className='mb-1 font-bold'>{name}</h3>
+                            <p className='mb-6 text-2xl font-extrabold'>{price}</p>
+                            <ul className='mb-8 flex-1 space-y-2'>
+                                {features.map((f) => (
+                                    <li key={f} className='flex items-center gap-2 text-sm text-muted-foreground'>
+                                        <span className='size-1.5 shrink-0 rounded-full bg-action' />
+                                        {f}
+                                    </li>
+                                ))}
+                            </ul>
+                            <Button variant={primary ? 'action' : 'outline'} className='w-full' asChild>
+                                <Link to={action}>Начать</Link>
+                            </Button>
+                        </div>
                     ))}
-                </Accordion>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className='bg-muted/40 py-16'>
+                <div className='mx-auto max-w-2xl px-6'>
+                    <h2 className='mb-10 text-center text-3xl font-bold'>Вопрос — Ответ</h2>
+                    <Accordion type='single' collapsible className='space-y-3'>
+                        {FAQ.map(({ q, a }) => (
+                            <AccordionItem key={q} value={q}>
+                                <AccordionTrigger>{q}</AccordionTrigger>
+                                <AccordionContent>{a}</AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </div>
             </section>
         </div>
     );
