@@ -41,7 +41,7 @@
       "title": "UX/UI Best Practices Quiz",
       "description": "Проверьте свои знания в области UX/UI дизайна",
       "authorId": "1",
-      "isPublished": true,
+      "isPublished": false,
       "createdAt": "2023-10-12T00:00:00.000Z",
       "attemptsCount": 1240,
       "questionsCount": 5
@@ -51,20 +51,30 @@
       "title": "Figma Shortcuts Masterclass",
       "description": "",
       "authorId": "1",
-      "isPublished": false,
+      "isPublished": true,
       "createdAt": "2023-10-12T00:00:00.000Z",
-      "attemptsCount": 389,
-      "questionsCount": 0
+      "attemptsCount": 393,
+      "questionsCount": 1
     },
     {
       "title": "asdf",
       "description": "",
       "authorId": "1",
       "isPublished": true,
-      "attemptsCount": 0,
+      "attemptsCount": 1,
       "createdAt": "2026-05-10T22:34:07.903Z",
       "id": "3ua_U6o",
-      "questionsCount": 0
+      "questionsCount": 3
+    },
+    {
+      "title": "Матеша",
+      "description": "Тест на знание математики\nфыва\nфыва",
+      "authorId": "1",
+      "isPublished": true,
+      "attemptsCount": 1,
+      "createdAt": "2026-05-11T19:38:28.443Z",
+      "id": "ve-kE99",
+      "questionsCount": 3
     }
   ],
   "questions": [
@@ -178,6 +188,380 @@
       "quizId": "1",
       "order": 5,
       "id": "L6O_8-G"
+    },
+    {
+      "text": "asdfasdf",
+      "type": "single",
+      "options": [
+        {
+          "id": "50294dbb-12b4-47a9-8d3c-881f967e53bb",
+          "text": "Первый вариант",
+          "isCorrect": true
+        },
+        {
+          "id": "488982e7-ecf4-40fa-a281-9a69378c1437",
+          "text": "Второй вариант",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "quizId": "3",
+      "order": 1,
+      "id": "HUYPzcs",
+      "explanation": "фывафыаыфва"
+    },
+    {
+      "text": "фывафыва",
+      "type": "single",
+      "options": [
+        {
+          "id": "4e338abb-0c71-4e91-884c-7cd2cc195d8d",
+          "text": "Первый вариант",
+          "isCorrect": true
+        },
+        {
+          "id": "fc5ae04c-4328-464f-a3af-738358b50bfb",
+          "text": "Второй вариант",
+          "isCorrect": false
+        },
+        {
+          "id": "7e1e6776-35e8-4b03-8337-c234faf27c9f",
+          "text": "",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "quizId": "3ua_U6o",
+      "order": 1,
+      "id": "kYfPtVj"
+    },
+    {
+      "text": "фывайц",
+      "type": "text",
+      "options": [],
+      "required": true,
+      "explanation": "фывафыва",
+      "quizId": "3ua_U6o",
+      "order": 3,
+      "id": "VyLSK3x"
+    },
+    {
+      "text": "фывфыва",
+      "type": "multiple",
+      "options": [
+        {
+          "id": "4e338abb-0c71-4e91-884c-7cd2cc195d8d",
+          "text": "Первый вариант",
+          "isCorrect": true
+        },
+        {
+          "id": "fc5ae04c-4328-464f-a3af-738358b50bfb",
+          "text": "Второй вариант",
+          "isCorrect": true
+        }
+      ],
+      "required": false,
+      "explanation": "фыва",
+      "quizId": "3ua_U6o",
+      "order": 2,
+      "id": "1i7r5Yy"
+    },
+    {
+      "text": "Напишите че-нить",
+      "type": "text",
+      "options": [],
+      "required": true,
+      "quizId": "ve-kE99",
+      "order": 3,
+      "id": "55_dCnI"
+    },
+    {
+      "text": "Что такое х?",
+      "type": "single",
+      "options": [
+        {
+          "id": "8a350b22-15de-45d0-85fa-3278d193081e",
+          "text": "что это",
+          "isCorrect": false
+        },
+        {
+          "id": "138ccfeb-aa86-4f22-bb02-2b2b281f706b",
+          "text": "хз",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "explanation": "ыфвжполжыфвп",
+      "quizId": "ve-kE99",
+      "order": 1,
+      "id": "UNSLRx1"
+    },
+    {
+      "text": "Выберите мучо",
+      "type": "multiple",
+      "options": [
+        {
+          "id": "8a350b22-15de-45d0-85fa-3278d193081e",
+          "text": "1ый",
+          "isCorrect": true
+        },
+        {
+          "id": "138ccfeb-aa86-4f22-bb02-2b2b281f706b",
+          "text": "2ой",
+          "isCorrect": false
+        },
+        {
+          "id": "c7313238-891d-4711-a44f-ea19e3de6f7b",
+          "text": "3ий",
+          "isCorrect": false
+        },
+        {
+          "id": "5e9876f6-4c9c-4b1e-b123-022c316872b3",
+          "text": "4ый",
+          "isCorrect": true
+        },
+        {
+          "id": "025242df-bce0-4717-a994-86e8da5e4cef",
+          "text": "5ый",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "explanation": "фывафыва",
+      "quizId": "ve-kE99",
+      "order": 2,
+      "id": "cUllnkq"
+    }
+  ],
+  "inviteLinks": [
+    {
+      "id": "il1",
+      "quizId": "1",
+      "token": "demo-token-ux",
+      "label": "Общая ссылка",
+      "maxUses": null,
+      "usedCount": 4,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2023-10-12T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il2",
+      "quizId": "1",
+      "token": "students-2024-ux",
+      "label": "Для студентов",
+      "maxUses": 50,
+      "usedCount": 12,
+      "expiresAt": "2026-12-31T23:59:59.000Z",
+      "isActive": true,
+      "createdAt": "2024-01-15T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il3",
+      "quizId": "1",
+      "token": "expired-link-ux",
+      "label": "Архивная",
+      "maxUses": 20,
+      "usedCount": 20,
+      "expiresAt": "2024-06-01T00:00:00.000Z",
+      "isActive": true,
+      "createdAt": "2024-03-01T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il4",
+      "quizId": "3",
+      "token": "figma-open-link",
+      "label": "Открытая ссылка",
+      "maxUses": null,
+      "usedCount": 4,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2023-10-12T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il5",
+      "quizId": "3",
+      "token": "figma-team-link",
+      "label": "Для команды",
+      "maxUses": 4,
+      "usedCount": 3,
+      "expiresAt": null,
+      "isActive": false,
+      "createdAt": "2023-11-20T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il6",
+      "quizId": "3ua_U6o",
+      "token": "asdf-public-link",
+      "label": "Публичная ссылка",
+      "maxUses": null,
+      "usedCount": 1,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2026-05-10T22:34:07.903Z",
+      "createdBy": "1"
+    },
+    {
+      "quizId": "3ua_U6o",
+      "token": "g5lte-u096b-jskf8",
+      "label": "4311",
+      "maxUses": 1,
+      "usedCount": 0,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2026-05-11T17:20:44.373Z",
+      "createdBy": "1",
+      "id": "-G7Jp61"
+    },
+    {
+      "quizId": "ve-kE99",
+      "token": "fvbbs-898dm-avbz2",
+      "label": "Для меня",
+      "maxUses": null,
+      "usedCount": 1,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2026-05-11T19:40:30.802Z",
+      "createdBy": "1",
+      "id": "TKhtn_s"
+    }
+  ],
+  "attempts": [
+    {
+      "quizId": "3",
+      "quizTitle": "Figma Shortcuts Masterclass",
+      "inviteLinkToken": "figma-open-link",
+      "answers": [],
+      "score": 0,
+      "total": 0,
+      "label": "Открытая ссылка",
+      "completedAt": "2026-05-11T16:12:42.328Z",
+      "id": "1778515962676",
+      "createdAt": "2026-05-11T16:12:42.676Z"
+    },
+    {
+      "quizId": "3",
+      "quizTitle": "Figma Shortcuts Masterclass",
+      "inviteLinkToken": "figma-open-link",
+      "answers": [
+        {
+          "questionId": "HUYPzcs",
+          "selectedOptionIds": [
+            "488982e7-ecf4-40fa-a281-9a69378c1437"
+          ]
+        }
+      ],
+      "score": 0,
+      "total": 1,
+      "label": "Открытая ссылка",
+      "completedAt": "2026-05-11T16:16:50.331Z",
+      "id": "1778516210657",
+      "createdAt": "2026-05-11T16:16:50.657Z"
+    },
+    {
+      "quizId": "3",
+      "quizTitle": "Figma Shortcuts Masterclass",
+      "inviteLinkToken": "figma-open-link",
+      "answers": [
+        {
+          "questionId": "HUYPzcs",
+          "selectedOptionIds": [
+            "50294dbb-12b4-47a9-8d3c-881f967e53bb"
+          ]
+        }
+      ],
+      "score": 1,
+      "total": 1,
+      "label": "Открытая ссылка",
+      "completedAt": "2026-05-11T16:44:26.229Z",
+      "id": "1778517866561",
+      "createdAt": "2026-05-11T16:44:26.561Z"
+    },
+    {
+      "quizId": "3ua_U6o",
+      "quizTitle": "asdf",
+      "inviteLinkToken": "asdf-public-link",
+      "answers": [
+        {
+          "questionId": "kYfPtVj",
+          "selectedOptionIds": [
+            "4e338abb-0c71-4e91-884c-7cd2cc195d8d"
+          ]
+        },
+        {
+          "questionId": "1i7r5Yy",
+          "selectedOptionIds": [
+            "4e338abb-0c71-4e91-884c-7cd2cc195d8d",
+            "fc5ae04c-4328-464f-a3af-738358b50bfb"
+          ]
+        },
+        {
+          "questionId": "VyLSK3x",
+          "selectedOptionIds": [],
+          "textAnswer": "asdf"
+        }
+      ],
+      "score": 2,
+      "total": 2,
+      "label": "Публичная ссылка",
+      "completedAt": "2026-05-11T18:39:02.594Z",
+      "id": "1778524742922",
+      "createdAt": "2026-05-11T18:39:02.922Z"
+    },
+    {
+      "quizId": "3",
+      "quizTitle": "Figma Shortcuts Masterclass",
+      "inviteLinkToken": "figma-open-link",
+      "answers": [
+        {
+          "questionId": "HUYPzcs",
+          "selectedOptionIds": [
+            "50294dbb-12b4-47a9-8d3c-881f967e53bb"
+          ]
+        }
+      ],
+      "score": 1,
+      "total": 1,
+      "label": "Открытая ссылка",
+      "completedAt": "2026-05-11T18:40:29.071Z",
+      "id": "1778524829402",
+      "createdAt": "2026-05-11T18:40:29.402Z"
+    },
+    {
+      "quizId": "ve-kE99",
+      "quizTitle": "Матеша",
+      "inviteLinkToken": "fvbbs-898dm-avbz2",
+      "answers": [
+        {
+          "questionId": "UNSLRx1",
+          "selectedOptionIds": [
+            "8a350b22-15de-45d0-85fa-3278d193081e"
+          ]
+        },
+        {
+          "questionId": "cUllnkq",
+          "selectedOptionIds": [
+            "8a350b22-15de-45d0-85fa-3278d193081e",
+            "5e9876f6-4c9c-4b1e-b123-022c316872b3"
+          ]
+        },
+        {
+          "questionId": "55_dCnI",
+          "selectedOptionIds": [],
+          "textAnswer": "фывафыва"
+        }
+      ],
+      "score": 1,
+      "total": 2,
+      "label": "Для меня",
+      "completedAt": "2026-05-11T19:41:11.912Z",
+      "id": "1778528472239",
+      "createdAt": "2026-05-11T19:41:12.239Z"
     }
   ]
 }

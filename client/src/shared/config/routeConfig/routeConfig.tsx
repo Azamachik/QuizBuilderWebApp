@@ -5,6 +5,8 @@ import { LoginPage } from '@/pages/LoginPage';
 import { RegisterPage } from '@/pages/RegisterPage';
 import { LandingPage } from '@/pages/LandingPage';
 import { QuizEditorPage } from '@/pages/QuizEditorPage';
+import { QuizTakingPage } from '@/pages/QuizTakingPage';
+import { QuizResultsPage } from '@/pages/QuizResultsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage/ui/NotFoundPage';
 
 export interface AppRouteProps {
@@ -19,6 +21,8 @@ export const AppRoutes = {
     PROFILE: 'profile',
     QUIZZES: 'quizzes',
     QUIZ_EDITOR: 'quiz_editor',
+    QUIZ_TAKING: 'quiz_taking',
+    QUIZ_RESULTS: 'quiz_results',
     LOGIN: 'login',
     REGISTER: 'register',
     NOT_FOUND: 'not_found',
@@ -31,6 +35,8 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.PROFILE]: '/profile',
     [AppRoutes.QUIZZES]: '/quizzes',
     [AppRoutes.QUIZ_EDITOR]: '/quizzes/:id',
+    [AppRoutes.QUIZ_TAKING]: '/quiz/:token',
+    [AppRoutes.QUIZ_RESULTS]: '/quiz/:token/results/:attemptId',
     [AppRoutes.LOGIN]: '/login',
     [AppRoutes.REGISTER]: '/register',
     [AppRoutes.NOT_FOUND]: '*',
@@ -56,6 +62,14 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePath[AppRoutes.QUIZ_EDITOR],
         element: <QuizEditorPage />,
         authOnly: true,
+    },
+    [AppRoutes.QUIZ_TAKING]: {
+        path: RoutePath[AppRoutes.QUIZ_TAKING],
+        element: <QuizTakingPage />,
+    },
+    [AppRoutes.QUIZ_RESULTS]: {
+        path: RoutePath[AppRoutes.QUIZ_RESULTS],
+        element: <QuizResultsPage />,
     },
     [AppRoutes.LOGIN]: {
         path: RoutePath[AppRoutes.LOGIN],

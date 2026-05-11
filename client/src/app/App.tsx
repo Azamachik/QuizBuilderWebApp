@@ -8,6 +8,7 @@ import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import AppRouter from './providers/router/components/AppRouter';
 
 const HEADERLESS_ROUTES = new Set([RoutePath[AppRoutes.LOGIN], RoutePath[AppRoutes.REGISTER]]);
+const HEADERLESS_PREFIXES = ['/quiz/'];
 
 function AppLayout() {
     const { pathname } = useLocation();
@@ -15,9 +16,13 @@ function AppLayout() {
 
     if (!isInited) return null;
 
+    const hideHeader =
+        HEADERLESS_ROUTES.has(pathname) ||
+        HEADERLESS_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+
     return (
         <Suspense fallback=''>
-            {!HEADERLESS_ROUTES.has(pathname) && <Header />}
+            {!hideHeader && <Header />}
             <AppRouter />
         </Suspense>
     );

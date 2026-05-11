@@ -5,7 +5,7 @@ import { cn } from '@/shared/lib/utils/utils';
 import {
     QuizCard, QuizCardSkeleton,
     QuizRow, QuizRowSkeleton,
-    quizReducer, fetchQuizzes, toggleQuizStatus,
+    quizReducer, fetchQuizzes, toggleQuizStatus, deleteQuiz,
     getQuizzes, getQuizzesIsLoading,
 } from '@/entities/Quiz';
 import type { Quiz } from '@/entities/Quiz';
@@ -52,6 +52,10 @@ export default function QuizzesPage() {
         dispatch(toggleQuizStatus({ id: quiz.id, isPublished: quiz.isPublished }));
     }
 
+    function handleDelete(id: string) {
+        dispatch(deleteQuiz(id));
+    }
+
     return (
         <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
             <div className='mx-auto max-w-5xl px-6 py-10'>
@@ -93,13 +97,13 @@ export default function QuizzesPage() {
                 ) : view === 'grid' ? (
                     <div className='grid grid-cols-3 gap-4'>
                         {quizzes.map((quiz) => (
-                            <QuizCard key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} onToggleStatus={handleToggleStatus} onCreateLink={setLinkQuiz} />
+                            <QuizCard key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} onToggleStatus={handleToggleStatus} onCreateLink={setLinkQuiz} onDelete={handleDelete} />
                         ))}
                     </div>
                 ) : (
                     <div className='space-y-3'>
                         {quizzes.map((quiz) => (
-                            <QuizRow key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} onToggleStatus={handleToggleStatus} onCreateLink={setLinkQuiz} />
+                            <QuizRow key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} onToggleStatus={handleToggleStatus} onCreateLink={setLinkQuiz} onDelete={handleDelete} />
                         ))}
                     </div>
                 )}

@@ -2,7 +2,7 @@ import { useState, useEffect, type FormEvent } from 'react';
 import { Button } from '@/shared/ui/Button/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Dialog/Dialog';
 import { cn } from '@/shared/lib/utils/utils';
-import { updateQuiz, deleteQuiz } from '@/entities/Quiz';
+import { updateQuiz } from '@/entities/Quiz';
 import type { Quiz } from '@/entities/Quiz';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
 
@@ -33,12 +33,6 @@ export function EditQuizModal({ quiz, onOpenChange }: EditQuizModalProps) {
         onOpenChange(false);
     }
 
-    async function handleDelete() {
-        if (!quiz) return;
-        await dispatch(deleteQuiz(quiz.id));
-        onOpenChange(false);
-    }
-
     return (
         <Dialog open={!!quiz} onOpenChange={onOpenChange}>
             <DialogContent>
@@ -65,18 +59,13 @@ export function EditQuizModal({ quiz, onOpenChange }: EditQuizModalProps) {
                             placeholder='Краткое описание (необязательно)'
                         />
                     </div>
-                    <div className='flex justify-between gap-2 pt-2'>
-                        <Button type='button' variant='destructive' onClick={handleDelete}>
-                            Удалить
+                    <div className='flex justify-end gap-2 pt-2'>
+                        <Button type='button' variant='destructive' onClick={() => onOpenChange(false)}>
+                            Отмена
                         </Button>
-                        <div className='flex gap-2'>
-                            <Button type='button' variant='outline' onClick={() => onOpenChange(false)}>
-                                Отмена
-                            </Button>
-                            <Button type='submit' variant='action'>
-                                Сохранить
-                            </Button>
-                        </div>
+                        <Button type='submit' variant='action'>
+                            Сохранить
+                        </Button>
                     </div>
                 </form>
             </DialogContent>

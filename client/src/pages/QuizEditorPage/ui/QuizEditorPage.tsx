@@ -171,9 +171,6 @@ export default function QuizEditorPage() {
                 <Button variant='outline' className='gap-2' onClick={() => setLinkOpen(true)}>
                     <Link2 className='size-4' /> Создать ссылку
                 </Button>
-                <Button variant='outline' className='gap-2'>
-                    <Eye className='size-4' /> Предпросмотр
-                </Button>
                 <Button variant='action' className='gap-2' onClick={handlePublish} disabled={!currentQuiz}>
                     <Send className='size-4' />
                     {currentQuiz?.isPublished ? 'Снять с публикации' : 'Опубликовать'}
