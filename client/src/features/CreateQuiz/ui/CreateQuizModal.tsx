@@ -2,12 +2,14 @@ import { useState, type FormEvent } from 'react';
 import { Button } from '@/shared/ui/Button/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Dialog/Dialog';
 import { cn } from '@/shared/lib/utils/utils';
-import type { Quiz } from '@/entities/Quiz';
+import { createQuiz } from '@/entities/Quiz';
+import { getUserData } from '@/entities/User';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
 
 interface CreateQuizModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    onCreate: (data: Pick<Quiz, 'title' | 'description' | 'status'>) => void;
 }
 
 const inputClass =
@@ -15,17 +17,19 @@ const inputClass =
 
 const EMPTY = { title: '', description: '' };
 
-export function CreateQuizModal({ open, onOpenChange, onCreate }: CreateQuizModalProps) {
+export function CreateQuizModal({ open, onOpenChange }: CreateQuizModalProps) {
+    const dispatch = useAppDispatch();
+    const userData = useAppSelector(getUserData);
     const [form, setForm] = useState(EMPTY);
 
     function handleChange(field: keyof typeof form) {
         return (e: { target: { value: string } }) => setForm((prev) => ({ ...prev, [field]: e.target.value }));
     }
 
-    function handleSubmit(e: FormEvent) {
+    async function handleSubmit(e: FormEvent) {
         e.preventDefault();
-        if (!form.title.trim()) return;
-        onCreate({ title: form.title.trim(), description: form.description.trim(), status: 'draft' });
+        if (!form.title.trim() || !userData?.id) return;
+        await dispatch(createQuiz({ title: form.title.trim(), description: form.description.trim(), authorId: userData.id }));
         setForm(EMPTY);
         onOpenChange(false);
     }

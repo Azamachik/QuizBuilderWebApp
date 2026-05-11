@@ -8,6 +8,7 @@ export interface Option {
 
 export interface Question {
     id: string;
+    quizId: string;
     order: number;
     text: string;
     type: QuestionType;

@@ -34,5 +34,150 @@
       "avatarUrl": "",
       "createdAt": "10.05.2026"
     }
+  ],
+  "quizzes": [
+    {
+      "id": "1",
+      "title": "UX/UI Best Practices Quiz",
+      "description": "Проверьте свои знания в области UX/UI дизайна",
+      "authorId": "1",
+      "isPublished": true,
+      "createdAt": "2023-10-12T00:00:00.000Z",
+      "attemptsCount": 1240,
+      "questionsCount": 5
+    },
+    {
+      "id": "3",
+      "title": "Figma Shortcuts Masterclass",
+      "description": "",
+      "authorId": "1",
+      "isPublished": false,
+      "createdAt": "2023-10-12T00:00:00.000Z",
+      "attemptsCount": 389,
+      "questionsCount": 0
+    },
+    {
+      "title": "asdf",
+      "description": "",
+      "authorId": "1",
+      "isPublished": true,
+      "attemptsCount": 0,
+      "createdAt": "2026-05-10T22:34:07.903Z",
+      "id": "3ua_U6o",
+      "questionsCount": 0
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "quizId": "1",
+      "order": 3,
+      "text": "Что такое Закон Фиттса?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Чем дальше и меньше цель, тем больше времени требуется на ее достижение",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Время принятия решения зависит от количества вариантов",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Люди запоминают первую и последнюю часть информации лучше",
+          "isCorrect": false
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": "q2",
+      "quizId": "1",
+      "order": 2,
+      "text": "Какие из этих элементов относятся к UI?",
+      "type": "multiple",
+      "options": [
+        {
+          "id": "a",
+          "text": "Типографика",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Исследование аудитории",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Цветовая палитра",
+          "isCorrect": true
+        }
+      ],
+      "required": false
+    },
+    {
+      "id": "q3",
+      "quizId": "1",
+      "order": 4,
+      "text": "Опишите ваш опыт работы с UI/UX.",
+      "type": "multiple",
+      "options": [
+        {
+          "id": "eabdb728-fff6-43c7-8b90-7764512eaf2c",
+          "text": "Первый вариант",
+          "isCorrect": false
+        },
+        {
+          "id": "66487a21-6725-4188-b7cf-509a8d2d16df",
+          "text": "Второй вариант",
+          "isCorrect": false
+        }
+      ],
+      "required": false,
+      "explanation": "Расскажите о своих проектах и используемых инструментах."
+    },
+    {
+      "text": "фыва",
+      "type": "single",
+      "options": [
+        {
+          "id": "a5f7f1ba-bc27-40ce-962a-db9526ffa742",
+          "text": "Первый вариант",
+          "isCorrect": false
+        },
+        {
+          "id": "8afaeee5-50bb-4a55-8c88-9a85bcb22f8b",
+          "text": "Второй вариант",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "quizId": "1",
+      "order": 1,
+      "id": "JtuGTT-"
+    },
+    {
+      "text": "фыва",
+      "type": "single",
+      "options": [
+        {
+          "id": "a5f7f1ba-bc27-40ce-962a-db9526ffa742",
+          "text": "Первый вариант",
+          "isCorrect": false
+        },
+        {
+          "id": "8afaeee5-50bb-4a55-8c88-9a85bcb22f8b",
+          "text": "Второй вариант",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "quizId": "1",
+      "order": 5,
+      "id": "L6O_8-G"
+    }
   ]
 }

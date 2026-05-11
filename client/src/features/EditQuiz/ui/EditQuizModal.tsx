@@ -2,32 +2,41 @@ import { useState, useEffect, type FormEvent } from 'react';
 import { Button } from '@/shared/ui/Button/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Dialog/Dialog';
 import { cn } from '@/shared/lib/utils/utils';
+import { updateQuiz, deleteQuiz } from '@/entities/Quiz';
 import type { Quiz } from '@/entities/Quiz';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
 
 interface EditQuizModalProps {
     quiz: Quiz | null;
     onOpenChange: (open: boolean) => void;
-    onSave: (data: Pick<Quiz, 'title' | 'description' | 'status'>) => void;
 }
 
 const inputClass =
     'w-full rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/30';
 
-export function EditQuizModal({ quiz, onOpenChange, onSave }: EditQuizModalProps) {
+export function EditQuizModal({ quiz, onOpenChange }: EditQuizModalProps) {
+    const dispatch = useAppDispatch();
     const [form, setForm] = useState({ title: '', description: '' });
 
     useEffect(() => {
-        if (quiz) setForm({ title: quiz.title, description: quiz.description });
+        if (quiz) setForm({ title: quiz.title, description: quiz.description ?? '' });
     }, [quiz]);
 
     function handleChange(field: keyof typeof form) {
         return (e: { target: { value: string } }) => setForm((prev) => ({ ...prev, [field]: e.target.value }));
     }
 
-    function handleSubmit(e: FormEvent) {
+    async function handleSubmit(e: FormEvent) {
         e.preventDefault();
-        if (!form.title.trim()) return;
-        onSave({ title: form.title.trim(), description: form.description.trim(), status: quiz!.status });
+        if (!form.title.trim() || !quiz) return;
+        await dispatch(updateQuiz({ id: quiz.id, data: { title: form.title.trim(), description: form.description.trim() } }));
+        onOpenChange(false);
+    }
+
+    async function handleDelete() {
+        if (!quiz) return;
+        await dispatch(deleteQuiz(quiz.id));
+        onOpenChange(false);
     }
 
     return (
@@ -56,13 +65,18 @@ export function EditQuizModal({ quiz, onOpenChange, onSave }: EditQuizModalProps
                             placeholder='Краткое описание (необязательно)'
                         />
                     </div>
-                    <div className='flex justify-end gap-2 pt-2'>
-                        <Button type='button' variant='destructive' onClick={() => onOpenChange(false)}>
-                            Отмена
+                    <div className='flex justify-between gap-2 pt-2'>
+                        <Button type='button' variant='destructive' onClick={handleDelete}>
+                            Удалить
                         </Button>
-                        <Button type='submit' variant='action'>
-                            Сохранить
-                        </Button>
+                        <div className='flex gap-2'>
+                            <Button type='button' variant='outline' onClick={() => onOpenChange(false)}>
+                                Отмена
+                            </Button>
+                            <Button type='submit' variant='action'>
+                                Сохранить
+                            </Button>
+                        </div>
                     </div>
                 </form>
             </DialogContent>

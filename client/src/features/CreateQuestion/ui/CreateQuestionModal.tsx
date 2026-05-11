@@ -9,15 +9,17 @@ import Clip from '@/shared/assets/icons/clip.svg?react';
 import { QUESTION_TYPE_LABELS } from '@/entities/Question';
 import type { Question, QuestionType, Option } from '@/entities/Question';
 
+export type QuestionFormData = Omit<Question, 'id' | 'order' | 'quizId'>;
+
 interface CreateQuestionModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    onSave: (data: Omit<Question, 'id' | 'order'>) => void;
-    initialData?: Omit<Question, 'id' | 'order'>;
+    onSave: (data: QuestionFormData) => void;
+    initialData?: QuestionFormData;
     title?: string;
 }
 
-type FormState = Omit<Question, 'id' | 'order'>;
+type FormState = QuestionFormData;
 
 function makeOption(text = ''): Option {
     return { id: crypto.randomUUID(), text, isCorrect: false };

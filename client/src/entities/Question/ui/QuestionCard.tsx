@@ -1,4 +1,4 @@
-import { Copy, GripVertical, MoreVertical, Trash2 } from 'lucide-react';
+import { Copy, GripVertical, Trash2, Pencil } from 'lucide-react';
 import { cn } from '@/shared/lib/utils/utils';
 import { Button } from '@/shared/ui/Button/Button';
 import { Switch } from '@/shared/ui/Switch/Switch';
@@ -142,13 +142,13 @@ export function QuestionCard({
                                 <Button
                                     variant='ghost'
                                     size='icon-sm'
-                                    onClick={() => onDelete(question.id)}
-                                    className='hover:text-destructive'
+                                    onClick={() => onEdit(question)}
+                                    className={cn(isEditing && 'text-action')}
                                 >
-                                    <Trash2 className='size-4' />
+                                    <Pencil className='size-4' />
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent>Удалить</TooltipContent>
+                            <TooltipContent>Редактировать</TooltipContent>
                         </Tooltip>
 
                         <Tooltip>
@@ -156,13 +156,13 @@ export function QuestionCard({
                                 <Button
                                     variant='ghost'
                                     size='icon-sm'
-                                    onClick={() => onEdit(question)}
-                                    className={cn(isEditing && 'text-action')}
+                                    onClick={() => onDelete(question.id)}
+                                    className='hover:text-destructive'
                                 >
-                                    <MoreVertical className='size-4' />
+                                    <Trash2 className='size-4' />
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent>Редактировать</TooltipContent>
+                            <TooltipContent>Удалить</TooltipContent>
                         </Tooltip>
 
                         <div className='mx-1 h-4 w-px bg-border' />

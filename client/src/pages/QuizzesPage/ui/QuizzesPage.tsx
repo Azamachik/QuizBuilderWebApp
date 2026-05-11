@@ -2,25 +2,44 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LayoutGrid, List, Plus } from 'lucide-react';
 import { cn } from '@/shared/lib/utils/utils';
-import { QuizCard, QuizRow } from '@/entities/Quiz';
+import {
+    QuizCard, QuizCardSkeleton,
+    QuizRow, QuizRowSkeleton,
+    quizReducer, fetchQuizzes, toggleQuizStatus,
+    getQuizzes, getQuizzesIsLoading,
+} from '@/entities/Quiz';
 import type { Quiz } from '@/entities/Quiz';
 import { CreateQuizModal } from '@/features/CreateQuiz';
 import { EditQuizModal } from '@/features/EditQuiz';
+import { CreateLinkModal } from '@/features/CreateLink';
+import { getUserData } from '@/entities/User';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
 
 type View = 'grid' | 'list';
 
-const INITIAL_QUIZZES: Quiz[] = [
-    { id: '1', title: 'UX/UI Best Practices Quiz', description: '', status: 'published', date: '12.10.2023', participants: 1240 },
-    { id: '2', title: 'Design System Audit', description: '', status: 'draft', date: '12.10.2023', participants: 45 },
-    { id: '3', title: 'Figma Shortcuts Masterclass', description: '', status: 'draft', date: '12.10.2023', participants: 389 }
-];
+const reducers: ReducersList = { quizzes: quizReducer };
+const SKELETON_COUNT = 3;
 
 export default function QuizzesPage() {
+    useDynamicModuleLoader(reducers, false);
+
+    const dispatch = useAppDispatch();
+    const userData = useAppSelector(getUserData);
+    const quizzes = useAppSelector(getQuizzes);
+    const isLoading = useAppSelector(getQuizzesIsLoading);
+
     const [view, setView] = useState<View>('grid');
-    const [quizzes, setQuizzes] = useState<Quiz[]>(INITIAL_QUIZZES);
     const [createOpen, setCreateOpen] = useState(false);
     const [editingQuiz, setEditingQuiz] = useState<Quiz | null>(null);
+    const [linkQuiz, setLinkQuiz] = useState<Quiz | null>(null);
     const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        if (userData?.id) dispatch(fetchQuizzes(userData.id));
+    }, [dispatch, userData?.id]);
 
     useEffect(() => {
         if (searchParams.get('create') === 'true') {
@@ -29,20 +48,8 @@ export default function QuizzesPage() {
         }
     }, [searchParams, setSearchParams]);
 
-    function handleCreate(data: Pick<Quiz, 'title' | 'description' | 'status'>) {
-        const newQuiz: Quiz = {
-            ...data,
-            id: crypto.randomUUID(),
-            date: new Date().toLocaleDateString('ru-RU'),
-            participants: 0
-        };
-        setQuizzes((prev) => [...prev, newQuiz]);
-    }
-
-    function handleUpdate(data: Pick<Quiz, 'title' | 'description' | 'status'>) {
-        if (!editingQuiz) return;
-        setQuizzes((prev) => prev.map((q) => (q.id === editingQuiz.id ? { ...q, ...data } : q)));
-        setEditingQuiz(null);
+    function handleToggleStatus(quiz: Quiz) {
+        dispatch(toggleQuizStatus({ id: quiz.id, isPublished: quiz.isPublished }));
     }
 
     return (
@@ -53,7 +60,7 @@ export default function QuizzesPage() {
                         onClick={() => setView('grid')}
                         className={cn(
                             'rounded-lg p-2 transition-colors',
-                            view === 'grid' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                            view === 'grid' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
                         )}
                     >
                         <LayoutGrid className='size-4' />
@@ -62,23 +69,37 @@ export default function QuizzesPage() {
                         onClick={() => setView('list')}
                         className={cn(
                             'rounded-lg p-2 transition-colors',
-                            view === 'list' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                            view === 'list' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
                         )}
                     >
                         <List className='size-4' />
                     </button>
                 </div>
 
-                {view === 'grid' ? (
+                {isLoading ? (
+                    view === 'grid' ? (
+                        <div className='grid grid-cols-3 gap-4'>
+                            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                                <QuizCardSkeleton key={i} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className='space-y-3'>
+                            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                                <QuizRowSkeleton key={i} />
+                            ))}
+                        </div>
+                    )
+                ) : view === 'grid' ? (
                     <div className='grid grid-cols-3 gap-4'>
                         {quizzes.map((quiz) => (
-                            <QuizCard key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} />
+                            <QuizCard key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} onToggleStatus={handleToggleStatus} onCreateLink={setLinkQuiz} />
                         ))}
                     </div>
                 ) : (
                     <div className='space-y-3'>
                         {quizzes.map((quiz) => (
-                            <QuizRow key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} />
+                            <QuizRow key={quiz.id} quiz={quiz} onEdit={setEditingQuiz} onToggleStatus={handleToggleStatus} onCreateLink={setLinkQuiz} />
                         ))}
                     </div>
                 )}
@@ -94,13 +115,17 @@ export default function QuizzesPage() {
                 </button>
             </div>
 
-            <CreateQuizModal open={createOpen} onOpenChange={setCreateOpen} onCreate={handleCreate} />
+            <CreateQuizModal open={createOpen} onOpenChange={setCreateOpen} />
             <EditQuizModal
                 quiz={editingQuiz}
                 onOpenChange={(open) => {
                     if (!open) setEditingQuiz(null);
                 }}
-                onSave={handleUpdate}
+            />
+            <CreateLinkModal
+                quizId={linkQuiz?.id ?? ''}
+                open={!!linkQuiz}
+                onOpenChange={(open) => { if (!open) setLinkQuiz(null); }}
             />
         </main>
     );

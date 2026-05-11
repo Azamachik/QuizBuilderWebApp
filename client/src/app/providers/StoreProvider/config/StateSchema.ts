@@ -7,6 +7,8 @@ import type {
 import type { AxiosInstance } from 'axios';
 import type { UserSchema } from '@/entities/User';
 import type { ProfileSchema } from '@/entities/Profile';
+import type { QuizSchema } from '@/entities/Quiz';
+import type { QuestionSchema } from '@/entities/Question';
 import type { LoginSchema } from '@/features/AuthByEmail';
 import type { RegisterSchema } from '@/features/RegisterByEmail';
 import type { rtkApi } from '@/shared/api/rtkApi';
@@ -19,6 +21,8 @@ export interface StateSchema {
     login?: LoginSchema;
     register?: RegisterSchema;
     profile?: ProfileSchema;
+    quizzes?: QuizSchema;
+    questions?: QuestionSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

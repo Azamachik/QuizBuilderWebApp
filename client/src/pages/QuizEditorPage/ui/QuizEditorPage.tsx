@@ -1,97 +1,137 @@
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
 import { Eye, Link2, Plus, Save, Send } from 'lucide-react';
+import { toast } from 'sonner';
 import { Button } from '@/shared/ui/Button/Button';
 import { useDragSort } from '@/features/DragSort';
-import { QuestionCard } from '@/entities/Question';
+import { CreateLinkModal } from '@/features/CreateLink';
+import {
+    QuestionCard,
+    questionReducer,
+    reorderQuestions,
+    addQuestionToForm,
+    updateQuestionInForm,
+    removeQuestionFromForm,
+    fetchQuestions,
+    saveQuestions,
+    getQuestions,
+    getQuestionsIsLoading,
+    getQuestionsIsSaving,
+} from '@/entities/Question';
 import type { Question } from '@/entities/Question';
+import {
+    quizReducer,
+    fetchQuizById,
+    toggleQuizStatus,
+    getCurrentQuiz,
+    getCurrentQuizIsLoading,
+} from '@/entities/Quiz';
 import { CreateQuestionModal } from '@/features/CreateQuestion';
+import type { QuestionFormData } from '@/features/CreateQuestion';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
 
-const INITIAL_QUESTIONS: Question[] = [
-    {
-        id: '1',
-        order: 1,
-        text: 'Что такое Закон Фиттса?',
-        type: 'single',
-        options: [
-            { id: 'a', text: 'Чем дальше и меньше цель, тем больше времени требуется на ее достижение', isCorrect: true },
-            { id: 'b', text: 'Время принятия решения зависит от количества вариантов', isCorrect: false },
-            { id: 'c', text: 'Люди запоминают первую и последнюю часть информации лучше', isCorrect: false }
-        ],
-        required: true
-    },
-    {
-        id: '2',
-        order: 2,
-        text: 'Какие из этих элементов относятся к UI?',
-        type: 'multiple',
-        options: [
-            { id: 'a', text: 'Типографика', isCorrect: true },
-            { id: 'b', text: 'Исследование аудитории', isCorrect: false },
-            { id: 'c', text: 'Цветовая палитра', isCorrect: true }
-        ],
-        required: false
-    },
-    {
-        id: '3',
-        order: 3,
-        text: 'Опишите ваш опыт работы с UI/UX.',
-        type: 'text',
-        options: [],
-        required: false
-    }
-];
+const reducers: ReducersList = { quizzes: quizReducer, questions: questionReducer };
 
 export default function QuizEditorPage() {
-    const [questions, setQuestions] = React.useState<Question[]>(INITIAL_QUESTIONS);
+    useDynamicModuleLoader(reducers, false);
+
+    const { id: quizId = '' } = useParams<{ id: string }>();
+    const dispatch = useAppDispatch();
+
+    const currentQuiz = useAppSelector(getCurrentQuiz);
+    const quizIsLoading = useAppSelector(getCurrentQuizIsLoading);
+    const questions = useAppSelector(getQuestions);
+    const questionsLoading = useAppSelector(getQuestionsIsLoading);
+    const isSaving = useAppSelector(getQuestionsIsSaving);
+
     const [createOpen, setCreateOpen] = React.useState(false);
     const [editingQuestion, setEditingQuestion] = React.useState<Question | null>(null);
+    const [linkOpen, setLinkOpen] = React.useState(false);
+
+    React.useEffect(() => {
+        if (quizId) {
+            dispatch(fetchQuizById(quizId));
+            dispatch(fetchQuestions(quizId));
+        }
+    }, [dispatch, quizId]);
 
     const sorted = [...questions].sort((a, b) => a.order - b.order);
-    const { draggingId, getDragHandlers } = useDragSort(sorted, setQuestions);
 
-    function handleCreate(data: Omit<Question, 'id' | 'order'>) {
-        const newQuestion: Question = {
+    const { draggingId, getDragHandlers } = useDragSort(sorted, (reordered) => {
+        dispatch(reorderQuestions(reordered));
+    });
+
+    function handleCreate(data: QuestionFormData) {
+        dispatch(addQuestionToForm({
             ...data,
-            id: crypto.randomUUID(),
-            order: questions.length + 1
-        };
-        setQuestions((prev) => [...prev, newQuestion]);
+            id: `temp_${Date.now()}`,
+            quizId,
+            order: questions.length + 1,
+        }));
     }
 
-    function handleUpdate(id: string, data: Omit<Question, 'id' | 'order'>) {
-        setQuestions((prev) => prev.map((q) => (q.id === id ? { ...data, id, order: q.order } : q)));
+    function handleUpdate(id: string, data: QuestionFormData) {
+        dispatch(updateQuestionInForm({ id, data }));
+        setEditingQuestion(null);
     }
 
     function handleDelete(id: string) {
-        setQuestions((prev) => {
-            const filtered = prev.filter((q) => q.id !== id);
-            return filtered.map((q, i) => ({ ...q, order: i + 1 }));
-        });
+        dispatch(removeQuestionFromForm(id));
     }
 
     function handleDuplicate(id: string) {
-        setQuestions((prev) => {
-            const s = [...prev].sort((a, b) => a.order - b.order);
-            const idx = s.findIndex((q) => q.id === id);
-            if (idx === -1) return prev;
-            const copy = { ...s[idx], id: crypto.randomUUID() };
-            s.splice(idx + 1, 0, copy);
-            return s.map((q, i) => ({ ...q, order: i + 1 }));
-        });
+        const src = [...questions].sort((a, b) => a.order - b.order).find((q) => q.id === id);
+        if (!src) return;
+        const { id: _id, ...rest } = src;
+        dispatch(addQuestionToForm({ ...rest, id: `temp_${Date.now()}`, quizId, order: questions.length + 1 }));
     }
 
     function handleToggleRequired(id: string) {
-        setQuestions((prev) => prev.map((q) => (q.id === id ? { ...q, required: !q.required } : q)));
+        const q = questions.find((q) => q.id === id);
+        if (!q) return;
+        dispatch(updateQuestionInForm({ id, data: { required: !q.required } }));
     }
+
+    async function handleSave() {
+        const result = await dispatch(saveQuestions(quizId));
+        if (saveQuestions.fulfilled.match(result)) {
+            toast.success('Изменения сохранены');
+        } else {
+            toast.error('Ошибка при сохранении');
+        }
+    }
+
+    async function handlePublish() {
+        if (!currentQuiz) return;
+        const result = await dispatch(toggleQuizStatus({ id: currentQuiz.id, isPublished: currentQuiz.isPublished }));
+        if (toggleQuizStatus.fulfilled.match(result)) {
+            const nowPublished = !currentQuiz.isPublished;
+            toast.success(nowPublished ? 'Тест опубликован' : 'Тест снят с публикации');
+        } else {
+            toast.error('Ошибка смены статуса');
+        }
+    }
+
+    const isLoading = quizIsLoading || questionsLoading;
 
     return (
         <div className='min-h-screen bg-background pb-24'>
             <div className='mx-auto max-w-4xl px-6 py-8'>
                 <div className='mb-8 rounded-3xl border border-border bg-card p-6'>
-                    <h1 className='mb-2 text-3xl font-bold'>Основы UI/UX дизайна</h1>
-                    <p className='text-sm text-muted-foreground'>
-                        Тест для проверки базовых знаний в области проектирования интерфейсов. Время прохождения: 10 минут.
-                    </p>
+                    {isLoading ? (
+                        <div className='space-y-2'>
+                            <div className='h-8 w-1/2 animate-pulse rounded-lg bg-muted' />
+                            <div className='h-4 w-3/4 animate-pulse rounded-lg bg-muted' />
+                        </div>
+                    ) : (
+                        <>
+                            <h1 className='mb-2 text-3xl font-bold'>{currentQuiz?.title ?? '—'}</h1>
+                            <p className='text-sm text-muted-foreground'>{currentQuiz?.description}</p>
+                        </>
+                    )}
                 </div>
 
                 <div className='space-y-4'>
@@ -124,34 +164,42 @@ export default function QuizEditorPage() {
             </div>
 
             <div className='fixed bottom-0 left-0 right-0 flex items-center justify-center gap-3 border-t border-border bg-card px-6 py-3'>
-                <Button variant='outline' className='gap-2'>
-                    <Save className='size-4' /> Сохранить
+                <Button variant='outline' className='gap-2' onClick={handleSave} disabled={isSaving}>
+                    <Save className='size-4' />
+                    {isSaving ? 'Сохранение...' : 'Сохранить'}
                 </Button>
-                <Button variant='outline' className='gap-2'>
+                <Button variant='outline' className='gap-2' onClick={() => setLinkOpen(true)}>
                     <Link2 className='size-4' /> Создать ссылку
                 </Button>
                 <Button variant='outline' className='gap-2'>
                     <Eye className='size-4' /> Предпросмотр
                 </Button>
-                <Button variant='action' className='gap-2'>
-                    <Send className='size-4' /> Опубликовать
+                <Button variant='action' className='gap-2' onClick={handlePublish} disabled={!currentQuiz}>
+                    <Send className='size-4' />
+                    {currentQuiz?.isPublished ? 'Снять с публикации' : 'Опубликовать'}
                 </Button>
             </div>
 
-            <CreateQuestionModal open={createOpen} onOpenChange={setCreateOpen} onSave={handleCreate} />
+            <CreateQuestionModal
+                open={createOpen}
+                onOpenChange={setCreateOpen}
+                onSave={handleCreate}
+            />
             <CreateQuestionModal
                 open={!!editingQuestion}
-                onOpenChange={(open) => {
-                    if (!open) setEditingQuestion(null);
-                }}
-                onSave={(data) => {
+                onOpenChange={(open) => { if (!open) setEditingQuestion(null); }}
+                onSave={(data: QuestionFormData) => {
                     if (!editingQuestion) return;
                     handleUpdate(editingQuestion.id, data);
-                    setEditingQuestion(null);
                 }}
-                initialData={editingQuestion ?? undefined}
+                initialData={
+                    editingQuestion
+                        ? (({ id: _id, quizId: _qid, order: _ord, ...rest }) => rest)(editingQuestion)
+                        : undefined
+                }
                 title='Редактировать вопрос'
             />
+            <CreateLinkModal quizId={quizId} open={linkOpen} onOpenChange={setLinkOpen} />
         </div>
     );
 }

@@ -40,6 +40,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath[AppRoutes.MAIN],
         element: <LandingPage />,
+        guestOnly: true,
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath[AppRoutes.PROFILE],
