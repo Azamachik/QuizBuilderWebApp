@@ -6,6 +6,8 @@ export const $api = axios.create({
 });
 
 $api.interceptors.request.use((config) => {
-    config.headers.authorization = localStorage.getItem(USER_TOKEN_KEY) || '';
+    if (config.headers) {
+        config.headers.authorization = localStorage.getItem(USER_TOKEN_KEY) || '';
+    }
     return config;
 });
