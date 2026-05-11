@@ -110,7 +110,7 @@ export default function QuizResultsPage() {
         <div className='min-h-screen bg-background pb-16'>
             {/* Score card */}
             <div className='border-b border-border bg-card'>
-                <div className='mx-auto max-w-2xl px-6 py-10 text-center'>
+                <div className='mx-auto max-w-2xl px-4 py-8 text-center md:px-6 md:py-10'>
                     <p className='mb-1 text-sm text-muted-foreground'>{attempt.quizTitle}</p>
                     <div className='relative mx-auto mb-4 flex h-32 w-32 items-center justify-center'>
                         <svg className='-rotate-90' viewBox='0 0 100 100' width='128' height='128'>
@@ -137,7 +137,7 @@ export default function QuizResultsPage() {
 
             {/* Answer breakdown */}
             {questions.length > 0 && (
-                <div className='mx-auto max-w-2xl space-y-4 px-6 py-8'>
+                <div className='mx-auto max-w-2xl space-y-4 px-4 py-6 md:px-6 md:py-8'>
                     <h2 className='text-lg font-semibold'>Разбор ответов</h2>
                     {questions.map((q: Question, idx: number) => {
                         const answerRecord = attempt.answers.find((a) => a.questionId === q.id);
@@ -230,7 +230,7 @@ export default function QuizResultsPage() {
             )}
 
             {/* Actions */}
-            <div className='mx-auto flex max-w-2xl flex-col gap-3 px-6'>
+            <div className='mx-auto flex max-w-2xl flex-col gap-3 px-4 md:px-6'>
                 <Button
                     variant='outline'
                     className='w-full gap-2 rounded-2xl'

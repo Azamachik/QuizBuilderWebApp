@@ -9,7 +9,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Too
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
 import { getUserData, logout } from '@/entities/User';
+import { HeaderMobile } from './Header.mobile';
 import './Header.css';
 
 const NAV_LINKS = [
@@ -18,10 +20,14 @@ const NAV_LINKS = [
     { label: 'Цены',        href: '/#pricing'  },
 ] as const;
 
-const navLinkClass =
-    'text-sm text-muted-foreground transition-colors hover:text-foreground';
+const navLinkClass = 'text-sm text-muted-foreground transition-colors hover:text-foreground';
 
 export function Header() {
+    const isMobile = useIsMobile();
+    return isMobile ? <HeaderMobile /> : <HeaderDesktop />;
+}
+
+function HeaderDesktop() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const userData = useAppSelector(getUserData);
@@ -51,14 +57,10 @@ export function Header() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Button variant='secondary' size='icon' asChild>
-                                    <Link to={RoutePath[AppRoutes.PROFILE]}>
-                                        <User />
-                                    </Link>
+                                    <Link to={RoutePath[AppRoutes.PROFILE]}><User /></Link>
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent>
-                                <p>Профиль</p>
-                            </TooltipContent>
+                            <TooltipContent>Профиль</TooltipContent>
                         </Tooltip>
                         <Tooltip>
                             <TooltipTrigger asChild>
@@ -66,9 +68,7 @@ export function Header() {
                                     <Logout />
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent>
-                                <p>Выйти</p>
-                            </TooltipContent>
+                            <TooltipContent>Выйти</TooltipContent>
                         </Tooltip>
                     </div>
                 </div>

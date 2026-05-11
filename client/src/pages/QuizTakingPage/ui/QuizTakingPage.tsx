@@ -231,7 +231,7 @@ export default function QuizTakingPage() {
     return (
         <div className='flex min-h-screen flex-col bg-background'>
             {/* Header */}
-            <div className='border-b border-border bg-card px-6 py-4'>
+            <div className='border-b border-border bg-card px-4 py-4 md:px-6'>
                 <div className='mx-auto max-w-2xl'>
                     <p className='text-sm text-muted-foreground'>{session.quiz.title}</p>
                     <div className='mt-2 flex items-center gap-2'>
@@ -250,7 +250,7 @@ export default function QuizTakingPage() {
 
             {/* Question */}
             <div className='flex flex-1 flex-col'>
-                <div className='mx-auto w-full max-w-2xl flex-1 px-6 py-8'>
+                <div className='mx-auto w-full max-w-2xl flex-1 px-4 py-6 md:px-6 md:py-8'>
                     {requiredWarning && (
                         <div className='mb-4 flex items-center gap-2 rounded-2xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive'>
                             <span className='shrink-0'>⚠</span>
@@ -314,7 +314,7 @@ export default function QuizTakingPage() {
             </div>
 
             {/* Navigation */}
-            <div className='border-t border-border bg-card px-6 py-4'>
+            <div className='border-t border-border bg-card px-4 py-4 md:px-6'>
                 <div className='mx-auto flex max-w-2xl items-center justify-between gap-3'>
                     <Button
                         variant='outline'

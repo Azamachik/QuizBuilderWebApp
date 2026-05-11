@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { LayoutGrid, List, Plus } from 'lucide-react';
-import { cn } from '@/shared/lib/utils/utils';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
-import { QuizzesPageMobile } from './QuizzesPage.mobile';
+import { Plus } from 'lucide-react';
 import {
     QuizCard, QuizCardSkeleton,
-    QuizRow, QuizRowSkeleton,
     quizReducer, fetchQuizzes, toggleQuizStatus, deleteQuiz,
     getQuizzes, getQuizzesIsLoading,
 } from '@/entities/Quiz';
@@ -20,17 +16,10 @@ import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
 import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
 import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
 
-type View = 'grid' | 'list';
-
 const reducers: ReducersList = { quizzes: quizReducer };
 const SKELETON_COUNT = 3;
 
-export default function QuizzesPage() {
-    const isMobile = useIsMobile();
-    return isMobile ? <QuizzesPageMobile /> : <QuizzesPageDesktop />;
-}
-
-function QuizzesPageDesktop() {
+export function QuizzesPageMobile() {
     useDynamicModuleLoader(reducers, false);
 
     const dispatch = useAppDispatch();
@@ -38,7 +27,6 @@ function QuizzesPageDesktop() {
     const quizzes = useAppSelector(getQuizzes);
     const isLoading = useAppSelector(getQuizzesIsLoading);
 
-    const [view, setView] = useState<View>('grid');
     const [createOpen, setCreateOpen] = useState(false);
     const [editingQuiz, setEditingQuiz] = useState<Quiz | null>(null);
     const [linkQuiz, setLinkQuiz] = useState<Quiz | null>(null);
@@ -65,59 +53,17 @@ function QuizzesPageDesktop() {
 
     return (
         <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
-            <div className='mx-auto max-w-5xl px-6 py-10'>
-                <div className='mb-6 inline-flex rounded-xl border border-border bg-muted p-1'>
-                    <button
-                        onClick={() => setView('grid')}
-                        className={cn(
-                            'rounded-lg p-2 transition-colors',
-                            view === 'grid' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
-                        )}
-                    >
-                        <LayoutGrid className='size-4' />
-                    </button>
-                    <button
-                        onClick={() => setView('list')}
-                        className={cn(
-                            'rounded-lg p-2 transition-colors',
-                            view === 'list' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
-                        )}
-                    >
-                        <List className='size-4' />
-                    </button>
-                </div>
-
+            <div className='px-4 py-6'>
                 {isLoading ? (
-                    view === 'grid' ? (
-                        <div className='grid grid-cols-3 gap-4'>
-                            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                                <QuizCardSkeleton key={i} />
-                            ))}
-                        </div>
-                    ) : (
-                        <div className='space-y-3'>
-                            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                                <QuizRowSkeleton key={i} />
-                            ))}
-                        </div>
-                    )
-                ) : view === 'grid' ? (
-                    <div className='grid grid-cols-3 gap-4'>
-                        {quizzes.map((quiz) => (
-                            <QuizCard
-                                key={quiz.id}
-                                quiz={quiz}
-                                onEdit={setEditingQuiz}
-                                onToggleStatus={handleToggleStatus}
-                                onCreateLink={setLinkQuiz}
-                                onDelete={handleDelete}
-                            />
+                    <div className='space-y-4'>
+                        {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                            <QuizCardSkeleton key={i} />
                         ))}
                     </div>
                 ) : (
-                    <div className='space-y-3'>
+                    <div className='space-y-4'>
                         {quizzes.map((quiz) => (
-                            <QuizRow
+                            <QuizCard
                                 key={quiz.id}
                                 quiz={quiz}
                                 onEdit={setEditingQuiz}
@@ -131,7 +77,7 @@ function QuizzesPageDesktop() {
 
                 <button
                     onClick={() => setCreateOpen(true)}
-                    className='mt-4 flex w-full flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-border py-14 transition-colors hover:border-action/50'
+                    className='mt-4 flex w-full flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-border py-12 transition-colors hover:border-action/50'
                 >
                     <div className='flex h-12 w-12 items-center justify-center rounded-full bg-action'>
                         <Plus className='size-5 text-background' />

@@ -2,8 +2,6 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { Link2, Plus, Save, Send } from 'lucide-react';
 import { toast } from 'sonner';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
-import { QuizEditorPageMobile } from './QuizEditorPage.mobile';
 import { Button } from '@/shared/ui/Button/Button';
 import { useDragSort } from '@/features/DragSort';
 import { CreateLinkModal } from '@/features/CreateLink';
@@ -37,13 +35,7 @@ import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLo
 
 const reducers: ReducersList = { quizzes: quizReducer, questions: questionReducer };
 
-export default function QuizEditorPage() {
-    const isMobile = useIsMobile();
-    if (isMobile) return <QuizEditorPageMobile />;
-    return <QuizEditorPageDesktop />;
-}
-
-function QuizEditorPageDesktop() {
+export function QuizEditorPageMobile() {
     useDynamicModuleLoader(reducers, false);
 
     const { id: quizId = '' } = useParams<{ id: string }>();
@@ -126,23 +118,25 @@ function QuizEditorPageDesktop() {
     const isLoading = quizIsLoading || questionsLoading;
 
     return (
-        <div className='min-h-screen bg-background pb-24'>
-            <div className='mx-auto max-w-4xl px-6 py-8'>
-                <div className='mb-8 rounded-3xl border border-border bg-card p-6'>
+        <div className='min-h-screen bg-background pb-32'>
+            <div className='px-4 py-5'>
+                {/* Quiz header */}
+                <div className='mb-6 rounded-2xl border border-border bg-card p-4'>
                     {isLoading ? (
                         <div className='space-y-2'>
-                            <div className='h-8 w-1/2 animate-pulse rounded-lg bg-muted' />
-                            <div className='h-4 w-3/4 animate-pulse rounded-lg bg-muted' />
+                            <div className='h-6 w-2/3 animate-pulse rounded-lg bg-muted' />
+                            <div className='h-4 w-full animate-pulse rounded-lg bg-muted' />
                         </div>
                     ) : (
                         <>
-                            <h1 className='mb-2 text-3xl font-bold'>{currentQuiz?.title ?? '—'}</h1>
+                            <h1 className='mb-1 text-xl font-bold leading-snug'>{currentQuiz?.title ?? '—'}</h1>
                             <p className='text-sm text-muted-foreground'>{currentQuiz?.description}</p>
                         </>
                     )}
                 </div>
 
-                <div className='space-y-4'>
+                {/* Questions */}
+                <div className='space-y-3'>
                     {sorted.map((q, index) => (
                         <QuestionCard
                             key={q.id}
@@ -159,27 +153,43 @@ function QuizEditorPageDesktop() {
 
                     <Button
                         variant='ghost'
-                        className='flex h-auto w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-border py-10 hover:border-action/50 hover:bg-transparent'
+                        className='flex h-auto w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-border py-8 hover:border-action/50 hover:bg-transparent'
                         onClick={() => setCreateOpen(true)}
                     >
-                        <div className='flex h-10 w-10 items-center justify-center rounded-full bg-action'>
-                            <Plus className='size-5 text-action-foreground' />
+                        <div className='flex h-9 w-9 items-center justify-center rounded-full bg-action'>
+                            <Plus className='size-4 text-action-foreground' />
                         </div>
-                        <span className='font-semibold'>Добавить новый вопрос</span>
-                        <span className='text-xs text-muted-foreground'>Или выберите другой тип контента</span>
+                        <span className='text-sm font-semibold'>Добавить вопрос</span>
                     </Button>
                 </div>
             </div>
 
-            <div className='fixed bottom-0 left-0 right-0 flex items-center justify-center gap-3 border-t border-border bg-card px-6 py-3'>
-                <Button variant='outline' className='gap-2' onClick={handleSave} disabled={isSaving}>
-                    <Save className='size-4' />
-                    {isSaving ? 'Сохранение...' : 'Сохранить'}
-                </Button>
-                <Button variant='outline' className='gap-2' onClick={() => setLinkOpen(true)}>
-                    <Link2 className='size-4' /> Создать ссылку
-                </Button>
-                <Button variant='action' className='gap-2' onClick={handlePublish} disabled={!currentQuiz}>
+            {/* Fixed bottom bar — two rows on mobile */}
+            <div className='fixed bottom-0 left-0 right-0 border-t border-border bg-card px-4 py-3'>
+                <div className='mb-2 flex gap-2'>
+                    <Button
+                        variant='outline'
+                        className='flex-1 gap-1.5 text-xs'
+                        onClick={handleSave}
+                        disabled={isSaving}
+                    >
+                        <Save className='size-3.5' />
+                        {isSaving ? 'Сохраняем...' : 'Сохранить'}
+                    </Button>
+                    <Button
+                        variant='outline'
+                        className='flex-1 gap-1.5 text-xs'
+                        onClick={() => setLinkOpen(true)}
+                    >
+                        <Link2 className='size-3.5' /> Создать ссылку
+                    </Button>
+                </div>
+                <Button
+                    variant='action'
+                    className='w-full gap-2'
+                    onClick={handlePublish}
+                    disabled={!currentQuiz}
+                >
                     <Send className='size-4' />
                     {currentQuiz?.isPublished ? 'Снять с публикации' : 'Опубликовать'}
                 </Button>

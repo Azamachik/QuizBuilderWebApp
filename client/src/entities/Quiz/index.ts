@@ -9,6 +9,8 @@ export {
     getQuizzesError,
     getCurrentQuiz,
     getCurrentQuizIsLoading,
+    getProfileStats,
+    getQuizzesCreatedDates,
 } from './model/selectors/quizSelectors';
 
 export { fetchQuizzes } from './model/services/fetchQuizzes';

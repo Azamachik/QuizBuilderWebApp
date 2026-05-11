@@ -257,7 +257,6 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                                     }}
                                     disabled={{ before: new Date() }}
                                     locale={ru}
-                                    initialFocus
                                 />
                                 {expiresAt && (
                                     <div className='border-t border-border p-2'>

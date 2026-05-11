@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 import { CalendarDays, Share2 } from 'lucide-react';
 import { Button } from '@/shared/ui/Button/Button';
 import { StatCard } from '@/shared/ui/StatCard/StatCard';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Tooltip';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
 import { useDynamicModuleLoader, type ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
 import {
     getProfileData,
     getProfileIsLoading,
@@ -27,7 +25,6 @@ import { ActivityHeatmap } from '../ActivityHeatmap/ActivityHeatmap';
 import { EditProfileModal } from '../EditProfileModal/EditProfileModal';
 import { ShareModal } from '../ShareModal/ShareModal';
 import { ProfilePageSkeleton } from './ProfilePageSkeleton';
-import { ProfilePageMobile } from './ProfilePage.mobile';
 
 const reducers: ReducersList = { profile: profileReducer, quizzes: quizReducer };
 
@@ -35,12 +32,7 @@ function getInitials(firstName: string, lastName: string): string {
     return `${firstName[0] ?? ''}${lastName[0] ?? ''}`.toUpperCase();
 }
 
-export default function ProfilePage() {
-    const isMobile = useIsMobile();
-    return isMobile ? <ProfilePageMobile /> : <ProfilePageDesktop />;
-}
-
-function ProfilePageDesktop() {
+export function ProfilePageMobile() {
     useDynamicModuleLoader(reducers, false);
 
     const dispatch = useAppDispatch();
@@ -85,49 +77,48 @@ function ProfilePageDesktop() {
         .replace(/^\.+|\.+$/g, '') || userData?.username || 'user';
 
     return (
-        <main className='min-h-[calc(100vh-4rem)] bg-background'>
-            <div className='mx-auto max-w-5xl space-y-5 px-5 py-10'>
-                <div className='flex items-start justify-between'>
-                    <div className='flex items-center gap-5'>
-                        <div className='flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-muted'>
-                            {display.avatarUrl ? (
-                                <img src={display.avatarUrl} alt='avatar' className='h-full w-full object-cover' />
-                            ) : (
-                                <span className='text-2xl font-semibold text-muted-foreground'>
-                                    {getInitials(display.firstName, display.lastName) || (userData?.username?.[0]?.toUpperCase() ?? '?')}
-                                </span>
-                            )}
-                        </div>
-                        <div className='space-y-2'>
-                            <h1 className='text-2xl font-bold'>{displayName}</h1>
-                            <p className='text-sm text-muted-foreground'>{userData?.email}</p>
-                            <div className='inline-flex items-center gap-1.5 rounded-lg bg-muted px-3 py-1.5 text-xs text-muted-foreground'>
-                                <CalendarDays className='size-3.5 shrink-0' />
-                                <span>Дата регистрации {displayDate}</span>
-                            </div>
-                        </div>
+        <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
+            <div className='space-y-4 px-4 py-6'>
+                {/* Avatar + name row */}
+                <div className='flex items-center gap-4'>
+                    <div className='flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-muted'>
+                        {display.avatarUrl ? (
+                            <img src={display.avatarUrl} alt='avatar' className='h-full w-full object-cover' />
+                        ) : (
+                            <span className='text-xl font-semibold text-muted-foreground'>
+                                {getInitials(display.firstName, display.lastName) || (userData?.username?.[0]?.toUpperCase() ?? '?')}
+                            </span>
+                        )}
                     </div>
-                    <div className='flex shrink-0 items-center gap-2'>
-                        <Button variant='action' onClick={() => setEditOpen(true)}>Редактировать</Button>
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <Button variant='secondary' size='icon' onClick={() => setShareOpen(true)}>
-                                    <Share2 />
-                                </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Поделиться</TooltipContent>
-                        </Tooltip>
+                    <div className='min-w-0 flex-1'>
+                        <h1 className='truncate text-lg font-bold'>{displayName}</h1>
+                        <p className='truncate text-xs text-muted-foreground'>{userData?.email}</p>
+                        <div className='mt-1 inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-1 text-xs text-muted-foreground'>
+                            <CalendarDays className='size-3 shrink-0' />
+                            <span>С {displayDate}</span>
+                        </div>
                     </div>
                 </div>
 
-                <div className='grid grid-cols-5 gap-3'>
+                {/* Action buttons */}
+                <div className='flex gap-2'>
+                    <Button variant='action' className='flex-1' onClick={() => setEditOpen(true)}>
+                        Редактировать
+                    </Button>
+                    <Button variant='secondary' size='icon' onClick={() => setShareOpen(true)}>
+                        <Share2 className='size-4' />
+                    </Button>
+                </div>
+
+                {/* Stats — 2 columns */}
+                <div className='grid grid-cols-2 gap-3'>
                     <StatCard value={stats.created} label='Создано' />
                     <StatCard value={stats.published} label='Опубликовано' />
                     <StatCard value={stats.drafts} label='Черновики' />
                     <StatCard value={stats.attempts} label='Прохождений' />
-                    <StatCard value='—' label='Средний результат' />
                 </div>
 
+                {/* Heatmap — scrolls horizontally on mobile */}
                 <ActivityHeatmap quizDates={quizDates} />
             </div>
 

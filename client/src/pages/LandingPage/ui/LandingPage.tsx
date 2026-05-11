@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/shared/ui/Button/Button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/Accordion/Accordion';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
+import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
+import { LandingPageMobile } from './LandingPage.mobile';
 
 const FEATURES = [
     {
@@ -80,6 +82,8 @@ const FAQ = [
 ];
 
 export default function LandingPage() {
+    const isMobile = useIsMobile();
+    if (isMobile) return <LandingPageMobile />;
     return (
         <div className='min-h-screen bg-background'>
             {/* Hero */}
