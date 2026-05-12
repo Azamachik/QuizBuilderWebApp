@@ -14,11 +14,6 @@ const router = jsonServer.router(resolve(__dirname, 'db.json'));
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
-server.use(async (req, res, next) => {
-    await new Promise((res) => setTimeout(res, 300));
-    next();
-});
-
 function readDb() {
     return JSON.parse(fs.readFileSync(resolve(__dirname, 'db.json'), 'UTF-8'));
 }
