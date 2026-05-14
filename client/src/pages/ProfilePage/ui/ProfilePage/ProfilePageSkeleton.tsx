@@ -4,7 +4,6 @@ export function ProfilePageSkeleton() {
     return (
         <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
             <div className='mx-auto max-w-5xl space-y-5 px-6 py-10'>
-
                 {/* Profile header row */}
                 <div className='flex items-start justify-between'>
                     <div className='flex items-center gap-5'>

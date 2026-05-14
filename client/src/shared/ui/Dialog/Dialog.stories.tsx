@@ -7,7 +7,7 @@ const meta = {
     title: 'Shared/Dialog',
     component: Dialog,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Dialog>;
 
 export default meta;
@@ -18,7 +18,9 @@ export const Default: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='action' onClick={() => setOpen(true)}>Открыть диалог</Button>
+                <Button variant='action' onClick={() => setOpen(true)}>
+                    Открыть диалог
+                </Button>
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogContent>
                         <DialogHeader>
@@ -28,14 +30,18 @@ export const Default: Story = {
                             Содержимое модального окна. Нажмите × или кликните снаружи, чтобы закрыть.
                         </p>
                         <div className='flex justify-end gap-2 pt-2'>
-                            <Button variant='outline' onClick={() => setOpen(false)}>Отмена</Button>
-                            <Button variant='action' onClick={() => setOpen(false)}>Сохранить</Button>
+                            <Button variant='outline' onClick={() => setOpen(false)}>
+                                Отмена
+                            </Button>
+                            <Button variant='action' onClick={() => setOpen(false)}>
+                                Сохранить
+                            </Button>
                         </div>
                     </DialogContent>
                 </Dialog>
             </>
         );
-    },
+    }
 };
 
 export const WithForm: Story = {
@@ -43,7 +49,9 @@ export const WithForm: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='outline' onClick={() => setOpen(true)}>Создать тест</Button>
+                <Button variant='outline' onClick={() => setOpen(true)}>
+                    Создать тест
+                </Button>
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogContent>
                         <DialogHeader>
@@ -61,14 +69,18 @@ export const WithForm: Story = {
                             />
                         </div>
                         <div className='flex justify-end gap-2 pt-2'>
-                            <Button variant='outline' onClick={() => setOpen(false)}>Отмена</Button>
-                            <Button variant='action' onClick={() => setOpen(false)}>Создать</Button>
+                            <Button variant='outline' onClick={() => setOpen(false)}>
+                                Отмена
+                            </Button>
+                            <Button variant='action' onClick={() => setOpen(false)}>
+                                Создать
+                            </Button>
                         </div>
                     </DialogContent>
                 </Dialog>
             </>
         );
-    },
+    }
 };
 
 export const AlwaysOpen: Story = {
@@ -81,5 +93,5 @@ export const AlwaysOpen: Story = {
                 <p className='text-sm text-muted-foreground'>Диалог в статическом режиме для Storybook.</p>
             </DialogContent>
         </Dialog>
-    ),
+    )
 };

@@ -9,7 +9,7 @@ const mockProfile = {
     firstName: 'Азамат',
     lastName: 'Каримов',
     avatarUrl: '',
-    createdAt: '12.10.2023',
+    createdAt: '12.10.2023'
 };
 
 const meta = {
@@ -17,7 +17,7 @@ const meta = {
     component: EditProfileModal,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    args: { onSave: fn() },
+    args: { onSave: fn() }
 } satisfies Meta<typeof EditProfileModal>;
 
 export default meta;
@@ -29,15 +29,17 @@ export const Default: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='action' onClick={() => setOpen(true)}>Редактировать профиль</Button>
+                <Button variant='action' onClick={() => setOpen(true)}>
+                    Редактировать профиль
+                </Button>
                 <EditProfileModal {...args} open={open} onOpenChange={setOpen} initialData={mockProfile} />
             </>
         );
-    },
+    }
 };
 
 export const AlwaysOpen: Story = {
-    args: { open: true, onOpenChange: () => {}, initialData: mockProfile },
+    args: { open: true, onOpenChange: () => {}, initialData: mockProfile }
 };
 
 export const WithAvatar: Story = {
@@ -46,7 +48,7 @@ export const WithAvatar: Story = {
         onOpenChange: () => {},
         initialData: {
             ...mockProfile,
-            avatarUrl: 'https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13',
-        },
-    },
+            avatarUrl: 'https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13'
+        }
+    }
 };

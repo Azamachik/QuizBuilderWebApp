@@ -4,8 +4,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Di
 import { cn } from '@/shared/lib/utils/utils';
 import { createQuiz } from '@/entities/Quiz';
 import { getUserData } from '@/entities/User';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 
 interface CreateQuizModalProps {
     open: boolean;

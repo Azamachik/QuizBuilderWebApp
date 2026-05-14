@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { Link2, Plus, Save, Send } from 'lucide-react';
 import { toast } from 'sonner';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
+import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile/useIsMobile';
 import { QuizEditorPageMobile } from './QuizEditorPage.mobile';
 import { Button } from '@/shared/ui/Button/Button';
 import { useDragSort } from '@/features/DragSort';
@@ -18,22 +18,16 @@ import {
     saveQuestions,
     getQuestions,
     getQuestionsIsLoading,
-    getQuestionsIsSaving,
+    getQuestionsIsSaving
 } from '@/entities/Question';
 import type { Question } from '@/entities/Question';
-import {
-    quizReducer,
-    fetchQuizById,
-    toggleQuizStatus,
-    getCurrentQuiz,
-    getCurrentQuizIsLoading,
-} from '@/entities/Quiz';
+import { quizReducer, fetchQuizById, toggleQuizStatus, getCurrentQuiz, getCurrentQuizIsLoading } from '@/entities/Quiz';
 import { CreateQuestionModal } from '@/features/CreateQuestion';
 import type { QuestionFormData } from '@/features/CreateQuestion';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 
 const reducers: ReducersList = { quizzes: quizReducer, questions: questionReducer };
 
@@ -73,12 +67,14 @@ function QuizEditorPageDesktop() {
     });
 
     function handleCreate(data: QuestionFormData) {
-        dispatch(addQuestionToForm({
-            ...data,
-            id: `temp_${Date.now()}`,
-            quizId,
-            order: questions.length + 1,
-        }));
+        dispatch(
+            addQuestionToForm({
+                ...data,
+                id: `temp_${Date.now()}`,
+                quizId,
+                order: questions.length + 1
+            })
+        );
     }
 
     function handleUpdate(id: string, data: QuestionFormData) {
@@ -185,23 +181,17 @@ function QuizEditorPageDesktop() {
                 </Button>
             </div>
 
-            <CreateQuestionModal
-                open={createOpen}
-                onOpenChange={setCreateOpen}
-                onSave={handleCreate}
-            />
+            <CreateQuestionModal open={createOpen} onOpenChange={setCreateOpen} onSave={handleCreate} />
             <CreateQuestionModal
                 open={!!editingQuestion}
-                onOpenChange={(open) => { if (!open) setEditingQuestion(null); }}
+                onOpenChange={(open) => {
+                    if (!open) setEditingQuestion(null);
+                }}
                 onSave={(data: QuestionFormData) => {
                     if (!editingQuestion) return;
                     handleUpdate(editingQuestion.id, data);
                 }}
-                initialData={
-                    editingQuestion
-                        ? (({ id: _id, quizId: _qid, order: _ord, ...rest }) => rest)(editingQuestion)
-                        : undefined
-                }
+                initialData={editingQuestion ? (({ id: _id, quizId: _qid, order: _ord, ...rest }) => rest)(editingQuestion) : undefined}
                 title='Редактировать вопрос'
             />
             <CreateLinkModal quizId={quizId} open={linkOpen} onOpenChange={setLinkOpen} />

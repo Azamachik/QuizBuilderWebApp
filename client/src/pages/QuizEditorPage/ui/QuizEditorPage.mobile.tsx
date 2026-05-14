@@ -16,22 +16,16 @@ import {
     saveQuestions,
     getQuestions,
     getQuestionsIsLoading,
-    getQuestionsIsSaving,
+    getQuestionsIsSaving
 } from '@/entities/Question';
 import type { Question } from '@/entities/Question';
-import {
-    quizReducer,
-    fetchQuizById,
-    toggleQuizStatus,
-    getCurrentQuiz,
-    getCurrentQuizIsLoading,
-} from '@/entities/Quiz';
+import { quizReducer, fetchQuizById, toggleQuizStatus, getCurrentQuiz, getCurrentQuizIsLoading } from '@/entities/Quiz';
 import { CreateQuestionModal } from '@/features/CreateQuestion';
 import type { QuestionFormData } from '@/features/CreateQuestion';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 
 const reducers: ReducersList = { quizzes: quizReducer, questions: questionReducer };
 
@@ -65,12 +59,14 @@ export function QuizEditorPageMobile() {
     });
 
     function handleCreate(data: QuestionFormData) {
-        dispatch(addQuestionToForm({
-            ...data,
-            id: `temp_${Date.now()}`,
-            quizId,
-            order: questions.length + 1,
-        }));
+        dispatch(
+            addQuestionToForm({
+                ...data,
+                id: `temp_${Date.now()}`,
+                quizId,
+                order: questions.length + 1
+            })
+        );
     }
 
     function handleUpdate(id: string, data: QuestionFormData) {
@@ -167,51 +163,31 @@ export function QuizEditorPageMobile() {
             {/* Fixed bottom bar — two rows on mobile */}
             <div className='fixed bottom-0 left-0 right-0 border-t border-border bg-card px-4 py-3'>
                 <div className='mb-2 flex gap-2'>
-                    <Button
-                        variant='outline'
-                        className='flex-1 gap-1.5 text-xs'
-                        onClick={handleSave}
-                        disabled={isSaving}
-                    >
+                    <Button variant='outline' className='flex-1 gap-1.5 text-xs' onClick={handleSave} disabled={isSaving}>
                         <Save className='size-3.5' />
                         {isSaving ? 'Сохраняем...' : 'Сохранить'}
                     </Button>
-                    <Button
-                        variant='outline'
-                        className='flex-1 gap-1.5 text-xs'
-                        onClick={() => setLinkOpen(true)}
-                    >
+                    <Button variant='outline' className='flex-1 gap-1.5 text-xs' onClick={() => setLinkOpen(true)}>
                         <Link2 className='size-3.5' /> Создать ссылку
                     </Button>
                 </div>
-                <Button
-                    variant='action'
-                    className='w-full gap-2'
-                    onClick={handlePublish}
-                    disabled={!currentQuiz}
-                >
+                <Button variant='action' className='w-full gap-2' onClick={handlePublish} disabled={!currentQuiz}>
                     <Send className='size-4' />
                     {currentQuiz?.isPublished ? 'Снять с публикации' : 'Опубликовать'}
                 </Button>
             </div>
 
-            <CreateQuestionModal
-                open={createOpen}
-                onOpenChange={setCreateOpen}
-                onSave={handleCreate}
-            />
+            <CreateQuestionModal open={createOpen} onOpenChange={setCreateOpen} onSave={handleCreate} />
             <CreateQuestionModal
                 open={!!editingQuestion}
-                onOpenChange={(open) => { if (!open) setEditingQuestion(null); }}
+                onOpenChange={(open) => {
+                    if (!open) setEditingQuestion(null);
+                }}
                 onSave={(data: QuestionFormData) => {
                     if (!editingQuestion) return;
                     handleUpdate(editingQuestion.id, data);
                 }}
-                initialData={
-                    editingQuestion
-                        ? (({ id: _id, quizId: _qid, order: _ord, ...rest }) => rest)(editingQuestion)
-                        : undefined
-                }
+                initialData={editingQuestion ? (({ id: _id, quizId: _qid, order: _ord, ...rest }) => rest)(editingQuestion) : undefined}
                 title='Редактировать вопрос'
             />
             <CreateLinkModal quizId={quizId} open={linkOpen} onOpenChange={setLinkOpen} />

@@ -5,7 +5,7 @@ const meta = {
     title: 'Shared/Skeleton',
     component: Skeleton,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Skeleton>;
 
 export default meta;
@@ -23,7 +23,7 @@ export const TextBlock: Story = {
             <Skeleton className='h-4 w-5/6' />
             <Skeleton className='h-4 w-2/3' />
         </div>
-    ),
+    )
 };
 
 export const QuizCardSkeleton: Story = {
@@ -42,7 +42,7 @@ export const QuizCardSkeleton: Story = {
                 <Skeleton className='h-4 w-24' />
             </div>
         </div>
-    ),
+    )
 };
 
 export const ProfileSkeleton: Story = {
@@ -55,5 +55,5 @@ export const ProfileSkeleton: Story = {
                 <Skeleton className='h-4 w-28 rounded-lg' />
             </div>
         </div>
-    ),
+    )
 };

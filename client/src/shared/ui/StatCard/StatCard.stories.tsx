@@ -8,8 +8,8 @@ const meta = {
     parameters: { layout: 'centered' },
     argTypes: {
         highlight: { control: 'boolean' },
-        progress: { control: { type: 'range', min: 0, max: 100 } },
-    },
+        progress: { control: { type: 'range', min: 0, max: 100 } }
+    }
 } satisfies Meta<typeof StatCard>;
 
 export default meta;
@@ -31,5 +31,5 @@ export const AllStats: Story = {
             <StatCard value={128} label='Прохождений' />
             <StatCard value='94%' label='Средний результат' highlight progress={94} />
         </div>
-    ),
+    )
 };

@@ -3,7 +3,7 @@ import type { InviteLinkSchema } from '../types/InviteLinkSchema';
 import { fetchSessionByToken } from '../services/fetchSessionByToken';
 
 const initialState: InviteLinkSchema = {
-    isLoading: false,
+    isLoading: false
 };
 
 export const inviteLinkSlice = createSlice({
@@ -24,7 +24,7 @@ export const inviteLinkSlice = createSlice({
                 state.isLoading = false;
                 state.error = payload;
             });
-    },
+    }
 });
 
 export const inviteLinkReducer = inviteLinkSlice.reducer;

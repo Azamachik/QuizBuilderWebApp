@@ -7,7 +7,7 @@ const meta = {
     component: NotFoundPage,
     tags: ['autodocs'],
     parameters: { layout: 'fullscreen' },
-    decorators: [BrowserDecorator],
+    decorators: [BrowserDecorator]
 } satisfies Meta<typeof NotFoundPage>;
 
 export default meta;

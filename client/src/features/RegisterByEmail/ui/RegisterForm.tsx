@@ -1,9 +1,9 @@
 import { type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/ui/Button/Button';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import { useDynamicModuleLoader, type ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { useDynamicModuleLoader, type ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 import { registerByEmail } from '../model/services/registerByEmail';
 import { registerReducer, setUsername, setEmail, setPassword, setConfirm } from '../model/slice/registerSlice';
@@ -13,7 +13,7 @@ import {
     getRegisterPassword,
     getRegisterConfirm,
     getRegisterIsLoading,
-    getRegisterError,
+    getRegisterError
 } from '../model/selectors/getRegister';
 
 const reducers: ReducersList = { register: registerReducer };
@@ -45,11 +45,7 @@ export function RegisterForm() {
 
     return (
         <form onSubmit={handleSubmit} className='space-y-3'>
-            {error && (
-                <p className='rounded-xl bg-destructive/10 px-4 py-2.5 text-sm text-destructive'>
-                    {error}
-                </p>
-            )}
+            {error && <p className='rounded-xl bg-destructive/10 px-4 py-2.5 text-sm text-destructive'>{error}</p>}
             <div className='space-y-1.5'>
                 <label className='text-sm'>Имя пользователя</label>
                 <input
@@ -94,9 +90,7 @@ export function RegisterForm() {
                     required
                     disabled={isLoading}
                 />
-                {password && confirm && password !== confirm && (
-                    <p className='text-xs text-destructive'>Пароли не совпадают</p>
-                )}
+                {password && confirm && password !== confirm && <p className='text-xs text-destructive'>Пароли не совпадают</p>}
             </div>
             <Button
                 type='submit'

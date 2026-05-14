@@ -8,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Too
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/Popover/Popover';
 import { Calendar } from '@/shared/ui/Calendar/Calendar';
 import { $api } from '@/shared/api/api';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 import { getUserData } from '@/entities/User';
 import { cn } from '@/shared/lib/utils/utils';
 import type { InviteLink } from '@/entities/InviteLink';
@@ -21,11 +21,7 @@ interface CreateLinkModalProps {
 
 function generateToken() {
     return (
-        Math.random().toString(36).slice(2, 7) +
-        '-' +
-        Math.random().toString(36).slice(2, 7) +
-        '-' +
-        Math.random().toString(36).slice(2, 7)
+        Math.random().toString(36).slice(2, 7) + '-' + Math.random().toString(36).slice(2, 7) + '-' + Math.random().toString(36).slice(2, 7)
     );
 }
 
@@ -45,8 +41,7 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
     useEffect(() => {
         if (!open || !quizId) return;
         setIsFetching(true);
-        $api
-            .get<InviteLink[]>(`/inviteLinks?quizId=${quizId}`)
+        $api.get<InviteLink[]>(`/inviteLinks?quizId=${quizId}`)
             .then((res) => setLinks(res.data))
             .finally(() => setIsFetching(false));
     }, [open, quizId]);
@@ -85,7 +80,7 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                 expiresAt: expiresAt ? expiresAt.toISOString() : null,
                 isActive: true,
                 createdAt: new Date().toISOString(),
-                createdBy: userData?.id ?? '',
+                createdBy: userData?.id ?? ''
             };
             const res = await $api.post<InviteLink>('/inviteLinks', payload);
             setLinks((prev) => [...prev, res.data]);
@@ -114,17 +109,13 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                             <div className='h-16 animate-pulse rounded-xl bg-muted' />
                         </>
                     ) : links.length === 0 ? (
-                        <p className='py-4 text-center text-sm text-muted-foreground'>
-                            Ссылок пока нет
-                        </p>
+                        <p className='py-4 text-center text-sm text-muted-foreground'>Ссылок пока нет</p>
                     ) : (
                         links.map((link) => (
                             <div
                                 key={link.id}
                                 className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 transition-opacity ${
-                                    link.isActive
-                                        ? 'border-border bg-card'
-                                        : 'border-border bg-muted/30 opacity-60'
+                                    link.isActive ? 'border-border bg-card' : 'border-border bg-muted/30 opacity-60'
                                 }`}
                             >
                                 <div className='min-w-0 flex-1'>
@@ -173,9 +164,7 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                                             )}
                                         </button>
                                     </TooltipTrigger>
-                                    <TooltipContent>
-                                        {copiedId === link.id ? 'Скопировано!' : 'Скопировать ссылку'}
-                                    </TooltipContent>
+                                    <TooltipContent>{copiedId === link.id ? 'Скопировано!' : 'Скопировать ссылку'}</TooltipContent>
                                 </Tooltip>
 
                                 <Tooltip>
@@ -183,9 +172,7 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                                         <button
                                             onClick={() => handleToggle(link)}
                                             className={`flex h-7 w-7 items-center justify-center rounded-lg transition-colors ${
-                                                link.isActive
-                                                    ? 'text-muted-foreground hover:bg-muted'
-                                                    : 'text-action hover:bg-action/10'
+                                                link.isActive ? 'text-muted-foreground hover:bg-muted' : 'text-action hover:bg-action/10'
                                             }`}
                                         >
                                             <Power className='size-3.5' />
@@ -238,13 +225,11 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                                     type='button'
                                     className={cn(
                                         'flex flex-1 items-center gap-2 rounded-xl border border-border bg-background px-3 py-2 text-left text-sm outline-none ring-action focus:ring-2',
-                                        !expiresAt && 'text-muted-foreground',
+                                        !expiresAt && 'text-muted-foreground'
                                     )}
                                 >
                                     <CalendarIcon className='size-4 shrink-0' />
-                                    {expiresAt
-                                        ? format(expiresAt, 'd MMM yyyy', { locale: ru })
-                                        : 'Срок (не обяз.)'}
+                                    {expiresAt ? format(expiresAt, 'd MMM yyyy', { locale: ru }) : 'Срок (не обяз.)'}
                                 </button>
                             </PopoverTrigger>
                             <PopoverContent className='p-0'>
@@ -261,7 +246,10 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                                 {expiresAt && (
                                     <div className='border-t border-border p-2'>
                                         <button
-                                            onClick={() => { setExpiresAt(undefined); setCalendarOpen(false); }}
+                                            onClick={() => {
+                                                setExpiresAt(undefined);
+                                                setCalendarOpen(false);
+                                            }}
                                             className='w-full rounded-lg px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted'
                                         >
                                             Сбросить дату
@@ -272,12 +260,7 @@ export function CreateLinkModal({ quizId, open, onOpenChange }: CreateLinkModalP
                         </Popover>
                     </div>
 
-                    <Button
-                        variant='action'
-                        className='w-full gap-2'
-                        onClick={handleCreate}
-                        disabled={!label.trim() || isCreating}
-                    >
+                    <Button variant='action' className='w-full gap-2' onClick={handleCreate} disabled={!label.trim() || isCreating}>
                         <Plus className='size-4' />
                         {isCreating ? 'Создание...' : 'Создать ссылку'}
                     </Button>

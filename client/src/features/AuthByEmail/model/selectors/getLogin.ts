@@ -1,7 +1,7 @@
 import type { LoginSchema } from '../types/loginSchema';
 
 interface State {
-    login?: LoginSchema 
+    login?: LoginSchema;
 }
 
 export const getLoginEmail = (s: State) => s.login?.email ?? '';

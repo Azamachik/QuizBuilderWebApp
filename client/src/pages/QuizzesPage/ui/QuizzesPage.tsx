@@ -2,23 +2,29 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LayoutGrid, List, Plus } from 'lucide-react';
 import { cn } from '@/shared/lib/utils/utils';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
+import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile/useIsMobile';
 import { QuizzesPageMobile } from './QuizzesPage.mobile';
 import {
-    QuizCard, QuizCardSkeleton,
-    QuizRow, QuizRowSkeleton,
-    quizReducer, fetchQuizzes, toggleQuizStatus, deleteQuiz,
-    getQuizzes, getQuizzesIsLoading,
+    QuizCard,
+    QuizCardSkeleton,
+    QuizRow,
+    QuizRowSkeleton,
+    quizReducer,
+    fetchQuizzes,
+    toggleQuizStatus,
+    deleteQuiz,
+    getQuizzes,
+    getQuizzesIsLoading
 } from '@/entities/Quiz';
 import type { Quiz } from '@/entities/Quiz';
 import { CreateQuizModal } from '@/features/CreateQuiz';
 import { EditQuizModal } from '@/features/EditQuiz';
 import { CreateLinkModal } from '@/features/CreateLink';
 import { getUserData } from '@/entities/User';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 
 type View = 'grid' | 'list';
 
@@ -71,7 +77,7 @@ function QuizzesPageDesktop() {
                         onClick={() => setView('grid')}
                         className={cn(
                             'rounded-lg p-2 transition-colors',
-                            view === 'grid' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
+                            view === 'grid' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
                         )}
                     >
                         <LayoutGrid className='size-4' />
@@ -80,7 +86,7 @@ function QuizzesPageDesktop() {
                         onClick={() => setView('list')}
                         className={cn(
                             'rounded-lg p-2 transition-colors',
-                            view === 'list' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
+                            view === 'list' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
                         )}
                     >
                         <List className='size-4' />
@@ -143,12 +149,16 @@ function QuizzesPageDesktop() {
             <CreateQuizModal open={createOpen} onOpenChange={setCreateOpen} />
             <EditQuizModal
                 quiz={editingQuiz}
-                onOpenChange={(open) => { if (!open) setEditingQuiz(null); }}
+                onOpenChange={(open) => {
+                    if (!open) setEditingQuiz(null);
+                }}
             />
             <CreateLinkModal
                 quizId={linkQuiz?.id ?? ''}
                 open={!!linkQuiz}
-                onOpenChange={(open) => { if (!open) setLinkQuiz(null); }}
+                onOpenChange={(open) => {
+                    if (!open) setLinkQuiz(null);
+                }}
             />
         </main>
     );

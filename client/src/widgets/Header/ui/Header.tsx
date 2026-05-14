@@ -7,17 +7,17 @@ import { Button } from '@/shared/ui/Button/Button';
 import { NavLink } from '@/shared/ui/NavLink/NavLink';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Tooltip';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile/useIsMobile';
 import { getUserData, logout } from '@/entities/User';
 import { HeaderMobile } from './Header.mobile';
 import './Header.css';
 
 const NAV_LINKS = [
     { label: 'Возможности', href: '/#features' },
-    { label: 'Кейсы',       href: '/#cases'    },
-    { label: 'Цены',        href: '/#pricing'  },
+    { label: 'Кейсы', href: '/#cases' },
+    { label: 'Цены', href: '/#pricing' }
 ] as const;
 
 const navLinkClass = 'text-sm text-muted-foreground transition-colors hover:text-foreground';
@@ -57,7 +57,9 @@ function HeaderDesktop() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Button variant='secondary' size='icon' asChild>
-                                    <Link to={RoutePath[AppRoutes.PROFILE]}><User /></Link>
+                                    <Link to={RoutePath[AppRoutes.PROFILE]}>
+                                        <User />
+                                    </Link>
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>Профиль</TooltipContent>

@@ -8,29 +8,42 @@ const meta = {
     component: RegisterForm,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    decorators: [BrowserDecorator],
+    decorators: [BrowserDecorator]
 } satisfies Meta<typeof RegisterForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: undefined, _inited: true },
-        register: { username: '', email: '', password: '', confirm: '', isLoading: false },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: undefined, _inited: true },
+            register: { username: '', email: '', password: '', confirm: '', isLoading: false }
+        })
+    ]
 };
 
 export const Loading: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: undefined, _inited: true },
-        register: { username: 'newuser', email: 'new@mail.ru', password: '1234', confirm: '1234', isLoading: true },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: undefined, _inited: true },
+            register: { username: 'newuser', email: 'new@mail.ru', password: '1234', confirm: '1234', isLoading: true }
+        })
+    ]
 };
 
 export const WithError: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: undefined, _inited: true },
-        register: { username: '', email: '', password: '', confirm: '', isLoading: false, error: 'Пользователь с таким email уже существует' },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: undefined, _inited: true },
+            register: {
+                username: '',
+                email: '',
+                password: '',
+                confirm: '',
+                isLoading: false,
+                error: 'Пользователь с таким email уже существует'
+            }
+        })
+    ]
 };

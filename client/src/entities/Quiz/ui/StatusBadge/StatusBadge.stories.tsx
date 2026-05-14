@@ -11,8 +11,8 @@ const meta = {
     decorators: [TooltipDecorator],
     argTypes: {
         status: { control: 'boolean' },
-        onClick: { action: 'clicked' },
-    },
+        onClick: { action: 'clicked' }
+    }
 } satisfies Meta<typeof StatusBadge>;
 
 export default meta;
@@ -30,5 +30,5 @@ export const Both: Story = {
             <StatusBadge status={true} />
             <StatusBadge status={false} />
         </div>
-    ),
+    )
 };

@@ -7,7 +7,7 @@ const meta = {
     component: LandingPage,
     tags: ['autodocs'],
     parameters: { layout: 'fullscreen' },
-    decorators: [BrowserDecorator],
+    decorators: [BrowserDecorator]
 } satisfies Meta<typeof LandingPage>;
 
 export default meta;

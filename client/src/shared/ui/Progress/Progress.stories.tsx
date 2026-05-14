@@ -7,8 +7,8 @@ const meta = {
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
     argTypes: {
-        value: { control: { type: 'range', min: 0, max: 100 } },
-    },
+        value: { control: { type: 'range', min: 0, max: 100 } }
+    }
 } satisfies Meta<typeof Progress>;
 
 export default meta;
@@ -29,7 +29,7 @@ export const AllLevels: Story = {
                 </div>
             ))}
         </div>
-    ),
+    )
 };
 
 export const Thin: Story = { args: { value: 70, className: 'h-1 w-72' } };

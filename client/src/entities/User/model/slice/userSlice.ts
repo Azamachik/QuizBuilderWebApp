@@ -3,7 +3,7 @@ import { USER_LOCAL_STORAGE_KEY, USER_TOKEN_KEY } from '@/shared/consts/localSto
 import type { User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
-    _inited: false,
+    _inited: false
 };
 
 export const userSlice = createSlice({
@@ -30,8 +30,8 @@ export const userSlice = createSlice({
             state.authData = undefined;
             localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
             localStorage.removeItem(USER_TOKEN_KEY);
-        },
-    },
+        }
+    }
 });
 
 export const { setAuthData, initUser, logout } = userSlice.actions;

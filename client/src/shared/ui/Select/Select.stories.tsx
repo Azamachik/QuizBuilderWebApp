@@ -5,7 +5,7 @@ const meta = {
     title: 'Shared/Select',
     component: Select,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Select>;
 
 export default meta;
@@ -23,7 +23,7 @@ export const Default: Story = {
                 <SelectItem value='text'>Текстовый ответ</SelectItem>
             </SelectContent>
         </Select>
-    ),
+    )
 };
 
 export const WithDefaultValue: Story = {
@@ -38,7 +38,7 @@ export const WithDefaultValue: Story = {
                 <SelectItem value='text'>Текстовый ответ</SelectItem>
             </SelectContent>
         </Select>
-    ),
+    )
 };
 
 export const Disabled: Story = {
@@ -51,5 +51,5 @@ export const Disabled: Story = {
                 <SelectItem value='single'>Один вариант</SelectItem>
             </SelectContent>
         </Select>
-    ),
+    )
 };

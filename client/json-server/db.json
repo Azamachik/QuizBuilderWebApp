@@ -44,7 +44,7 @@
       "isPublished": true,
       "createdAt": "2023-10-12T00:00:00.000Z",
       "attemptsCount": 1241,
-      "questionsCount": 5
+      "questionsCount": 3
     },
     {
       "id": "3",
@@ -67,21 +67,20 @@
       "questionsCount": 3
     },
     {
-      "title": "Матеша",
-      "description": "Тест на знание математики\nфыва\nфыва",
+      "title": "fasd",
+      "description": "",
       "authorId": "1",
-      "isPublished": true,
-      "attemptsCount": 1,
-      "createdAt": "2026-05-11T19:38:28.443Z",
-      "id": "ve-kE99",
-      "questionsCount": 3
+      "isPublished": false,
+      "attemptsCount": 0,
+      "createdAt": "2026-05-13T23:06:24.799Z",
+      "id": "GQ5uOIQ"
     }
   ],
   "questions": [
     {
       "id": "q1",
       "quizId": "1",
-      "order": 4,
+      "order": 1,
       "text": "Что такое Закон Фиттса?",
       "type": "single",
       "options": [
@@ -106,7 +105,7 @@
     {
       "id": "q2",
       "quizId": "1",
-      "order": 3,
+      "order": 2,
       "text": "Какие из этих элементов относятся к UI?",
       "type": "multiple",
       "options": [
@@ -131,7 +130,7 @@
     {
       "id": "q3",
       "quizId": "1",
-      "order": 2,
+      "order": 3,
       "text": "Опишите ваш опыт работы с UI/UX.",
       "type": "multiple",
       "options": [
@@ -148,46 +147,6 @@
       ],
       "required": false,
       "explanation": "Расскажите о своих проектах и используемых инструментах."
-    },
-    {
-      "text": "фыва",
-      "type": "single",
-      "options": [
-        {
-          "id": "a5f7f1ba-bc27-40ce-962a-db9526ffa742",
-          "text": "Первый вариант",
-          "isCorrect": false
-        },
-        {
-          "id": "8afaeee5-50bb-4a55-8c88-9a85bcb22f8b",
-          "text": "Второй вариант",
-          "isCorrect": false
-        }
-      ],
-      "required": true,
-      "quizId": "1",
-      "order": 1,
-      "id": "JtuGTT-"
-    },
-    {
-      "text": "фыва",
-      "type": "single",
-      "options": [
-        {
-          "id": "a5f7f1ba-bc27-40ce-962a-db9526ffa742",
-          "text": "Первый вариант",
-          "isCorrect": false
-        },
-        {
-          "id": "8afaeee5-50bb-4a55-8c88-9a85bcb22f8b",
-          "text": "Второй вариант",
-          "isCorrect": false
-        }
-      ],
-      "required": true,
-      "quizId": "1",
-      "order": 5,
-      "id": "L6O_8-G"
     },
     {
       "text": "asdfasdf",
@@ -265,72 +224,6 @@
       "quizId": "3ua_U6o",
       "order": 2,
       "id": "1i7r5Yy"
-    },
-    {
-      "text": "Напишите че-нить",
-      "type": "text",
-      "options": [],
-      "required": true,
-      "quizId": "ve-kE99",
-      "order": 3,
-      "id": "55_dCnI"
-    },
-    {
-      "text": "Что такое х?",
-      "type": "single",
-      "options": [
-        {
-          "id": "8a350b22-15de-45d0-85fa-3278d193081e",
-          "text": "что это",
-          "isCorrect": false
-        },
-        {
-          "id": "138ccfeb-aa86-4f22-bb02-2b2b281f706b",
-          "text": "хз",
-          "isCorrect": false
-        }
-      ],
-      "required": true,
-      "explanation": "ыфвжполжыфвп",
-      "quizId": "ve-kE99",
-      "order": 1,
-      "id": "UNSLRx1"
-    },
-    {
-      "text": "Выберите мучо",
-      "type": "multiple",
-      "options": [
-        {
-          "id": "8a350b22-15de-45d0-85fa-3278d193081e",
-          "text": "1ый",
-          "isCorrect": true
-        },
-        {
-          "id": "138ccfeb-aa86-4f22-bb02-2b2b281f706b",
-          "text": "2ой",
-          "isCorrect": false
-        },
-        {
-          "id": "c7313238-891d-4711-a44f-ea19e3de6f7b",
-          "text": "3ий",
-          "isCorrect": false
-        },
-        {
-          "id": "5e9876f6-4c9c-4b1e-b123-022c316872b3",
-          "text": "4ый",
-          "isCorrect": true
-        },
-        {
-          "id": "025242df-bce0-4717-a994-86e8da5e4cef",
-          "text": "5ый",
-          "isCorrect": false
-        }
-      ],
-      "required": true,
-      "explanation": "фывафыва",
-      "quizId": "ve-kE99",
-      "order": 2,
-      "id": "cUllnkq"
     }
   ],
   "inviteLinks": [
@@ -417,18 +310,6 @@
       "createdAt": "2026-05-11T17:20:44.373Z",
       "createdBy": "1",
       "id": "-G7Jp61"
-    },
-    {
-      "quizId": "ve-kE99",
-      "token": "fvbbs-898dm-avbz2",
-      "label": "Для меня",
-      "maxUses": null,
-      "usedCount": 1,
-      "expiresAt": null,
-      "isActive": true,
-      "createdAt": "2026-05-11T19:40:30.802Z",
-      "createdBy": "1",
-      "id": "TKhtn_s"
     },
     {
       "quizId": "1",
@@ -543,37 +424,6 @@
       "completedAt": "2026-05-11T18:40:29.071Z",
       "id": "1778524829402",
       "createdAt": "2026-05-11T18:40:29.402Z"
-    },
-    {
-      "quizId": "ve-kE99",
-      "quizTitle": "Матеша",
-      "inviteLinkToken": "fvbbs-898dm-avbz2",
-      "answers": [
-        {
-          "questionId": "UNSLRx1",
-          "selectedOptionIds": [
-            "8a350b22-15de-45d0-85fa-3278d193081e"
-          ]
-        },
-        {
-          "questionId": "cUllnkq",
-          "selectedOptionIds": [
-            "8a350b22-15de-45d0-85fa-3278d193081e",
-            "5e9876f6-4c9c-4b1e-b123-022c316872b3"
-          ]
-        },
-        {
-          "questionId": "55_dCnI",
-          "selectedOptionIds": [],
-          "textAnswer": "фывафыва"
-        }
-      ],
-      "score": 1,
-      "total": 2,
-      "label": "Для меня",
-      "completedAt": "2026-05-11T19:41:11.912Z",
-      "id": "1778528472239",
-      "createdAt": "2026-05-11T19:41:12.239Z"
     },
     {
       "quizId": "1",

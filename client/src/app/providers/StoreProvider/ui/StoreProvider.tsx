@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import type { ReducersMapObject } from '@reduxjs/toolkit';
 import { createReduxStore } from '../config/store';
 import type { StateSchema } from '../config/StateSchema';
-import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 
 interface StoreProviderProps {
     children: ReactNode;
@@ -15,12 +15,8 @@ export function StoreProvider({ children, initialState, asyncReducers }: StorePr
     const store = useMemo(
         () => createReduxStore(initialState, asyncReducers as ReducersMapObject<StateSchema>),
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [],
+        []
     );
 
-    return (
-        <Provider store={store}>
-            {children}
-        </Provider>
-    );
+    return <Provider store={store}>{children}</Provider>;
 }

@@ -1,7 +1,7 @@
 import type { ProfileSchema } from '../types/profile';
 
-interface State { 
-    profile?: ProfileSchema 
+interface State {
+    profile?: ProfileSchema;
 }
 
 export const getProfileData = (s: State) => s.profile?.data;

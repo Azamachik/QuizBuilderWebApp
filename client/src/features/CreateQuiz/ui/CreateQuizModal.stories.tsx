@@ -11,7 +11,7 @@ const meta = {
     component: CreateQuizModal,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    decorators: [StoreDecorator(authState)],
+    decorators: [StoreDecorator(authState)]
 } satisfies Meta<typeof CreateQuizModal>;
 
 export default meta;
@@ -23,13 +23,15 @@ export const Default: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='action' onClick={() => setOpen(true)}>Создать тест</Button>
+                <Button variant='action' onClick={() => setOpen(true)}>
+                    Создать тест
+                </Button>
                 <CreateQuizModal {...args} open={open} onOpenChange={setOpen} />
             </>
         );
-    },
+    }
 };
 
 export const AlwaysOpen: Story = {
-    args: { open: true, onOpenChange: () => {} },
+    args: { open: true, onOpenChange: () => {} }
 };

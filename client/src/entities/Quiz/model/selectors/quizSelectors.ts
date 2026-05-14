@@ -15,5 +15,4 @@ export const getProfileStats = (state: StateSchema) => {
     return { created, published, drafts, attempts };
 };
 
-export const getQuizzesCreatedDates = (state: StateSchema): string[] =>
-    (state.quizzes?.quizzes ?? []).map((q) => q.createdAt);
+export const getQuizzesCreatedDates = (state: StateSchema): string[] => (state.quizzes?.quizzes ?? []).map((q) => q.createdAt);

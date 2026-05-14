@@ -7,6 +7,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import { defineConfig } from 'eslint/config'
+import prettier from 'eslint-config-prettier'
 
 export default defineConfig([
   { ignores: ['dist', 'node_modules'] },
@@ -31,8 +32,8 @@ export default defineConfig([
       ],
       'react/react-in-jsx-scope': 'off',
       'react-refresh/only-export-components': 'off',
-      'prettier/prettier': 2,
     },
   },
+  prettier,
   ...storybook.configs["flat/recommended"]
 ])

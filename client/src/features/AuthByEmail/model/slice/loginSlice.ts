@@ -5,15 +5,19 @@ import type { LoginSchema } from '../types/loginSchema';
 const initialState: LoginSchema = {
     email: '',
     password: '',
-    isLoading: false,
+    isLoading: false
 };
 
 export const loginSlice = createSlice({
     name: 'login',
     initialState,
     reducers: {
-        setEmail: (state, { payload }: PayloadAction<string>) => { state.email = payload; },
-        setPassword: (state, { payload }: PayloadAction<string>) => { state.password = payload; },
+        setEmail: (state, { payload }: PayloadAction<string>) => {
+            state.email = payload;
+        },
+        setPassword: (state, { payload }: PayloadAction<string>) => {
+            state.password = payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -28,7 +32,7 @@ export const loginSlice = createSlice({
                 state.isLoading = false;
                 state.error = payload;
             });
-    },
+    }
 });
 
 export const { setEmail, setPassword } = loginSlice.actions;

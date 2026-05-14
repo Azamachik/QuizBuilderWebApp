@@ -8,8 +8,8 @@ export {
     getAttemptIsLoading,
     getAttemptIsSubmitting,
     getAttemptError,
-    getAttemptSessionQuestions,
+    getAttemptSessionQuestions
 } from './model/selectors/attemptSelectors';
 
-export { submitAttempt } from './model/services/submitAttempt';
-export { fetchAttemptById } from './model/services/fetchAttemptById';
+export { submitAttempt } from './model/services/submitAttempt/submitAttempt';
+export { fetchAttemptById } from './model/services/fetchAttemptById/fetchAttemptById';

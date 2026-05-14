@@ -1,4 +1,4 @@
-name: building
+name: building, linting, testing
 
 on:
   push:
@@ -29,4 +29,76 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        working-directory: client
+
+  # lint:
+  #   name: ESLint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - uses: pnpm/action-setup@v4
+  #       with:
+  #         version: latest
+
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '22.x'
+  #         cache: 'pnpm'
+  #         cache-dependency-path: client/pnpm-lock.yaml
+
+  #     - name: Install dependencies
+  #       run: pnpm install --frozen-lockfile --ignore-scripts
+  #       working-directory: client
+
+  #     - name: ESLint
+  #       run: pnpm run lint:ts
+  #       working-directory: client
+
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'pnpm'
+          cache-dependency-path: client/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+        working-directory: client
+
+      - name: Prettier check
+        run: pnpm exec prettier --check ./src
+        working-directory: client
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'pnpm'
+          cache-dependency-path: client/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+        working-directory: client
+
+      - name: Unit tests
+        run: pnpm run test:unit --run
         working-directory: client

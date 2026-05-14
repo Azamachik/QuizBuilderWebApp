@@ -7,17 +7,12 @@ export {
     reorderQuestions,
     addQuestionToForm,
     updateQuestionInForm,
-    removeQuestionFromForm,
+    removeQuestionFromForm
 } from './model/slice/questionSlice';
 
-export {
-    getQuestions,
-    getQuestionsIsLoading,
-    getQuestionsIsSaving,
-    getQuestionsError,
-} from './model/selectors/questionSelectors';
+export { getQuestions, getQuestionsIsLoading, getQuestionsIsSaving, getQuestionsError } from './model/selectors/questionSelectors';
 
-export { fetchQuestions } from './model/services/fetchQuestions';
-export { saveQuestions } from './model/services/saveQuestions';
+export { fetchQuestions } from './model/services/fetchQuestions/fetchQuestions';
+export { saveQuestions } from './model/services/saveQuestions/saveQuestions';
 
 export { QuestionCard } from './ui/QuestionCard';

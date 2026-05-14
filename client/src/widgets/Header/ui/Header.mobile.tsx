@@ -6,14 +6,14 @@ import Favicon from '@/shared/assets/icons/favicon.svg?react';
 import { Button } from '@/shared/ui/Button/Button';
 import { NavLink } from '@/shared/ui/NavLink/NavLink';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 import { getUserData, logout } from '@/entities/User';
 
 const NAV_LINKS = [
     { label: 'Возможности', href: '/#features' },
     { label: 'Кейсы', href: '/#cases' },
-    { label: 'Цены', href: '/#pricing' },
+    { label: 'Цены', href: '/#pricing' }
 ] as const;
 
 export function HeaderMobile() {
@@ -54,10 +54,7 @@ export function HeaderMobile() {
                     {userData ? (
                         <div className='space-y-2'>
                             <Button variant='action' className='w-full gap-2' asChild>
-                                <Link
-                                    to={`${RoutePath[AppRoutes.QUIZZES]}?create=true`}
-                                    onClick={close}
-                                >
+                                <Link to={`${RoutePath[AppRoutes.QUIZZES]}?create=true`} onClick={close}>
                                     <Plus className='size-4' /> Создать тест
                                 </Link>
                             </Button>
@@ -90,10 +87,14 @@ export function HeaderMobile() {
                                 ))}
                             </nav>
                             <Button variant='outline' className='w-full' asChild>
-                                <Link to={RoutePath[AppRoutes.LOGIN]} onClick={close}>Войти</Link>
+                                <Link to={RoutePath[AppRoutes.LOGIN]} onClick={close}>
+                                    Войти
+                                </Link>
                             </Button>
                             <Button variant='action' className='w-full' asChild>
-                                <Link to={RoutePath[AppRoutes.REGISTER]} onClick={close}>Регистрация</Link>
+                                <Link to={RoutePath[AppRoutes.REGISTER]} onClick={close}>
+                                    Регистрация
+                                </Link>
                             </Button>
                         </div>
                     )}

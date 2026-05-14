@@ -25,7 +25,7 @@ export const AppRoutes = {
     QUIZ_RESULTS: 'quiz_results',
     LOGIN: 'login',
     REGISTER: 'register',
-    NOT_FOUND: 'not_found',
+    NOT_FOUND: 'not_found'
 } as const;
 
 export type AppRoutes = (typeof AppRoutes)[keyof typeof AppRoutes];
@@ -39,50 +39,50 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.QUIZ_RESULTS]: '/quiz/:token/results/:attemptId',
     [AppRoutes.LOGIN]: '/login',
     [AppRoutes.REGISTER]: '/register',
-    [AppRoutes.NOT_FOUND]: '*',
+    [AppRoutes.NOT_FOUND]: '*'
 };
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath[AppRoutes.MAIN],
         element: <LandingPage />,
-        guestOnly: true,
+        guestOnly: true
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath[AppRoutes.PROFILE],
         element: <ProfilePage />,
-        authOnly: true,
+        authOnly: true
     },
     [AppRoutes.QUIZZES]: {
         path: RoutePath[AppRoutes.QUIZZES],
         element: <QuizzesPage />,
-        authOnly: true,
+        authOnly: true
     },
     [AppRoutes.QUIZ_EDITOR]: {
         path: RoutePath[AppRoutes.QUIZ_EDITOR],
         element: <QuizEditorPage />,
-        authOnly: true,
+        authOnly: true
     },
     [AppRoutes.QUIZ_TAKING]: {
         path: RoutePath[AppRoutes.QUIZ_TAKING],
-        element: <QuizTakingPage />,
+        element: <QuizTakingPage />
     },
     [AppRoutes.QUIZ_RESULTS]: {
         path: RoutePath[AppRoutes.QUIZ_RESULTS],
-        element: <QuizResultsPage />,
+        element: <QuizResultsPage />
     },
     [AppRoutes.LOGIN]: {
         path: RoutePath[AppRoutes.LOGIN],
         element: <LoginPage />,
-        guestOnly: true,
+        guestOnly: true
     },
     [AppRoutes.REGISTER]: {
         path: RoutePath[AppRoutes.REGISTER],
         element: <RegisterPage />,
-        guestOnly: true,
+        guestOnly: true
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath[AppRoutes.NOT_FOUND],
-        element: <NotFoundPage />,
-    },
+        element: <NotFoundPage />
+    }
 };

@@ -9,14 +9,19 @@ function daysAgo(n: number): string {
 }
 
 const sparseDates = [
-    daysAgo(3), daysAgo(10), daysAgo(10),
-    daysAgo(25), daysAgo(40), daysAgo(40), daysAgo(40),
-    daysAgo(60), daysAgo(75), daysAgo(90),
+    daysAgo(3),
+    daysAgo(10),
+    daysAgo(10),
+    daysAgo(25),
+    daysAgo(40),
+    daysAgo(40),
+    daysAgo(40),
+    daysAgo(60),
+    daysAgo(75),
+    daysAgo(90)
 ];
 
-const activeDates = Array.from({ length: 60 }, (_, i) =>
-    i % 3 === 0 || i % 7 === 0 ? daysAgo(i) : null
-).filter(Boolean) as string[];
+const activeDates = Array.from({ length: 60 }, (_, i) => (i % 3 === 0 || i % 7 === 0 ? daysAgo(i) : null)).filter(Boolean) as string[];
 
 const veryActiveDates = Array.from({ length: 200 }, () => daysAgo(Math.floor(Math.random() * 365)));
 
@@ -25,7 +30,14 @@ const meta = {
     component: ActivityHeatmap,
     tags: ['autodocs'],
     parameters: { layout: 'padded' },
-    decorators: [TooltipDecorator, (Story) => <div className='max-w-4xl'><Story /></div>],
+    decorators: [
+        TooltipDecorator,
+        (Story) => (
+            <div className='max-w-4xl'>
+                <Story />
+            </div>
+        )
+    ]
 } satisfies Meta<typeof ActivityHeatmap>;
 
 export default meta;
@@ -38,6 +50,6 @@ export const VeryActive: Story = { args: { quizDates: veryActiveDates } };
 
 export const RecentBurst: Story = {
     args: {
-        quizDates: Array.from({ length: 15 }, (_, i) => daysAgo(i)),
-    },
+        quizDates: Array.from({ length: 15 }, (_, i) => daysAgo(i))
+    }
 };

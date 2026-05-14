@@ -9,7 +9,7 @@ const meta = {
     component: CreateLinkModal,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    decorators: [StoreDecorator({ user: { authData: { id: '1', username: 'admin', token: 'token' }, _inited: true } })],
+    decorators: [StoreDecorator({ user: { authData: { id: '1', username: 'admin', token: 'token' }, _inited: true } })]
 } satisfies Meta<typeof CreateLinkModal>;
 
 export default meta;
@@ -21,13 +21,15 @@ export const Default: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='outline' onClick={() => setOpen(true)}>Создать ссылку</Button>
+                <Button variant='outline' onClick={() => setOpen(true)}>
+                    Создать ссылку
+                </Button>
                 <CreateLinkModal {...args} quizId='1' open={open} onOpenChange={setOpen} />
             </>
         );
-    },
+    }
 };
 
 export const AlwaysOpen: Story = {
-    args: { quizId: '1', open: true, onOpenChange: () => {} },
+    args: { quizId: '1', open: true, onOpenChange: () => {} }
 };

@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/Di
 import { cn } from '@/shared/lib/utils/utils';
 import { updateQuiz } from '@/entities/Quiz';
 import type { Quiz } from '@/entities/Quiz';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
 
 interface EditQuizModalProps {
     quiz: Quiz | null;

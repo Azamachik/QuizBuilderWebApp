@@ -1,8 +1,8 @@
 import { Suspense, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Header } from '@/widgets/Header';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 import { initUser, getUserIsInited } from '@/entities/User';
 import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import AppRouter from './providers/router/components/AppRouter';
@@ -16,9 +16,7 @@ function AppLayout() {
 
     if (!isInited) return null;
 
-    const hideHeader =
-        HEADERLESS_ROUTES.has(pathname) ||
-        HEADERLESS_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+    const hideHeader = HEADERLESS_ROUTES.has(pathname) || HEADERLESS_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 
     return (
         <Suspense fallback=''>

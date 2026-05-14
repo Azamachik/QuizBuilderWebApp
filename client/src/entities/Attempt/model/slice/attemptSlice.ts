@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { Question } from '@/entities/Question';
 import type { AttemptSchema } from '../types/AttemptSchema';
-import { submitAttempt } from '../services/submitAttempt';
-import { fetchAttemptById } from '../services/fetchAttemptById';
+import { submitAttempt } from '../services/submitAttempt/submitAttempt';
+import { fetchAttemptById } from '../services/fetchAttemptById/fetchAttemptById';
 
 const initialState: AttemptSchema = {
     isLoading: false,
-    isSubmitting: false,
+    isSubmitting: false
 };
 
 export const attemptSlice = createSlice({
@@ -16,7 +16,7 @@ export const attemptSlice = createSlice({
     reducers: {
         setSessionQuestions: (state, { payload }: PayloadAction<Question[]>) => {
             state.sessionQuestions = payload;
-        },
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -44,7 +44,7 @@ export const attemptSlice = createSlice({
                 state.isLoading = false;
                 state.error = payload;
             });
-    },
+    }
 });
 
 export const { setSessionQuestions } = attemptSlice.actions;

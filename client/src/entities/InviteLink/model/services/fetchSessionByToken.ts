@@ -11,5 +11,5 @@ export const fetchSessionByToken = createAsyncThunk<TakingSession, string, Thunk
         } catch {
             return rejectWithValue('Ссылка недействительна или тест не опубликован');
         }
-    },
+    }
 );

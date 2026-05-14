@@ -2,23 +2,12 @@ import * as React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CheckCircle2, XCircle, RotateCcw, ClipboardList, ChevronDown, Home, AlertCircle } from 'lucide-react';
 import { Button } from '@/shared/ui/Button/Button';
-import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import {
-    inviteLinkReducer,
-    fetchSessionByToken,
-    getTakingSession,
-    getTakingSessionIsLoading,
-} from '@/entities/InviteLink';
-import {
-    attemptReducer,
-    fetchAttemptById,
-    getCurrentAttempt,
-    getAttemptIsLoading,
-    getAttemptSessionQuestions,
-} from '@/entities/Attempt';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { inviteLinkReducer, fetchSessionByToken, getTakingSession, getTakingSessionIsLoading } from '@/entities/InviteLink';
+import { attemptReducer, fetchAttemptById, getCurrentAttempt, getAttemptIsLoading, getAttemptSessionQuestions } from '@/entities/Attempt';
 import type { Question, Option } from '@/entities/Question';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 
@@ -56,10 +45,7 @@ export default function QuizResultsPage() {
 
     function handleRetry() {
         const link = session?.inviteLink;
-        const exhausted =
-            link?.maxUses !== null &&
-            link?.maxUses !== undefined &&
-            (link?.usedCount ?? 0) >= link.maxUses;
+        const exhausted = link?.maxUses !== null && link?.maxUses !== undefined && (link?.usedCount ?? 0) >= link.maxUses;
 
         if (exhausted) {
             setRetryBlocked(true);
@@ -99,12 +85,7 @@ export default function QuizResultsPage() {
     // Prefer snapshotted questions (always available after taking), fall back to live session
     const questions: Question[] = sessionQuestions.length > 0 ? sessionQuestions : (session?.questions ?? []);
 
-    const feedbackText =
-        percentage >= 80
-            ? 'Отличный результат!'
-            : percentage >= 50
-              ? 'Хороший результат!'
-              : 'Есть над чем поработать';
+    const feedbackText = percentage >= 80 ? 'Отличный результат!' : percentage >= 50 ? 'Хороший результат!' : 'Есть над чем поработать';
 
     return (
         <div className='min-h-screen bg-background pb-16'>
@@ -116,7 +97,9 @@ export default function QuizResultsPage() {
                         <svg className='-rotate-90' viewBox='0 0 100 100' width='128' height='128'>
                             <circle cx='50' cy='50' r='42' fill='none' stroke='hsl(var(--muted))' strokeWidth='10' />
                             <circle
-                                cx='50' cy='50' r='42'
+                                cx='50'
+                                cy='50'
+                                r='42'
                                 fill='none'
                                 stroke='hsl(var(--action))'
                                 strokeWidth='10'
@@ -150,9 +133,7 @@ export default function QuizResultsPage() {
                                     <p className='mb-1 text-xs text-muted-foreground'>Вопрос {idx + 1}</p>
                                     <p className='mb-3 font-semibold'>{q.text}</p>
                                     <div className='rounded-xl bg-muted px-4 py-3 text-sm'>
-                                        {answerRecord?.textAnswer || (
-                                            <span className='text-muted-foreground'>Без ответа</span>
-                                        )}
+                                        {answerRecord?.textAnswer || <span className='text-muted-foreground'>Без ответа</span>}
                                     </div>
                                     {q.explanation && (
                                         <ExplanationToggle
@@ -165,12 +146,9 @@ export default function QuizResultsPage() {
                             );
                         }
 
-                        const correctIds = new Set(
-                            q.options.filter((o: Option) => o.isCorrect).map((o: Option) => o.id),
-                        );
+                        const correctIds = new Set(q.options.filter((o: Option) => o.isCorrect).map((o: Option) => o.id));
                         const isQuestionCorrect =
-                            selectedIds.size === correctIds.size &&
-                            [...correctIds].every((id) => selectedIds.has(id));
+                            selectedIds.size === correctIds.size && [...correctIds].every((id) => selectedIds.has(id));
 
                         return (
                             <div
@@ -231,11 +209,7 @@ export default function QuizResultsPage() {
 
             {/* Actions */}
             <div className='mx-auto flex max-w-2xl flex-col gap-3 px-4 md:px-6'>
-                <Button
-                    variant='outline'
-                    className='w-full gap-2 rounded-2xl'
-                    onClick={handleRetry}
-                >
+                <Button variant='outline' className='w-full gap-2 rounded-2xl' onClick={handleRetry}>
                     <RotateCcw className='size-4' /> Пройти ещё раз
                 </Button>
 
@@ -246,11 +220,7 @@ export default function QuizResultsPage() {
                     </div>
                 )}
 
-                <Button
-                    variant='ghost'
-                    className='w-full gap-2 rounded-2xl text-muted-foreground'
-                    onClick={() => navigate('/')}
-                >
+                <Button variant='ghost' className='w-full gap-2 rounded-2xl text-muted-foreground' onClick={() => navigate('/')}>
                     <Home className='size-4' /> На главную
                 </Button>
             </div>
@@ -262,7 +232,7 @@ function ExplanationToggle({
     isExpanded,
     onToggle,
     text,
-    withPrefix = false,
+    withPrefix = false
 }: {
     isExpanded: boolean;
     onToggle: () => void;

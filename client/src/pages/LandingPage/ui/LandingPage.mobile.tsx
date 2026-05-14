@@ -5,39 +5,58 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 
 const FEATURES = [
-    { icon: List,  title: 'Множественный выбор',  desc: 'Удобные настройки вариантов ответов с поддержкой медиафайлов.' },
-    { icon: Timer, title: 'Глубокая аналитика',   desc: 'Следите за конверсией, временем прохождения и сложными вопросами.' },
-    { icon: Lock,  title: 'Приватность',           desc: 'Ваши данные и ответы пользователей зашифрованы и надёжно защищены.' },
+    { icon: List, title: 'Множественный выбор', desc: 'Удобные настройки вариантов ответов.' },
+    { icon: Timer, title: 'Глубокая аналитика', desc: 'Следите за конверсией, временем прохождения и сложными вопросами.' },
+    { icon: Lock, title: 'Приватность', desc: 'Ваши данные и ответы пользователей зашифрованы и надёжно защищены.' }
 ] as const;
 
 const CASES = [
-    { icon: Users,  title: 'HR и онбординг',          desc: 'Проверяйте знания новых сотрудников и упрощайте адаптацию с помощью интерактивных тестов.' },
-    { icon: Zap,    title: 'Образование',              desc: 'Создавайте курсы и контрольные работы с мгновенной проверкой результатов.' },
-    { icon: Shield, title: 'Маркетинг и вовлечение',  desc: 'Квизы, опросы и викторины для захвата лидов и удержания аудитории.' },
+    {
+        icon: Users,
+        title: 'HR и онбординг',
+        desc: 'Проверяйте знания новых сотрудников и упрощайте адаптацию с помощью интерактивных тестов.'
+    },
+    { icon: Zap, title: 'Образование', desc: 'Создавайте контрольные работы с мгновенной проверкой результатов.' },
+    { icon: Shield, title: 'Маркетинг и вовлечение', desc: 'Квизы, опросы и викторины для захвата лидов и удержания аудитории.' }
 ] as const;
 
 const PRICING = [
     {
-        name: 'Бесплатно', price: '0 ₽',
+        name: 'Бесплатно',
+        price: '0 ₽',
         features: ['До 5 тестов', 'До 100 ответов в месяц', 'Базовая аналитика'],
-        action: RoutePath[AppRoutes.REGISTER], primary: false,
+        action: RoutePath[AppRoutes.REGISTER],
+        primary: false
     },
     {
-        name: 'Про', price: '990 ₽ / мес',
+        name: 'Про',
+        price: '990 ₽ / мес',
         features: ['Неограниченные тесты', 'Неограниченные ответы', 'Расширенная аналитика', 'Экспорт данных'],
-        action: RoutePath[AppRoutes.REGISTER], primary: true,
+        action: RoutePath[AppRoutes.REGISTER],
+        primary: true
     },
     {
-        name: 'Команда', price: '2 490 ₽ / мес',
+        name: 'Команда',
+        price: '2 490 ₽ / мес',
         features: ['Всё из Про', 'До 10 пользователей', 'Совместная работа', 'Приоритетная поддержка'],
-        action: RoutePath[AppRoutes.REGISTER], primary: false,
-    },
+        action: RoutePath[AppRoutes.REGISTER],
+        primary: false
+    }
 ] as const;
 
 const FAQ = [
-    { q: 'Как добавить картинку в вопрос?', a: 'В редакторе вопроса нажмите на иконку вложения и выберите изображение с устройства или вставьте URL.' },
-    { q: 'Можно ли интегрировать форму на сайт?', a: 'Да, после публикации теста вы получите ссылку и iframe-код для встраивания на любой сайт.' },
-    { q: 'Сколько стоит использование?', a: 'Базовый план бесплатен. Для расширенной аналитики и неограниченного числа вопросов доступны платные тарифы.' },
+    {
+        q: 'Как добавить картинку в вопрос?',
+        a: 'В редакторе вопроса нажмите на иконку вложения и выберите изображение с устройства или вставьте URL.'
+    },
+    {
+        q: 'Можно ли интегрировать форму на сайт?',
+        a: 'Да, после публикации теста вы получите ссылку и iframe-код для встраивания на любой сайт.'
+    },
+    {
+        q: 'Сколько стоит использование?',
+        a: 'Базовый план бесплатен. Для расширенной аналитики и неограниченного числа вопросов доступны платные тарифы.'
+    }
 ] as const;
 
 export function LandingPageMobile() {
@@ -51,8 +70,7 @@ export function LandingPageMobile() {
                 </div>
 
                 <h1 className='mb-4 text-3xl font-extrabold leading-tight tracking-tight'>
-                    Создавай тесты, которые{' '}
-                    <span className='text-action'>хочется проходить</span>
+                    Создавай тесты, которые <span className='text-action'>хочется проходить</span>
                 </h1>
 
                 <p className='mb-8 text-sm text-muted-foreground'>
@@ -131,10 +149,7 @@ export function LandingPageMobile() {
                 <p className='mb-6 text-sm text-muted-foreground'>Начните бесплатно, масштабируйтесь по мере роста.</p>
                 <div className='space-y-3'>
                     {PRICING.map(({ name, price, features, action, primary }) => (
-                        <div
-                            key={name}
-                            className={`rounded-2xl border p-5 ${primary ? 'border-action bg-action/5' : 'border-border'}`}
-                        >
+                        <div key={name} className={`rounded-2xl border p-5 ${primary ? 'border-action bg-action/5' : 'border-border'}`}>
                             <div className='mb-3 flex items-center justify-between'>
                                 <h3 className='font-bold'>{name}</h3>
                                 <span className='text-xl font-extrabold'>{price}</span>

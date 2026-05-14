@@ -7,33 +7,42 @@ const dragHandlers = { onDragStart: fn(), onDragEnter: fn(), onDrop: fn(), onDra
 const handlers = { onDelete: fn(), onDuplicate: fn(), onToggleRequired: fn(), onEdit: fn(), ...dragHandlers };
 
 const singleQuestion = {
-    id: 'q1', quizId: '1', order: 1,
+    id: 'q1',
+    quizId: '1',
+    order: 1,
     text: 'Что такое Закон Фиттса?',
-    type: 'single' as const, required: true,
+    type: 'single' as const,
+    required: true,
     options: [
         { id: 'a', text: 'Чем дальше и меньше цель, тем больше времени требуется', isCorrect: true },
         { id: 'b', text: 'Время принятия решения зависит от количества вариантов', isCorrect: false },
-        { id: 'c', text: 'Люди запоминают первую и последнюю часть информации лучше', isCorrect: false },
-    ],
+        { id: 'c', text: 'Люди запоминают первую и последнюю часть информации лучше', isCorrect: false }
+    ]
 };
 
 const multipleQuestion = {
-    id: 'q2', quizId: '1', order: 2,
+    id: 'q2',
+    quizId: '1',
+    order: 2,
     text: 'Какие из этих элементов относятся к UI?',
-    type: 'multiple' as const, required: false,
+    type: 'multiple' as const,
+    required: false,
     options: [
         { id: 'a', text: 'Типографика', isCorrect: true },
         { id: 'b', text: 'Исследование аудитории', isCorrect: false },
-        { id: 'c', text: 'Цветовая палитра', isCorrect: true },
-    ],
+        { id: 'c', text: 'Цветовая палитра', isCorrect: true }
+    ]
 };
 
 const textQuestion = {
-    id: 'q3', quizId: '1', order: 3,
+    id: 'q3',
+    quizId: '1',
+    order: 3,
     text: 'Опишите ваш опыт работы с UI/UX.',
-    type: 'text' as const, required: false,
+    type: 'text' as const,
+    required: false,
     explanation: 'Расскажите о своих проектах и используемых инструментах.',
-    options: [],
+    options: []
 };
 
 const meta = {
@@ -41,8 +50,15 @@ const meta = {
     component: QuestionCard,
     tags: ['autodocs'],
     parameters: { layout: 'padded' },
-    decorators: [TooltipDecorator, (Story) => <div className='max-w-2xl'><Story /></div>],
-    args: { ...handlers, isDragging: false, isEditing: false },
+    decorators: [
+        TooltipDecorator,
+        (Story) => (
+            <div className='max-w-2xl'>
+                <Story />
+            </div>
+        )
+    ],
+    args: { ...handlers, isDragging: false, isEditing: false }
 } satisfies Meta<typeof QuestionCard>;
 
 export default meta;
@@ -64,5 +80,5 @@ export const AllTypes: Story = {
             <QuestionCard {...args} question={multipleQuestion} />
             <QuestionCard {...args} question={textQuestion} />
         </div>
-    ),
+    )
 };

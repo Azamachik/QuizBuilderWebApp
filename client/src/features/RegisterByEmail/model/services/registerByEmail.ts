@@ -20,10 +20,8 @@ export const registerByEmail = createAsyncThunk<User, RegisterCredentials, Thunk
             dispatch(setAuthData(response.data));
             return response.data;
         } catch (err: unknown) {
-            const message =
-                (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??
-                'Ошибка регистрации';
+            const message = (err as { response?: { data?: { message?: string } } })?.response?.data?.message ?? 'Ошибка регистрации';
             return rejectWithValue(message);
         }
-    },
+    }
 );

@@ -5,14 +5,11 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { createReducerManager } from './reducerManager';
 import type { StateSchema, ThunkExtraArg } from './StateSchema';
 
-export function createReduxStore(
-    initialState?: Partial<StateSchema>,
-    asyncReducers?: ReducersMapObject<StateSchema>,
-) {
+export function createReduxStore(initialState?: Partial<StateSchema>, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducers = {
         ...asyncReducers,
         user: userReducer,
-        api: rtkApi.reducer,
+        api: rtkApi.reducer
     } as ReducersMapObject<StateSchema>;
 
     const reducerManager = createReducerManager(rootReducers);
@@ -23,8 +20,7 @@ export function createReduxStore(
         reducer: reducerManager.reduce as Reducer<StateSchema>,
         devTools: __IS_DEV__,
         preloadedState: initialState as unknown as StateSchema | undefined,
-        middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({ thunk: { extraArgument } }).concat(rtkApi.middleware),
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: { extraArgument } }).concat(rtkApi.middleware)
     });
 
     // @ts-ignore

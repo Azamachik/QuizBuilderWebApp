@@ -4,8 +4,18 @@ import { Card } from '@/shared/ui/Card/Card';
 
 const MONTHS = ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
 const MONTHS_GENITIVE = [
-    'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-    'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
 ];
 const DAY_LABELS = ['Пн', '', 'Ср', '', 'Пт', '', ''];
 
@@ -64,7 +74,7 @@ function cellColorClass(level: HeatLevel): string {
         1: 'bg-[#9be9a8] dark:bg-[#1a4728]',
         2: 'bg-[#40c463] dark:bg-[#236336]',
         3: 'bg-[#30a14e] dark:bg-[#2ea04c]',
-        4: 'bg-[#216e39] dark:bg-[#3dd966]',
+        4: 'bg-[#216e39] dark:bg-[#3dd966]'
     };
     return map[level];
 }
@@ -114,7 +124,7 @@ export function ActivityHeatmap({ quizDates = [] }: ActivityHeatmapProps) {
             const date = getCellDate(wi, di);
             if (date.getTime() > TODAY.getTime()) return null;
             return countToLevel(countByDay[toDateKey(date)] ?? 0);
-        }),
+        })
     );
 
     const monthLabels = buildMonthLabels();
@@ -136,9 +146,7 @@ export function ActivityHeatmap({ quizDates = [] }: ActivityHeatmapProps) {
                 <div className='flex shrink-0 flex-col gap-[3px]'>
                     {DAY_LABELS.map((label, i) => (
                         <div key={i} className='flex h-[14px] w-6 items-center'>
-                            {label && (
-                                <span className='text-[10px] leading-none text-muted-foreground'>{label}</span>
-                            )}
+                            {label && <span className='text-[10px] leading-none text-muted-foreground'>{label}</span>}
                         </div>
                     ))}
                 </div>
@@ -157,10 +165,7 @@ export function ActivityHeatmap({ quizDates = [] }: ActivityHeatmapProps) {
                                         <Tooltip key={di}>
                                             <TooltipTrigger asChild>
                                                 <div
-                                                    className={cn(
-                                                        'h-[14px] w-[14px] cursor-default rounded-[3px]',
-                                                        cellColorClass(level),
-                                                    )}
+                                                    className={cn('h-[14px] w-[14px] cursor-default rounded-[3px]', cellColorClass(level))}
                                                 />
                                             </TooltipTrigger>
                                             <TooltipContent className='text-center'>

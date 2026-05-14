@@ -14,8 +14,8 @@ const meta = {
                 <Story />
                 <Toaster position='top-center' richColors closeButton />
             </>
-        ),
-    ],
+        )
+    ]
 } satisfies Meta<typeof Toaster>;
 
 export default meta;
@@ -26,7 +26,7 @@ export const Success: Story = {
         <Button variant='action' onClick={() => toast.success('Изменения сохранены')}>
             Показать Success
         </Button>
-    ),
+    )
 };
 
 export const Error: Story = {
@@ -34,7 +34,7 @@ export const Error: Story = {
         <Button variant='destructive' onClick={() => toast.error('Ошибка при сохранении')}>
             Показать Error
         </Button>
-    ),
+    )
 };
 
 export const Info: Story = {
@@ -42,17 +42,27 @@ export const Info: Story = {
         <Button variant='outline' onClick={() => toast.info('Тест опубликован')}>
             Показать Info
         </Button>
-    ),
+    )
 };
 
 export const AllTypes: Story = {
     render: () => (
         <div className='flex flex-wrap gap-2'>
-            <Button variant='action' onClick={() => toast.success('Сохранено')}>Success</Button>
-            <Button variant='destructive' onClick={() => toast.error('Ошибка')}>Error</Button>
-            <Button variant='outline' onClick={() => toast.info('Инфо')}>Info</Button>
-            <Button variant='ghost' onClick={() => toast.warning('Предупреждение')}>Warning</Button>
-            <Button variant='secondary' onClick={() => toast('Обычное уведомление')}>Default</Button>
+            <Button variant='action' onClick={() => toast.success('Сохранено')}>
+                Success
+            </Button>
+            <Button variant='destructive' onClick={() => toast.error('Ошибка')}>
+                Error
+            </Button>
+            <Button variant='outline' onClick={() => toast.info('Инфо')}>
+                Info
+            </Button>
+            <Button variant='ghost' onClick={() => toast.warning('Предупреждение')}>
+                Warning
+            </Button>
+            <Button variant='secondary' onClick={() => toast('Обычное уведомление')}>
+                Default
+            </Button>
         </div>
-    ),
+    )
 };

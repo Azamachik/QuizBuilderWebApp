@@ -12,7 +12,7 @@ const mockQuiz = {
     isPublished: true,
     createdAt: '2023-10-12T00:00:00.000Z',
     attemptsCount: 1240,
-    questionsCount: 5,
+    questionsCount: 5
 };
 
 const meta = {
@@ -23,9 +23,13 @@ const meta = {
     decorators: [
         TooltipDecorator,
         BrowserDecorator,
-        (Story) => <div className='max-w-3xl'><Story /></div>,
+        (Story) => (
+            <div className='max-w-3xl'>
+                <Story />
+            </div>
+        )
     ],
-    args: { onEdit: fn(), onToggleStatus: fn(), onCreateLink: fn(), onDelete: fn() },
+    args: { onEdit: fn(), onToggleStatus: fn(), onCreateLink: fn(), onDelete: fn() }
 } satisfies Meta<typeof QuizRow>;
 
 export default meta;
@@ -40,8 +44,14 @@ export const List: Story = {
     render: (args) => (
         <div className='space-y-3'>
             <QuizRow {...args} quiz={mockQuiz} />
-            <QuizRow {...args} quiz={{ ...mockQuiz, id: '2', title: 'Figma Shortcuts', isPublished: false, attemptsCount: 389, questionsCount: 12 }} />
-            <QuizRow {...args} quiz={{ ...mockQuiz, id: '3', title: 'TypeScript Advanced', isPublished: true, attemptsCount: 5600, questionsCount: 30 }} />
+            <QuizRow
+                {...args}
+                quiz={{ ...mockQuiz, id: '2', title: 'Figma Shortcuts', isPublished: false, attemptsCount: 389, questionsCount: 12 }}
+            />
+            <QuizRow
+                {...args}
+                quiz={{ ...mockQuiz, id: '3', title: 'TypeScript Advanced', isPublished: true, attemptsCount: 5600, questionsCount: 30 }}
+            />
         </div>
-    ),
+    )
 };

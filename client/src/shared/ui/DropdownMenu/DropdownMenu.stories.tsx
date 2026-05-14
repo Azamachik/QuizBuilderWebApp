@@ -8,14 +8,14 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-    DropdownMenuCheckboxItem,
+    DropdownMenuCheckboxItem
 } from './DropdownMenu';
 
 const meta = {
     title: 'Shared/DropdownMenu',
     component: DropdownMenu,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof DropdownMenu>;
 
 export default meta;
@@ -44,7 +44,7 @@ export const Default: Story = {
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-    ),
+    )
 };
 
 export const WithCheckboxes: Story = {
@@ -60,7 +60,7 @@ export const WithCheckboxes: Story = {
                 <DropdownMenuCheckboxItem>Черновики</DropdownMenuCheckboxItem>
             </DropdownMenuContent>
         </DropdownMenu>
-    ),
+    )
 };
 
 export const WithShortcuts: Story = {
@@ -78,5 +78,5 @@ export const WithShortcuts: Story = {
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-    ),
+    )
 };

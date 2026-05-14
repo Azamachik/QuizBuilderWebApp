@@ -8,8 +8,8 @@ const meta = {
     parameters: { layout: 'centered' },
     argTypes: {
         disabled: { control: 'boolean' },
-        defaultChecked: { control: 'boolean' },
-    },
+        defaultChecked: { control: 'boolean' }
+    }
 } satisfies Meta<typeof Switch>;
 
 export default meta;
@@ -28,7 +28,7 @@ export const WithLabel: Story = {
                 Уведомления
             </label>
         </div>
-    ),
+    )
 };
 
 export const WithDescription: Story = {
@@ -40,5 +40,5 @@ export const WithDescription: Story = {
             </div>
             <Switch defaultChecked />
         </div>
-    ),
+    )
 };

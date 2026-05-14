@@ -10,15 +10,15 @@ const meta = {
     argTypes: {
         variant: {
             control: 'select',
-            options: ['default', 'action', 'outline', 'secondary', 'ghost', 'destructive', 'link'],
+            options: ['default', 'action', 'outline', 'secondary', 'ghost', 'destructive', 'link']
         },
         size: {
             control: 'select',
-            options: ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg'],
+            options: ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg']
         },
-        disabled: { control: 'boolean' },
+        disabled: { control: 'boolean' }
     },
-    args: { children: 'Button' },
+    args: { children: 'Button' }
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -38,7 +38,7 @@ export const WithIcon: Story = {
         <Button {...args}>
             <Save className='size-4' /> Сохранить
         </Button>
-    ),
+    )
 };
 
 export const SizeLg: Story = { args: { size: 'lg', variant: 'action', children: 'Начать' } };
@@ -50,8 +50,10 @@ export const AllVariants: Story = {
     render: () => (
         <div className='flex flex-wrap items-center gap-3'>
             {(['default', 'action', 'outline', 'secondary', 'ghost', 'destructive', 'link'] as const).map((v) => (
-                <Button key={v} variant={v}>{v}</Button>
+                <Button key={v} variant={v}>
+                    {v}
+                </Button>
             ))}
         </div>
-    ),
+    )
 };

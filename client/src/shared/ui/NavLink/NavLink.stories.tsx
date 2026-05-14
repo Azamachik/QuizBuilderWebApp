@@ -12,19 +12,19 @@ const meta = {
             <MemoryRouter initialEntries={['/quizzes']}>
                 <Story />
             </MemoryRouter>
-        ),
-    ],
+        )
+    ]
 } satisfies Meta<typeof NavLink>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Active: Story = {
-    args: { to: '/quizzes', children: 'Мои тесты' },
+    args: { to: '/quizzes', children: 'Мои тесты' }
 };
 
 export const Inactive: Story = {
-    args: { to: '/profile', children: 'Профиль' },
+    args: { to: '/profile', children: 'Профиль' }
 };
 
 export const NavBar: Story = {
@@ -35,5 +35,5 @@ export const NavBar: Story = {
             <NavLink to='/profile'>Профиль</NavLink>
             <NavLink to='/settings'>Настройки</NavLink>
         </nav>
-    ),
+    )
 };

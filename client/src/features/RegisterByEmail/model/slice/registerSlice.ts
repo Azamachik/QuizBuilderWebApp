@@ -7,17 +7,25 @@ const initialState: RegisterSchema = {
     email: '',
     password: '',
     confirm: '',
-    isLoading: false,
+    isLoading: false
 };
 
 export const registerSlice = createSlice({
     name: 'register',
     initialState,
     reducers: {
-        setUsername: (state, { payload }: PayloadAction<string>) => { state.username = payload; },
-        setEmail:    (state, { payload }: PayloadAction<string>) => { state.email    = payload; },
-        setPassword: (state, { payload }: PayloadAction<string>) => { state.password = payload; },
-        setConfirm:  (state, { payload }: PayloadAction<string>) => { state.confirm  = payload; },
+        setUsername: (state, { payload }: PayloadAction<string>) => {
+            state.username = payload;
+        },
+        setEmail: (state, { payload }: PayloadAction<string>) => {
+            state.email = payload;
+        },
+        setPassword: (state, { payload }: PayloadAction<string>) => {
+            state.password = payload;
+        },
+        setConfirm: (state, { payload }: PayloadAction<string>) => {
+            state.confirm = payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -32,7 +40,7 @@ export const registerSlice = createSlice({
                 state.isLoading = false;
                 state.error = payload;
             });
-    },
+    }
 });
 
 export const { setUsername, setEmail, setPassword, setConfirm } = registerSlice.actions;

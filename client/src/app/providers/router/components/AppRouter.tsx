@@ -1,6 +1,6 @@
 import { Suspense, useCallback } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 import { getUserData } from '@/entities/User';
 import { type AppRouteProps, routeConfig, RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 
@@ -18,15 +18,9 @@ const AppRouter = () => {
                 element = <Navigate to={RoutePath[AppRoutes.QUIZZES]} replace />;
             }
 
-            return (
-                <Route
-                    key={route.path}
-                    path={route.path}
-                    element={<Suspense fallback=''>{element}</Suspense>}
-                />
-            );
+            return <Route key={route.path} path={route.path} element={<Suspense fallback=''>{element}</Suspense>} />;
         },
-        [isAuthenticated],
+        [isAuthenticated]
     );
 
     return <Routes>{Object.values(routeConfig).map(renderRoute)}</Routes>;

@@ -8,29 +8,35 @@ const meta = {
     component: LoginForm,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    decorators: [BrowserDecorator],
+    decorators: [BrowserDecorator]
 } satisfies Meta<typeof LoginForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: undefined, _inited: true },
-        login: { email: '', password: '', isLoading: false },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: undefined, _inited: true },
+            login: { email: '', password: '', isLoading: false }
+        })
+    ]
 };
 
 export const Loading: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: undefined, _inited: true },
-        login: { email: 'root@mail.ru', password: '1234', isLoading: true },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: undefined, _inited: true },
+            login: { email: 'root@mail.ru', password: '1234', isLoading: true }
+        })
+    ]
 };
 
 export const WithError: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: undefined, _inited: true },
-        login: { email: 'wrong@mail.ru', password: 'bad', isLoading: false, error: 'Неверный логин или пароль' },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: undefined, _inited: true },
+            login: { email: 'wrong@mail.ru', password: 'bad', isLoading: false, error: 'Неверный логин или пароль' }
+        })
+    ]
 };

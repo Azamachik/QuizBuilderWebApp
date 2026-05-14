@@ -86,10 +86,7 @@ export function QuizCard({ quiz, onEdit, onToggleStatus, onCreateLink, onDelete 
                                     onClick={() => onToggleStatus(quiz)}
                                     className='flex h-8 w-8 items-center justify-center rounded-xl bg-muted text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground'
                                 >
-                                    {quiz.isPublished
-                                        ? <GlobeLock className='size-3.5' />
-                                        : <Globe className='size-3.5' />
-                                    }
+                                    {quiz.isPublished ? <GlobeLock className='size-3.5' /> : <Globe className='size-3.5' />}
                                 </button>
                             </TooltipTrigger>
                             <TooltipContent>{quiz.isPublished ? 'Снять с публикации' : 'Опубликовать'}</TooltipContent>

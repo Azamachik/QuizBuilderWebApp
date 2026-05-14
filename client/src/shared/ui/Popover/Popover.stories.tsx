@@ -7,7 +7,7 @@ const meta = {
     title: 'Shared/Popover',
     component: Popover,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Popover>;
 
 export default meta;
@@ -24,7 +24,7 @@ export const Default: Story = {
                 <p className='mt-1 text-xs text-muted-foreground'>Содержимое всплывающего окна.</p>
             </PopoverContent>
         </Popover>
-    ),
+    )
 };
 
 export const DatePicker: Story = {
@@ -40,7 +40,7 @@ export const DatePicker: Story = {
                 <p className='text-xs text-muted-foreground'>Здесь будет Calendar компонент</p>
             </PopoverContent>
         </Popover>
-    ),
+    )
 };
 
 export const WithForm: Story = {
@@ -56,8 +56,10 @@ export const WithForm: Story = {
                     placeholder='Лимит использований'
                     type='number'
                 />
-                <Button variant='action' className='w-full' size='sm'>Применить</Button>
+                <Button variant='action' className='w-full' size='sm'>
+                    Применить
+                </Button>
             </PopoverContent>
         </Popover>
-    ),
+    )
 };

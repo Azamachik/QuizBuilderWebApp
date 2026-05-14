@@ -7,7 +7,7 @@ const meta = {
     title: 'Shared/Calendar',
     component: Calendar,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Calendar>;
 
 export default meta;
@@ -18,18 +18,13 @@ export const SingleSelect: Story = {
         const [date, setDate] = useState<Date | undefined>(new Date());
         return (
             <div className='rounded-2xl border border-border p-3'>
-                <Calendar
-                    mode='single'
-                    selected={date}
-                    onSelect={setDate}
-                    locale={ru}
-                />
+                <Calendar mode='single' selected={date} onSelect={setDate} locale={ru} />
                 <p className='mt-2 text-center text-xs text-muted-foreground'>
                     {date ? date.toLocaleDateString('ru-RU') : 'Дата не выбрана'}
                 </p>
             </div>
         );
-    },
+    }
 };
 
 export const RangeSelect: Story = {
@@ -37,15 +32,10 @@ export const RangeSelect: Story = {
         const [range, setRange] = useState<{ from?: Date; to?: Date } | undefined>();
         return (
             <div className='rounded-2xl border border-border p-3'>
-                <Calendar
-                    mode='range'
-                    selected={range as never}
-                    onSelect={setRange as never}
-                    locale={ru}
-                />
+                <Calendar mode='range' selected={range as never} onSelect={setRange as never} locale={ru} />
             </div>
         );
-    },
+    }
 };
 
 export const WithDisabledDates: Story = {
@@ -53,15 +43,9 @@ export const WithDisabledDates: Story = {
         const [date, setDate] = useState<Date | undefined>();
         return (
             <div className='rounded-2xl border border-border p-3'>
-                <Calendar
-                    mode='single'
-                    selected={date}
-                    onSelect={setDate}
-                    disabled={{ before: new Date() }}
-                    locale={ru}
-                />
+                <Calendar mode='single' selected={date} onSelect={setDate} disabled={{ before: new Date() }} locale={ru} />
                 <p className='mt-2 text-center text-xs text-muted-foreground'>Прошедшие даты недоступны</p>
             </div>
         );
-    },
+    }
 };

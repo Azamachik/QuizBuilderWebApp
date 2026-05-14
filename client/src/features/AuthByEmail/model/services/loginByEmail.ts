@@ -21,5 +21,5 @@ export const loginByEmail = createAsyncThunk<User, LoginCredentials, ThunkConfig
         } catch {
             return rejectWithValue('Неверный email или пароль');
         }
-    },
+    }
 );

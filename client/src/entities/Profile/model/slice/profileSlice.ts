@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchProfileData } from '../services/fetchProfileData';
-import { updateProfileData } from '../services/updateProfileData';
+import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import type { ProfileSchema } from '../types/profile';
 
 const initialState: ProfileSchema = {
-    isLoading: false,
+    isLoading: false
 };
 
 export const profileSlice = createSlice({
@@ -31,7 +31,7 @@ export const profileSlice = createSlice({
             .addCase(updateProfileData.rejected, (state, { payload }) => {
                 state.error = payload;
             });
-    },
+    }
 });
 
 export const profileReducer = profileSlice.reducer;

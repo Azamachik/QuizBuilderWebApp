@@ -2,23 +2,18 @@ import * as React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CheckCircle2, ChevronLeft, ChevronRight, ClipboardList } from 'lucide-react';
 import { Button } from '@/shared/ui/Button/Button';
-import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
+import { useDynamicModuleLoader } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import type { ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 import {
     inviteLinkReducer,
     fetchSessionByToken,
     getTakingSession,
     getTakingSessionIsLoading,
-    getTakingSessionError,
+    getTakingSessionError
 } from '@/entities/InviteLink';
-import {
-    attemptReducer,
-    submitAttempt,
-    setSessionQuestions,
-    getAttemptIsSubmitting,
-} from '@/entities/Attempt';
+import { attemptReducer, submitAttempt, setSessionQuestions, getAttemptIsSubmitting } from '@/entities/Attempt';
 import type { Question, Option } from '@/entities/Question';
 import type { AttemptAnswer } from '@/entities/Attempt';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
@@ -62,9 +57,7 @@ export default function QuizTakingPage() {
         setRequiredWarning(false);
         setAnswers((prev) => {
             const current = prev[question.id] ?? [];
-            const next = current.includes(optionId)
-                ? current.filter((id) => id !== optionId)
-                : [...current, optionId];
+            const next = current.includes(optionId) ? current.filter((id) => id !== optionId) : [...current, optionId];
             return { ...prev, [question.id]: next };
         });
     }
@@ -78,10 +71,7 @@ export default function QuizTakingPage() {
         const q = questions[currentIndex];
         if (q?.required) {
             const answered = answers[q.id];
-            const isEmpty =
-                !answered ||
-                answered.length === 0 ||
-                (q.type === 'text' && !answered[0]?.trim());
+            const isEmpty = !answered || answered.length === 0 || (q.type === 'text' && !answered[0]?.trim());
             if (isEmpty) {
                 setRequiredWarning(true);
                 return;
@@ -116,9 +106,7 @@ export default function QuizTakingPage() {
             if (q.type === 'text') return acc;
             const selected = new Set(answers[q.id] ?? []);
             const correct = new Set(q.options.filter((o: Option) => o.isCorrect).map((o: Option) => o.id));
-            const isCorrect =
-                selected.size === correct.size &&
-                [...correct].every((id) => selected.has(id));
+            const isCorrect = selected.size === correct.size && [...correct].every((id) => selected.has(id));
             return acc + (isCorrect ? 1 : 0);
         }, 0);
 
@@ -133,17 +121,13 @@ export default function QuizTakingPage() {
                 score: correctCount,
                 total: scorableCount,
                 label: inviteLink.label,
-                completedAt: new Date().toISOString(),
-            }),
+                completedAt: new Date().toISOString()
+            })
         );
 
         if (submitAttempt.fulfilled.match(result)) {
             dispatch(setSessionQuestions(questions));
-            navigate(
-                RoutePath[AppRoutes.QUIZ_RESULTS]
-                    .replace(':token', token)
-                    .replace(':attemptId', result.payload.id),
-            );
+            navigate(RoutePath[AppRoutes.QUIZ_RESULTS].replace(':token', token).replace(':attemptId', result.payload.id));
         }
     }
 
@@ -206,18 +190,16 @@ export default function QuizTakingPage() {
                     >
                         {isSubmitting ? 'Отправляем...' : 'Отправить результаты'}
                     </Button>
-                    <Button
-                        variant='outline'
-                        className='h-12 rounded-2xl text-base'
-                        onClick={handleSubmit}
-                        disabled={isSubmitting}
-                    >
+                    <Button variant='outline' className='h-12 rounded-2xl text-base' onClick={handleSubmit} disabled={isSubmitting}>
                         Проверить ответы
                     </Button>
                     <Button
                         variant='ghost'
                         className='text-muted-foreground'
-                        onClick={() => { setPhase('taking'); setCurrentIndex(totalCount - 1); }}
+                        onClick={() => {
+                            setPhase('taking');
+                            setCurrentIndex(totalCount - 1);
+                        }}
                     >
                         Вернуться к вопросам
                     </Button>
@@ -263,9 +245,7 @@ export default function QuizTakingPage() {
                             Вопрос {currentIndex + 1}
                         </p>
                         <h2 className='text-xl font-semibold leading-snug'>{currentQuestion.text}</h2>
-                        {currentQuestion.required && (
-                            <span className='mt-1 inline-block text-xs text-destructive'>* Обязательный</span>
-                        )}
+                        {currentQuestion.required && <span className='mt-1 inline-block text-xs text-destructive'>* Обязательный</span>}
                     </div>
 
                     <div className='space-y-3'>
@@ -300,9 +280,7 @@ export default function QuizTakingPage() {
                                                 isSelected ? 'border-action bg-action' : 'border-muted-foreground'
                                             } ${currentQuestion.type === 'multiple' ? 'rounded-md' : 'rounded-full'}`}
                                         >
-                                            {isSelected && (
-                                                <span className='block h-2 w-2 rounded-full bg-action-foreground' />
-                                            )}
+                                            {isSelected && <span className='block h-2 w-2 rounded-full bg-action-foreground' />}
                                         </span>
                                         {option.text}
                                     </button>
@@ -316,21 +294,14 @@ export default function QuizTakingPage() {
             {/* Navigation */}
             <div className='border-t border-border bg-card px-4 py-4 md:px-6'>
                 <div className='mx-auto flex max-w-2xl items-center justify-between gap-3'>
-                    <Button
-                        variant='outline'
-                        className='gap-2 rounded-xl'
-                        onClick={handleBack}
-                        disabled={currentIndex === 0}
-                    >
+                    <Button variant='outline' className='gap-2 rounded-xl' onClick={handleBack} disabled={currentIndex === 0}>
                         <ChevronLeft className='size-4' /> Назад
                     </Button>
-                    <Button
-                        variant='action'
-                        className='gap-2 rounded-xl px-6'
-                        onClick={handleNext}
-                    >
+                    <Button variant='action' className='gap-2 rounded-xl px-6' onClick={handleNext}>
                         {currentIndex < totalCount - 1 ? (
-                            <>Далее <ChevronRight className='size-4' /></>
+                            <>
+                                Далее <ChevronRight className='size-4' />
+                            </>
                         ) : (
                             'Завершить'
                         )}

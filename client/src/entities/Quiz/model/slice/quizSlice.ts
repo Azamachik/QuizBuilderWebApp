@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { QuizSchema } from '../types/QuizSchema';
-import { fetchQuizzes } from '../services/fetchQuizzes';
-import { fetchQuizById } from '../services/fetchQuizById';
-import { createQuiz } from '../services/createQuiz';
-import { updateQuiz } from '../services/updateQuiz';
-import { deleteQuiz } from '../services/deleteQuiz';
-import { toggleQuizStatus } from '../services/toggleQuizStatus';
+import { fetchQuizzes } from '../services/fetchQuizzes/fetchQuizzes';
+import { fetchQuizById } from '../services/fetchQuizById/fetchQuizById';
+import { createQuiz } from '../services/createQuiz/createQuiz';
+import { updateQuiz } from '../services/updateQuiz/updateQuiz';
+import { deleteQuiz } from '../services/deleteQuiz/deleteQuiz';
+import { toggleQuizStatus } from '../services/toggleQuizStatus/toggleQuizStatus';
 
 const initialState: QuizSchema = {
     quizzes: [],
     isLoading: false,
-    currentQuizIsLoading: false,
+    currentQuizIsLoading: false
 };
 
 export const quizSlice = createSlice({
@@ -63,7 +63,7 @@ export const quizSlice = createSlice({
                 if (idx !== -1) state.quizzes[idx] = payload;
                 if (state.currentQuiz?.id === payload.id) state.currentQuiz = payload;
             });
-    },
+    }
 });
 
 export const quizReducer = quizSlice.reducer;

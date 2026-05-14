@@ -52,20 +52,10 @@ export function EditProfileModal({ open, onOpenChange, initialData, onSave }: Ed
                 <form onSubmit={handleSubmit} className='space-y-4'>
                     <div className='grid grid-cols-2 gap-3'>
                         <Field label='Имя'>
-                            <input
-                                className={inputClass}
-                                value={form.firstName}
-                                onChange={handleChange('firstName')}
-                                placeholder='Имя'
-                            />
+                            <input className={inputClass} value={form.firstName} onChange={handleChange('firstName')} placeholder='Имя' />
                         </Field>
                         <Field label='Фамилия'>
-                            <input
-                                className={inputClass}
-                                value={form.lastName}
-                                onChange={handleChange('lastName')}
-                                placeholder='Фамилия'
-                            />
+                            <input className={inputClass} value={form.lastName} onChange={handleChange('lastName')} placeholder='Фамилия' />
                         </Field>
                     </div>
                     <Field label='Ссылка на аватар'>

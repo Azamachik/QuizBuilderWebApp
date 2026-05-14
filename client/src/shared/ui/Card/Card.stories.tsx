@@ -5,7 +5,7 @@ const meta = {
     title: 'Shared/Card',
     component: Card,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -17,7 +17,7 @@ export const Default: Story = {
             <p className='font-semibold'>Заголовок карточки</p>
             <p className='mt-1 text-sm text-muted-foreground'>Описание или дополнительный текст.</p>
         </Card>
-    ),
+    )
 };
 
 export const WithStats: Story = {
@@ -33,7 +33,7 @@ export const WithStats: Story = {
                 <span>1 240 прохождений</span>
             </div>
         </Card>
-    ),
+    )
 };
 
 export const Interactive: Story = {
@@ -42,5 +42,5 @@ export const Interactive: Story = {
             <p className='font-semibold'>Кликабельная карточка</p>
             <p className='mt-1 text-sm text-muted-foreground'>Наведите мышь для hover-эффекта.</p>
         </Card>
-    ),
+    )
 };

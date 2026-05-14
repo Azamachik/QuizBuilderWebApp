@@ -5,7 +5,7 @@ const meta = {
     title: 'Shared/Accordion',
     component: Accordion,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof Accordion>;
 
 export default meta;
@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 const items = [
     { value: 'q1', trigger: 'Как создать тест?', content: 'Нажмите кнопку «Создать тест» в панели управления.' },
     { value: 'q2', trigger: 'Можно ли редактировать опубликованный тест?', content: 'Да, вы можете редактировать тест в любое время.' },
-    { value: 'q3', trigger: 'Как поделиться тестом?', content: 'Скопируйте ссылку из меню «Создать ссылку».' },
+    { value: 'q3', trigger: 'Как поделиться тестом?', content: 'Скопируйте ссылку из меню «Создать ссылку».' }
 ];
 
 export const Single: Story = {
@@ -30,7 +30,7 @@ export const Single: Story = {
                 ))}
             </Accordion>
         </div>
-    ),
+    )
 };
 
 export const Multiple: Story = {
@@ -46,7 +46,7 @@ export const Multiple: Story = {
                 ))}
             </Accordion>
         </div>
-    ),
+    )
 };
 
 export const DefaultOpen: Story = {
@@ -62,5 +62,5 @@ export const DefaultOpen: Story = {
                 ))}
             </Accordion>
         </div>
-    ),
+    )
 };

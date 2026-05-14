@@ -8,7 +8,13 @@ const meta = {
     component: Tooltip,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    decorators: [(Story) => <TooltipProvider><Story /></TooltipProvider>],
+    decorators: [
+        (Story) => (
+            <TooltipProvider>
+                <Story />
+            </TooltipProvider>
+        )
+    ]
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
@@ -22,7 +28,7 @@ export const Default: Story = {
             </TooltipTrigger>
             <TooltipContent>Подсказка</TooltipContent>
         </Tooltip>
-    ),
+    )
 };
 
 export const OnIcon: Story = {
@@ -35,7 +41,7 @@ export const OnIcon: Story = {
             </TooltipTrigger>
             <TooltipContent>Дополнительная информация</TooltipContent>
         </Tooltip>
-    ),
+    )
 };
 
 export const Positions: Story = {
@@ -44,11 +50,13 @@ export const Positions: Story = {
             {(['top', 'right', 'bottom', 'left'] as const).map((side) => (
                 <Tooltip key={side}>
                     <TooltipTrigger asChild>
-                        <Button variant='outline' size='sm'>{side}</Button>
+                        <Button variant='outline' size='sm'>
+                            {side}
+                        </Button>
                     </TooltipTrigger>
                     <TooltipContent side={side}>Позиция: {side}</TooltipContent>
                 </Tooltip>
             ))}
         </div>
-    ),
+    )
 };

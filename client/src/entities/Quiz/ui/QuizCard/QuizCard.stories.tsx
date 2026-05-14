@@ -12,7 +12,7 @@ const mockQuiz = {
     isPublished: true,
     createdAt: '2023-10-12T00:00:00.000Z',
     attemptsCount: 1240,
-    questionsCount: 5,
+    questionsCount: 5
 };
 
 const meta = {
@@ -21,7 +21,7 @@ const meta = {
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
     decorators: [TooltipDecorator, BrowserDecorator],
-    args: { onEdit: fn(), onToggleStatus: fn(), onCreateLink: fn(), onDelete: fn() },
+    args: { onEdit: fn(), onToggleStatus: fn(), onCreateLink: fn(), onDelete: fn() }
 } satisfies Meta<typeof QuizCard>;
 
 export default meta;
@@ -36,7 +36,7 @@ export const LongTitle: Story = {
         quiz: {
             ...mockQuiz,
             title: 'Очень длинное название теста о проектировании пользовательских интерфейсов',
-            description: 'Подробное описание теста для практикующих дизайнеров',
-        },
-    },
+            description: 'Подробное описание теста для практикующих дизайнеров'
+        }
+    }
 };

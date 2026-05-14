@@ -9,7 +9,7 @@ const meta = {
     component: CreateQuestionModal,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    args: { onSave: fn() },
+    args: { onSave: fn() }
 } satisfies Meta<typeof CreateQuestionModal>;
 
 export default meta;
@@ -21,11 +21,13 @@ export const CreateMode: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='action' onClick={() => setOpen(true)}>Добавить вопрос</Button>
+                <Button variant='action' onClick={() => setOpen(true)}>
+                    Добавить вопрос
+                </Button>
                 <CreateQuestionModal {...args} open={open} onOpenChange={setOpen} />
             </>
         );
-    },
+    }
 };
 
 export const EditMode: Story = {
@@ -34,7 +36,9 @@ export const EditMode: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='outline' onClick={() => setOpen(true)}>Редактировать вопрос</Button>
+                <Button variant='outline' onClick={() => setOpen(true)}>
+                    Редактировать вопрос
+                </Button>
                 <CreateQuestionModal
                     {...args}
                     open={open}
@@ -46,15 +50,15 @@ export const EditMode: Story = {
                         required: true,
                         options: [
                             { id: 'a', text: 'Чем дальше и меньше цель', isCorrect: true },
-                            { id: 'b', text: 'Время зависит от вариантов', isCorrect: false },
-                        ],
+                            { id: 'b', text: 'Время зависит от вариантов', isCorrect: false }
+                        ]
                     }}
                 />
             </>
         );
-    },
+    }
 };
 
 export const AlwaysOpen: Story = {
-    args: { open: true, onOpenChange: () => {} },
+    args: { open: true, onOpenChange: () => {} }
 };

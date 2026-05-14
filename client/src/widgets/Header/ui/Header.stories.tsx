@@ -9,18 +9,20 @@ const meta = {
     component: Header,
     tags: ['autodocs'],
     parameters: { layout: 'fullscreen' },
-    decorators: [BrowserDecorator, TooltipDecorator],
+    decorators: [BrowserDecorator, TooltipDecorator]
 } satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Guest: Story = {
-    decorators: [StoreDecorator({ user: { authData: undefined, _inited: true } })],
+    decorators: [StoreDecorator({ user: { authData: undefined, _inited: true } })]
 };
 
 export const Authenticated: Story = {
-    decorators: [StoreDecorator({
-        user: { authData: { id: '1', username: 'Азамат', email: 'root@mail.ru', token: 'token_admin' }, _inited: true },
-    })],
+    decorators: [
+        StoreDecorator({
+            user: { authData: { id: '1', username: 'Азамат', email: 'root@mail.ru', token: 'token_admin' }, _inited: true }
+        })
+    ]
 };

@@ -7,7 +7,7 @@ const meta = {
     title: 'Pages/ProfilePage/ShareModal',
     component: ShareModal,
     tags: ['autodocs'],
-    parameters: { layout: 'centered' },
+    parameters: { layout: 'centered' }
 } satisfies Meta<typeof ShareModal>;
 
 export default meta;
@@ -19,17 +19,19 @@ export const Default: Story = {
         const [open, setOpen] = useState(false);
         return (
             <>
-                <Button variant='outline' onClick={() => setOpen(true)}>Поделиться профилем</Button>
+                <Button variant='outline' onClick={() => setOpen(true)}>
+                    Поделиться профилем
+                </Button>
                 <ShareModal open={open} onOpenChange={setOpen} username='azamat.karimov' />
             </>
         );
-    },
+    }
 };
 
 export const AlwaysOpen: Story = {
-    args: { open: true, onOpenChange: () => {}, username: 'azamat.karimov' },
+    args: { open: true, onOpenChange: () => {}, username: 'azamat.karimov' }
 };
 
 export const LongUsername: Story = {
-    args: { open: true, onOpenChange: () => {}, username: 'very-long-username-that-might-overflow' },
+    args: { open: true, onOpenChange: () => {}, username: 'very-long-username-that-might-overflow' }
 };

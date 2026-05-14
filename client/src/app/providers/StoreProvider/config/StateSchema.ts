@@ -1,9 +1,4 @@
-import type {
-    EnhancedStore,
-    Reducer,
-    ReducersMapObject,
-    UnknownAction,
-} from '@reduxjs/toolkit';
+import type { EnhancedStore, Reducer, ReducersMapObject, UnknownAction } from '@reduxjs/toolkit';
 import type { AxiosInstance } from 'axios';
 import type { UserSchema } from '@/entities/User';
 import type { ProfileSchema } from '@/entities/Profile';

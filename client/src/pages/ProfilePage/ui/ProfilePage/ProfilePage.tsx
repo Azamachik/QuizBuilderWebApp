@@ -3,25 +3,20 @@ import { CalendarDays, Share2 } from 'lucide-react';
 import { Button } from '@/shared/ui/Button/Button';
 import { StatCard } from '@/shared/ui/StatCard/StatCard';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/Tooltip/Tooltip';
-import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector';
-import { useDynamicModuleLoader, type ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader';
-import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile';
+import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
+import { useDynamicModuleLoader, type ReducersList } from '@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile/useIsMobile';
 import {
     getProfileData,
     getProfileIsLoading,
     getProfileCreatedAt,
     profileReducer,
     fetchProfileData,
-    updateProfileData,
+    updateProfileData
 } from '@/entities/Profile';
 import type { Profile } from '@/entities/Profile';
-import {
-    quizReducer,
-    fetchQuizzes,
-    getProfileStats,
-    getQuizzesCreatedDates,
-} from '@/entities/Quiz';
+import { quizReducer, fetchQuizzes, getProfileStats, getQuizzesCreatedDates } from '@/entities/Quiz';
 import { getUserData } from '@/entities/User';
 import { ActivityHeatmap } from '../ActivityHeatmap/ActivityHeatmap';
 import { EditProfileModal } from '../EditProfileModal/EditProfileModal';
@@ -70,19 +65,19 @@ function ProfilePageDesktop() {
 
     function handleSave(data: Profile) {
         if (!userData?.id) return;
-        dispatch(updateProfileData({
-            userId: userData.id,
-            data: { firstName: data.firstName, lastName: data.lastName, avatarUrl: data.avatarUrl },
-        }));
+        dispatch(
+            updateProfileData({
+                userId: userData.id,
+                data: { firstName: data.firstName, lastName: data.lastName, avatarUrl: data.avatarUrl }
+            })
+        );
     }
 
-    const displayName = display.firstName || display.lastName
-        ? `${display.firstName} ${display.lastName}`.trim()
-        : userData?.username ?? '—';
+    const displayName =
+        display.firstName || display.lastName ? `${display.firstName} ${display.lastName}`.trim() : (userData?.username ?? '—');
 
-    const shareUsername = `${display.firstName}.${display.lastName}`
-        .toLowerCase()
-        .replace(/^\.+|\.+$/g, '') || userData?.username || 'user';
+    const shareUsername =
+        `${display.firstName}.${display.lastName}`.toLowerCase().replace(/^\.+|\.+$/g, '') || userData?.username || 'user';
 
     return (
         <main className='min-h-[calc(100vh-4rem)] bg-background'>
@@ -108,7 +103,9 @@ function ProfilePageDesktop() {
                         </div>
                     </div>
                     <div className='flex shrink-0 items-center gap-2'>
-                        <Button variant='action' onClick={() => setEditOpen(true)}>Редактировать</Button>
+                        <Button variant='action' onClick={() => setEditOpen(true)}>
+                            Редактировать
+                        </Button>
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Button variant='secondary' size='icon' onClick={() => setShareOpen(true)}>

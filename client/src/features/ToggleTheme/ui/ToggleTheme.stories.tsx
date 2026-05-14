@@ -7,7 +7,7 @@ const meta = {
     component: ToggleTheme,
     tags: ['autodocs'],
     parameters: { layout: 'centered' },
-    decorators: [StoreDecorator({ user: { authData: undefined, _inited: true } })],
+    decorators: [StoreDecorator({ user: { authData: undefined, _inited: true } })]
 } satisfies Meta<typeof ToggleTheme>;
 
 export default meta;
