@@ -21,7 +21,7 @@ export default defineConfig({
   },
   define: {
     __IS_DEV__: JSON.stringify(true),
-    __API__: JSON.stringify('https://quiz-builder-vercel-server.vercel.app/'),
+    __API__: JSON.stringify('https://quizbuilderserver-r5svni94.b4a.run/'),
     __PROJECT__: JSON.stringify('frontend')
   },
   test: {
