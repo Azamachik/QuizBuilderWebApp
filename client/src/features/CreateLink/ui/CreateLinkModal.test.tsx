@@ -12,7 +12,7 @@ const { mockGet, mockPost, mockPatch, mockDelete } = vi.hoisted(() => ({
     mockGet: vi.fn(),
     mockPost: vi.fn(),
     mockPatch: vi.fn(),
-    mockDelete: vi.fn(),
+    mockDelete: vi.fn()
 }));
 
 vi.mock('@/shared/api/api', () => ({
@@ -20,8 +20,8 @@ vi.mock('@/shared/api/api', () => ({
         get: (...args: unknown[]) => mockGet(...args),
         post: (...args: unknown[]) => mockPost(...args),
         patch: (...args: unknown[]) => mockPatch(...args),
-        delete: (...args: unknown[]) => mockDelete(...args),
-    },
+        delete: (...args: unknown[]) => mockDelete(...args)
+    }
 }));
 
 const LINK = {
@@ -34,16 +34,16 @@ const LINK = {
     expiresAt: null,
     isActive: true,
     createdAt: new Date().toISOString(),
-    createdBy: 'u1',
+    createdBy: 'u1'
 };
 
 function makeStore() {
     return configureStore({
         reducer: { user: userReducer },
         preloadedState: {
-            user: { authData: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }, _inited: true },
+            user: { authData: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }, _inited: true }
         },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: {} } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: {} } } })
     });
 }
 
@@ -57,7 +57,7 @@ function renderModal(open = true, quizId = 'q1') {
                     <CreateLinkModal quizId={quizId} open={open} onOpenChange={onOpenChange} />
                 </TooltipProvider>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, onOpenChange };
 }
@@ -151,10 +151,7 @@ describe('CreateLinkModal', () => {
             await userEvent.type(screen.getByPlaceholderText(/Название/), 'Моя ссылка');
             await userEvent.click(screen.getByRole('button', { name: /Создать ссылку/ }));
             await waitFor(() => {
-                expect(mockPost).toHaveBeenCalledWith(
-                    '/inviteLinks',
-                    expect.objectContaining({ label: 'Моя ссылка', quizId: 'q1' }),
-                );
+                expect(mockPost).toHaveBeenCalledWith('/inviteLinks', expect.objectContaining({ label: 'Моя ссылка', quizId: 'q1' }));
             });
         });
 

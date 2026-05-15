@@ -9,7 +9,7 @@ function renderToggleTheme(setTheme = vi.fn()) {
     return render(
         <ThemeContext.Provider value={{ theme: 'light', setTheme }}>
             <ToggleTheme />
-        </ThemeContext.Provider>,
+        </ThemeContext.Provider>
     );
 }
 

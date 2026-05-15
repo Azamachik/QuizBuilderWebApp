@@ -10,11 +10,11 @@ import { TooltipProvider } from '@/shared/ui/Tooltip/Tooltip';
 import ProfilePage from './ProfilePage';
 
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 vi.mock('@/shared/lib/helpers/hooks/useIsMobile/useIsMobile', () => ({
-    useIsMobile: vi.fn().mockReturnValue(false),
+    useIsMobile: vi.fn().mockReturnValue(false)
 }));
 
 const USER_DATA = { id: 'u1', username: 'alice', email: 'alice@mail.ru', token: 'tok', createdAt: '2024-01-15' };
@@ -27,10 +27,9 @@ function makeStore() {
     return configureStore({
         reducer: { user: userReducer, profile: profileReducer, quizzes: quizReducer },
         preloadedState: {
-            user: { authData: USER_DATA, _inited: true },
+            user: { authData: USER_DATA, _inited: true }
         },
-        middleware: (getDefault) =>
-            getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } })
     });
 }
 
@@ -43,7 +42,7 @@ function renderPage() {
                     <ProfilePage />
                 </TooltipProvider>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, container };
 }
@@ -140,7 +139,7 @@ describe('ProfilePage (desktop)', () => {
         it('shows correct created count', async () => {
             const quizzes = [
                 { id: 'q1', title: 'Q1', isPublished: true, attemptsCount: 5, createdAt: '', userId: 'u1', description: '' },
-                { id: 'q2', title: 'Q2', isPublished: false, attemptsCount: 2, createdAt: '', userId: 'u1', description: '' },
+                { id: 'q2', title: 'Q2', isPublished: false, attemptsCount: 2, createdAt: '', userId: 'u1', description: '' }
             ];
             mockGet.mockImplementation((url: string) => {
                 if (url.includes('/profile/')) return Promise.resolve({ data: PROFILE_DATA });

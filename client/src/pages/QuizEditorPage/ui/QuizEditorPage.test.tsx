@@ -10,18 +10,18 @@ import { TooltipProvider } from '@/shared/ui/Tooltip/Tooltip';
 import QuizEditorPage from './QuizEditorPage';
 
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 vi.mock('@/shared/lib/helpers/hooks/useIsMobile/useIsMobile', () => ({
-    useIsMobile: vi.fn().mockReturnValue(false),
+    useIsMobile: vi.fn().mockReturnValue(false)
 }));
 
 vi.mock('@/shared/api/api', () => ({
     $api: {
         get: vi.fn().mockResolvedValue({ data: [] }),
-        post: vi.fn().mockResolvedValue({ data: {} }),
-    },
+        post: vi.fn().mockResolvedValue({ data: {} })
+    }
 }));
 
 const QUIZ = {
@@ -31,7 +31,7 @@ const QUIZ = {
     isPublished: false,
     attemptsCount: 0,
     createdAt: new Date().toISOString(),
-    userId: 'u1',
+    userId: 'u1'
 };
 
 const mockGet = vi.fn();
@@ -40,10 +40,9 @@ function makeStore() {
     return configureStore({
         reducer: { user: userReducer, quizzes: quizReducer, questions: questionReducer },
         preloadedState: {
-            user: { authData: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }, _inited: true },
+            user: { authData: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }, _inited: true }
         },
-        middleware: (getDefault) =>
-            getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } })
     });
 }
 
@@ -58,7 +57,7 @@ function renderPage() {
                     </Routes>
                 </TooltipProvider>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, container };
 }
@@ -141,10 +140,13 @@ describe('QuizEditorPage (desktop)', () => {
     describe('with questions', () => {
         it('renders question cards when questions are loaded', async () => {
             const question = {
-                id: 'qn1', quizId: 'q1', text: 'Тестовый вопрос?',
+                id: 'qn1',
+                quizId: 'q1',
+                text: 'Тестовый вопрос?',
                 type: 'single' as const,
                 options: [{ id: 'o1', text: 'Вариант', isCorrect: true }],
-                required: false, order: 1,
+                required: false,
+                order: 1
             };
             mockGet.mockImplementation((url: string) => {
                 if (url.includes('/quizzes')) return Promise.resolve({ data: QUIZ });

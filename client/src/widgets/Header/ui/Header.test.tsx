@@ -17,7 +17,7 @@ vi.mock('@/shared/assets/icons/user.svg?react', () => ({ default: () => null }))
 
 // Force desktop layout in all tests
 vi.mock('@/shared/lib/helpers/hooks/useIsMobile/useIsMobile', () => ({
-    useIsMobile: vi.fn().mockReturnValue(false),
+    useIsMobile: vi.fn().mockReturnValue(false)
 }));
 
 function makeStore(withUser = false) {
@@ -26,7 +26,7 @@ function makeStore(withUser = false) {
         preloadedState: withUser
             ? { user: { authData: { id: 'u1', username: 'user', token: 'tok' }, _inited: true } }
             : { user: { _inited: true } },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: {} } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: {} } } })
     });
 }
 
@@ -41,7 +41,7 @@ function renderHeader(withUser = false) {
                     </TooltipProvider>
                 </ThemeContext.Provider>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store };
 }

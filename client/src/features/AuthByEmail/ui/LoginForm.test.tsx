@@ -11,20 +11,20 @@ import { LoginForm } from './LoginForm';
 // useDynamicModuleLoader requires a store with reducerManager — mock it so the form
 // can be rendered with a plain configureStore in tests.
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 const mockApi = {
     post: vi.fn().mockResolvedValue({
-        data: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' },
-    }),
+        data: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }
+    })
 };
 
 function makeStore(loginState = {}) {
     return configureStore({
         reducer: { user: userReducer, login: loginReducer },
         preloadedState: loginState ? { login: { email: '', password: '', isLoading: false, ...loginState } } : undefined,
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } })
     });
 }
 
@@ -35,7 +35,7 @@ function renderForm(loginState = {}) {
             <MemoryRouter>
                 <LoginForm />
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, container };
 }

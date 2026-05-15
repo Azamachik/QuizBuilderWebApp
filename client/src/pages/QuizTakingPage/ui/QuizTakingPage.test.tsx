@@ -9,7 +9,7 @@ import { attemptReducer } from '@/entities/Attempt';
 import QuizTakingPage from './QuizTakingPage';
 
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 const mockGet = vi.fn();
@@ -17,32 +17,47 @@ const mockPost = vi.fn().mockResolvedValue({ data: { id: 'a1' } });
 
 const SESSION = {
     inviteLink: {
-        id: 'l1', quizId: 'q1', token: 'tok123', label: 'Test',
-        maxUses: null, usedCount: 0, expiresAt: null, isActive: true,
-        createdAt: new Date().toISOString(), createdBy: 'u1',
+        id: 'l1',
+        quizId: 'q1',
+        token: 'tok123',
+        label: 'Test',
+        maxUses: null,
+        usedCount: 0,
+        expiresAt: null,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        createdBy: 'u1'
     },
     quiz: { id: 'q1', title: 'Тест по истории', description: '' },
     questions: [
         {
-            id: 'qn1', quizId: 'q1', text: 'Вопрос первый?', type: 'single' as const,
+            id: 'qn1',
+            quizId: 'q1',
+            text: 'Вопрос первый?',
+            type: 'single' as const,
             options: [
                 { id: 'o1', text: 'Вариант А', isCorrect: true },
-                { id: 'o2', text: 'Вариант Б', isCorrect: false },
+                { id: 'o2', text: 'Вариант Б', isCorrect: false }
             ],
-            required: false, order: 1,
+            required: false,
+            order: 1
         },
         {
-            id: 'qn2', quizId: 'q1', text: 'Вопрос второй?', type: 'text' as const,
-            options: [], required: false, order: 2,
-        },
-    ],
+            id: 'qn2',
+            quizId: 'q1',
+            text: 'Вопрос второй?',
+            type: 'text' as const,
+            options: [],
+            required: false,
+            order: 2
+        }
+    ]
 };
 
 function makeStore() {
     return configureStore({
         reducer: { inviteLink: inviteLinkReducer, attempt: attemptReducer },
-        middleware: (getDefault) =>
-            getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: mockPost } } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: mockPost } } } })
     });
 }
 
@@ -55,7 +70,7 @@ function renderPage() {
                     <Route path='/quiz/:token' element={<QuizTakingPage />} />
                 </Routes>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, container };
 }
@@ -126,9 +141,7 @@ describe('QuizTakingPage', () => {
 
         it('shows "Далее" button when not on last question', async () => {
             renderPage();
-            await waitFor(() =>
-                expect(screen.getByRole('button', { name: /Далее/ })).toBeInTheDocument(),
-            );
+            await waitFor(() => expect(screen.getByRole('button', { name: /Далее/ })).toBeInTheDocument());
         });
 
         it('shows "Завершить" on the last question after navigation', async () => {
@@ -142,8 +155,8 @@ describe('QuizTakingPage', () => {
             mockGet.mockResolvedValue({
                 data: {
                     ...SESSION,
-                    questions: [{ ...SESSION.questions[0], required: true }],
-                },
+                    questions: [{ ...SESSION.questions[0], required: true }]
+                }
             });
             renderPage();
             await waitFor(() => screen.getByRole('button', { name: 'Завершить' }));

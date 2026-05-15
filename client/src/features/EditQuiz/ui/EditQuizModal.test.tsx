@@ -9,8 +9,8 @@ import { EditQuizModal } from './EditQuizModal';
 
 const mockApi = {
     patch: vi.fn().mockResolvedValue({
-        data: { id: 'q1', title: 'Updated', authorId: 'u1', isPublished: false, createdAt: '', attemptsCount: 0, questionsCount: 0 },
-    }),
+        data: { id: 'q1', title: 'Updated', authorId: 'u1', isPublished: false, createdAt: '', attemptsCount: 0, questionsCount: 0 }
+    })
 };
 
 const mockQuiz: Quiz = {
@@ -21,14 +21,14 @@ const mockQuiz: Quiz = {
     isPublished: false,
     createdAt: '2024-01-01',
     attemptsCount: 0,
-    questionsCount: 3,
+    questionsCount: 3
 };
 
 function makeStore() {
     return configureStore({
         reducer: { quizzes: quizReducer },
         preloadedState: { quizzes: { quizzes: [mockQuiz], isLoading: false, currentQuizIsLoading: false } },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } })
     });
 }
 
@@ -37,7 +37,7 @@ function renderModal(quiz: Quiz | null = mockQuiz, onOpenChange = vi.fn()) {
     render(
         <Provider store={store}>
             <EditQuizModal quiz={quiz} onOpenChange={onOpenChange} />
-        </Provider>,
+        </Provider>
     );
     return { store, onOpenChange };
 }
@@ -86,10 +86,7 @@ describe('EditQuizModal', () => {
             await userEvent.type(titleInput, 'Новый заголовок');
             await userEvent.click(screen.getByRole('button', { name: 'Сохранить' }));
 
-            expect(mockApi.patch).toHaveBeenCalledWith(
-                '/quizzes/q1',
-                expect.objectContaining({ title: 'Новый заголовок' }),
-            );
+            expect(mockApi.patch).toHaveBeenCalledWith('/quizzes/q1', expect.objectContaining({ title: 'Новый заголовок' }));
             expect(onOpenChange).toHaveBeenCalledWith(false);
         });
     });

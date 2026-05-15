@@ -16,18 +16,16 @@ const mockApi = {
             isPublished: false,
             createdAt: '',
             attemptsCount: 0,
-            questionsCount: 0,
-        },
-    }),
+            questionsCount: 0
+        }
+    })
 };
 
 function makeStore(withUser = true) {
     return configureStore({
         reducer: { user: userReducer, quizzes: quizReducer },
-        preloadedState: withUser
-            ? { user: { authData: { id: 'u1', username: 'user', token: 'tok' }, _inited: true } }
-            : undefined,
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } }),
+        preloadedState: withUser ? { user: { authData: { id: 'u1', username: 'user', token: 'tok' }, _inited: true } } : undefined,
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } })
     });
 }
 
@@ -36,7 +34,7 @@ function renderModal(open = true, onOpenChange = vi.fn()) {
     render(
         <Provider store={store}>
             <CreateQuizModal open={open} onOpenChange={onOpenChange} />
-        </Provider>,
+        </Provider>
     );
     return { store, onOpenChange };
 }
@@ -81,10 +79,7 @@ describe('CreateQuizModal', () => {
             await userEvent.type(screen.getByPlaceholderText('Введите название теста'), 'Мой тест');
             await userEvent.click(screen.getByRole('button', { name: 'Создать' }));
 
-            expect(mockApi.post).toHaveBeenCalledWith(
-                '/quizzes',
-                expect.objectContaining({ title: 'Мой тест', authorId: 'u1' }),
-            );
+            expect(mockApi.post).toHaveBeenCalledWith('/quizzes', expect.objectContaining({ title: 'Мой тест', authorId: 'u1' }));
             expect(onOpenChange).toHaveBeenCalledWith(false);
         });
 

@@ -9,22 +9,22 @@ import { registerReducer } from '../model/slice/registerSlice';
 import { RegisterForm } from './RegisterForm';
 
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 const mockApi = {
     post: vi.fn().mockResolvedValue({
-        data: { id: 'u1', username: 'newuser', email: 'new@mail.ru', token: 'tok' },
-    }),
+        data: { id: 'u1', username: 'newuser', email: 'new@mail.ru', token: 'tok' }
+    })
 };
 
 function makeStore(registerState = {}) {
     return configureStore({
         reducer: { user: userReducer, register: registerReducer },
         preloadedState: {
-            register: { username: '', email: '', password: '', confirm: '', isLoading: false, ...registerState },
+            register: { username: '', email: '', password: '', confirm: '', isLoading: false, ...registerState }
         },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } })
     });
 }
 
@@ -35,7 +35,7 @@ function renderForm(registerState = {}) {
             <MemoryRouter>
                 <RegisterForm />
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     // Helpers for password inputs (labels are not associated via "for" attr)
     const getPasswordInputs = () => container.querySelectorAll('input[type="password"]');
@@ -104,7 +104,7 @@ describe('RegisterForm', () => {
             await userEvent.click(screen.getByRole('button', { name: 'Зарегистрироваться' }));
             expect(mockApi.post).toHaveBeenCalledWith(
                 '/register',
-                expect.objectContaining({ username: 'alice', email: 'a@b.ru', password: 'pass123' }),
+                expect.objectContaining({ username: 'alice', email: 'a@b.ru', password: 'pass123' })
             );
         });
     });

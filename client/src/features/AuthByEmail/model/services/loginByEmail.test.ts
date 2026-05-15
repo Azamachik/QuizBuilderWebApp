@@ -8,7 +8,7 @@ import type { User } from '@/entities/User';
 const makeStore = (api: object) =>
     configureStore({
         reducer: { login: loginReducer, user: userReducer },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api } } })
     });
 
 const mockUser: User = { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'jwt-abc' };
@@ -57,7 +57,13 @@ describe('loginByEmail', () => {
 
     it('sets isLoading=true while in flight', async () => {
         let resolve!: (v: unknown) => void;
-        const api = { post: vi.fn().mockReturnValue(new Promise((r) => { resolve = r; })) };
+        const api = {
+            post: vi.fn().mockReturnValue(
+                new Promise((r) => {
+                    resolve = r;
+                })
+            )
+        };
         const store = makeStore(api);
 
         const dispatch = store.dispatch(loginByEmail(creds) as ReturnType<typeof loginByEmail>);

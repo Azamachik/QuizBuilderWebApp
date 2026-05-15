@@ -136,7 +136,9 @@ export default function QuizTakingPage() {
     if (isLoading) {
         return (
             <div className='flex min-h-screen items-center justify-center bg-background'>
-                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
+                <div className='fixed top-4 right-4 z-50'>
+                    <ToggleTheme />
+                </div>
                 <div className='w-full max-w-2xl space-y-4 px-6'>
                     <div className='h-6 w-1/3 animate-pulse rounded-lg bg-muted' />
                     <div className='h-48 animate-pulse rounded-3xl bg-muted' />
@@ -150,7 +152,9 @@ export default function QuizTakingPage() {
     if (error) {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center'>
-                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
+                <div className='fixed top-4 right-4 z-50'>
+                    <ToggleTheme />
+                </div>
                 <ClipboardList className='size-12 text-muted-foreground' />
                 <h1 className='text-2xl font-bold'>Тест недоступен</h1>
                 <p className='text-muted-foreground'>{error}</p>
@@ -163,7 +167,9 @@ export default function QuizTakingPage() {
     if (questions.length === 0) {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center'>
-                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
+                <div className='fixed top-4 right-4 z-50'>
+                    <ToggleTheme />
+                </div>
                 <ClipboardList className='size-12 text-muted-foreground' />
                 <h1 className='text-2xl font-bold'>{session.quiz.title}</h1>
                 <p className='text-muted-foreground'>В этом тесте пока нет вопросов.</p>
@@ -174,7 +180,9 @@ export default function QuizTakingPage() {
     if (phase === 'complete') {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-6 bg-background px-6'>
-                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
+                <div className='fixed top-4 right-4 z-50'>
+                    <ToggleTheme />
+                </div>
                 <div className='flex flex-col items-center gap-4 text-center'>
                     <div className='flex h-20 w-20 items-center justify-center rounded-full bg-action/10'>
                         <CheckCircle2 className='size-10 text-action' />

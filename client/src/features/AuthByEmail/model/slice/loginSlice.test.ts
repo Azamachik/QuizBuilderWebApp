@@ -38,17 +38,14 @@ describe('loginSlice', () => {
         });
 
         it('fulfilled — sets isLoading=false', () => {
-            const state = loginReducer(
-                { ...initial, isLoading: true },
-                loginByEmail.fulfilled(mockUser, '', creds),
-            );
+            const state = loginReducer({ ...initial, isLoading: true }, loginByEmail.fulfilled(mockUser, '', creds));
             expect(state.isLoading).toBe(false);
         });
 
         it('rejected — clears isLoading and stores error', () => {
             const state = loginReducer(
                 { ...initial, isLoading: true },
-                loginByEmail.rejected(null, '', creds, 'Неверный email или пароль'),
+                loginByEmail.rejected(null, '', creds, 'Неверный email или пароль')
             );
             expect(state.isLoading).toBe(false);
             expect(state.error).toBe('Неверный email или пароль');

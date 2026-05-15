@@ -9,28 +9,39 @@ import { attemptReducer } from '@/entities/Attempt';
 import QuizResultsPage from './QuizResultsPage';
 
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 const mockGet = vi.fn();
 
 const SESSION = {
     inviteLink: {
-        id: 'l1', quizId: 'q1', token: 'tok123', label: 'Test',
-        maxUses: null, usedCount: 0, expiresAt: null, isActive: true,
-        createdAt: new Date().toISOString(), createdBy: 'u1',
+        id: 'l1',
+        quizId: 'q1',
+        token: 'tok123',
+        label: 'Test',
+        maxUses: null,
+        usedCount: 0,
+        expiresAt: null,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        createdBy: 'u1'
     },
     quiz: { id: 'q1', title: 'Тест по географии', description: '' },
     questions: [
         {
-            id: 'qn1', quizId: 'q1', text: 'Столица России?', type: 'single' as const,
+            id: 'qn1',
+            quizId: 'q1',
+            text: 'Столица России?',
+            type: 'single' as const,
             options: [
                 { id: 'o1', text: 'Москва', isCorrect: true },
-                { id: 'o2', text: 'Лондон', isCorrect: false },
+                { id: 'o2', text: 'Лондон', isCorrect: false }
             ],
-            required: false, order: 1,
-        },
-    ],
+            required: false,
+            order: 1
+        }
+    ]
 };
 
 const ATTEMPT = {
@@ -42,14 +53,13 @@ const ATTEMPT = {
     total: 1,
     label: 'Test',
     completedAt: new Date().toISOString(),
-    answers: [{ questionId: 'qn1', selectedOptionIds: ['o1'], textAnswer: '' }],
+    answers: [{ questionId: 'qn1', selectedOptionIds: ['o1'], textAnswer: '' }]
 };
 
 function makeStore() {
     return configureStore({
         reducer: { inviteLink: inviteLinkReducer, attempt: attemptReducer },
-        middleware: (getDefault) =>
-            getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } })
     });
 }
 
@@ -62,7 +72,7 @@ function renderPage() {
                     <Route path='/quiz/:token/results/:attemptId' element={<QuizResultsPage />} />
                 </Routes>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, container };
 }
@@ -156,7 +166,7 @@ describe('QuizResultsPage', () => {
         it('shows retry-blocked warning when maxUses exhausted', async () => {
             const exhaustedSession = {
                 ...SESSION,
-                inviteLink: { ...SESSION.inviteLink, maxUses: 1, usedCount: 1 },
+                inviteLink: { ...SESSION.inviteLink, maxUses: 1, usedCount: 1 }
             };
             mockGet.mockImplementation((url: string) => {
                 if (url.includes('/public/quiz/')) return Promise.resolve({ data: exhaustedSession });

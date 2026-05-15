@@ -5,11 +5,11 @@ import {
     getRegisterPassword,
     getRegisterConfirm,
     getRegisterIsLoading,
-    getRegisterError,
+    getRegisterError
 } from './getRegister';
 
 const withSlice = {
-    register: { username: 'alice', email: 'a@b.ru', password: 'pass', confirm: 'pass', isLoading: true, error: 'err' },
+    register: { username: 'alice', email: 'a@b.ru', password: 'pass', confirm: 'pass', isLoading: true, error: 'err' }
 };
 const withoutSlice = {};
 const withoutError = { register: { username: '', email: '', password: '', confirm: '', isLoading: false } };

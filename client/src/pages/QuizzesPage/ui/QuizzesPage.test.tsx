@@ -10,11 +10,11 @@ import { TooltipProvider } from '@/shared/ui/Tooltip/Tooltip';
 import QuizzesPage from './QuizzesPage';
 
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 vi.mock('@/shared/lib/helpers/hooks/useIsMobile/useIsMobile', () => ({
-    useIsMobile: vi.fn().mockReturnValue(false),
+    useIsMobile: vi.fn().mockReturnValue(false)
 }));
 
 vi.mock('@/shared/api/api', () => ({
@@ -22,14 +22,18 @@ vi.mock('@/shared/api/api', () => ({
         get: vi.fn().mockResolvedValue({ data: [] }),
         post: vi.fn().mockResolvedValue({ data: {} }),
         patch: vi.fn().mockResolvedValue({ data: {} }),
-        delete: vi.fn().mockResolvedValue({}),
-    },
+        delete: vi.fn().mockResolvedValue({})
+    }
 }));
 
 const QUIZ = {
-    id: 'q1', title: 'Мой тест', description: 'Описание',
-    isPublished: false, attemptsCount: 0,
-    createdAt: new Date().toISOString(), userId: 'u1',
+    id: 'q1',
+    title: 'Мой тест',
+    description: 'Описание',
+    isPublished: false,
+    attemptsCount: 0,
+    createdAt: new Date().toISOString(),
+    userId: 'u1'
 };
 
 const mockGet = vi.fn();
@@ -38,10 +42,9 @@ function makeStore() {
     return configureStore({
         reducer: { user: userReducer, quizzes: quizReducer },
         preloadedState: {
-            user: { authData: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }, _inited: true },
+            user: { authData: { id: 'u1', username: 'user', email: 'u@mail.ru', token: 'tok' }, _inited: true }
         },
-        middleware: (getDefault) =>
-            getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: { get: mockGet, post: vi.fn() } } } })
     });
 }
 
@@ -54,7 +57,7 @@ function renderPage() {
                     <QuizzesPage />
                 </TooltipProvider>
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store, container };
 }

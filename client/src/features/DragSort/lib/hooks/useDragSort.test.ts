@@ -5,7 +5,7 @@ import { useDragSort } from './useDragSort';
 const items = [
     { id: 'a', order: 1 },
     { id: 'b', order: 2 },
-    { id: 'c', order: 3 },
+    { id: 'c', order: 3 }
 ];
 
 describe('useDragSort', () => {
@@ -19,14 +19,20 @@ describe('useDragSort', () => {
     describe('drag lifecycle', () => {
         it('onDragStart sets draggingId to the dragged item id', () => {
             const { result } = renderHook(() => useDragSort(items, vi.fn()));
-            act(() => { result.current.getDragHandlers(0, 'a').onDragStart(); });
+            act(() => {
+                result.current.getDragHandlers(0, 'a').onDragStart();
+            });
             expect(result.current.draggingId).toBe('a');
         });
 
         it('onDragEnd clears draggingId', () => {
             const { result } = renderHook(() => useDragSort(items, vi.fn()));
-            act(() => { result.current.getDragHandlers(0, 'a').onDragStart(); });
-            act(() => { result.current.getDragHandlers(0, 'a').onDragEnd(); });
+            act(() => {
+                result.current.getDragHandlers(0, 'a').onDragStart();
+            });
+            act(() => {
+                result.current.getDragHandlers(0, 'a').onDragEnd();
+            });
             expect(result.current.draggingId).toBeNull();
         });
     });

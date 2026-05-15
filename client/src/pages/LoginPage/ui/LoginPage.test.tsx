@@ -10,26 +10,26 @@ import LoginPage from './LoginPage';
 
 vi.mock('@/shared/assets/icons/favicon.svg?react', () => ({ default: () => null }));
 vi.mock('@/shared/lib/helpers/hooks/useDynamicModuleLoader/useDynamicModuleLoader', () => ({
-    useDynamicModuleLoader: vi.fn(),
+    useDynamicModuleLoader: vi.fn()
 }));
 
 const mockApi = {
     post: vi.fn().mockResolvedValue({
-        data: { id: 'u1', username: 'user', token: 'tok' },
-    }),
+        data: { id: 'u1', username: 'user', token: 'tok' }
+    })
 };
 
 function renderPage() {
     const store = configureStore({
         reducer: { user: userReducer, login: loginReducer },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api: mockApi } } })
     });
     render(
         <Provider store={store}>
             <MemoryRouter>
                 <LoginPage />
             </MemoryRouter>
-        </Provider>,
+        </Provider>
     );
     return { store };
 }

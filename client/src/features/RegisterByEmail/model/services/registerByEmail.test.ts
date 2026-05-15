@@ -8,7 +8,7 @@ import type { User } from '@/entities/User';
 const makeStore = (api: object) =>
     configureStore({
         reducer: { register: registerReducer, user: userReducer },
-        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api } } }),
+        middleware: (getDefault) => getDefault({ thunk: { extraArgument: { api } } })
     });
 
 const mockUser: User = { id: 'u1', username: 'newuser', email: 'new@mail.ru', token: 'tok-xyz' };
@@ -46,7 +46,7 @@ describe('registerByEmail', () => {
 
     it('rejected — uses server error message when available', async () => {
         const api = {
-            post: vi.fn().mockRejectedValue({ response: { data: { message: 'Email уже занят' } } }),
+            post: vi.fn().mockRejectedValue({ response: { data: { message: 'Email уже занят' } } })
         };
         const store = makeStore(api);
 
@@ -66,7 +66,13 @@ describe('registerByEmail', () => {
 
     it('sets isLoading=true while in flight', async () => {
         let resolve!: (v: unknown) => void;
-        const api = { post: vi.fn().mockReturnValue(new Promise((r) => { resolve = r; })) };
+        const api = {
+            post: vi.fn().mockReturnValue(
+                new Promise((r) => {
+                    resolve = r;
+                })
+            )
+        };
         const store = makeStore(api);
 
         const dispatch = store.dispatch(registerByEmail(creds) as ReturnType<typeof registerByEmail>);

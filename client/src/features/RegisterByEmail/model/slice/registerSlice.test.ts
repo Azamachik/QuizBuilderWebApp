@@ -31,27 +31,18 @@ describe('registerSlice', () => {
 
     describe('registerByEmail async thunk', () => {
         it('pending — sets isLoading=true, clears error', () => {
-            const state = registerReducer(
-                { ...initial, error: 'old' },
-                registerByEmail.pending('', creds),
-            );
+            const state = registerReducer({ ...initial, error: 'old' }, registerByEmail.pending('', creds));
             expect(state.isLoading).toBe(true);
             expect(state.error).toBeUndefined();
         });
 
         it('fulfilled — clears isLoading', () => {
-            const state = registerReducer(
-                { ...initial, isLoading: true },
-                registerByEmail.fulfilled(mockUser, '', creds),
-            );
+            const state = registerReducer({ ...initial, isLoading: true }, registerByEmail.fulfilled(mockUser, '', creds));
             expect(state.isLoading).toBe(false);
         });
 
         it('rejected — clears isLoading and stores error', () => {
-            const state = registerReducer(
-                { ...initial, isLoading: true },
-                registerByEmail.rejected(null, '', creds, 'Ошибка регистрации'),
-            );
+            const state = registerReducer({ ...initial, isLoading: true }, registerByEmail.rejected(null, '', creds, 'Ошибка регистрации'));
             expect(state.isLoading).toBe(false);
             expect(state.error).toBe('Ошибка регистрации');
         });

@@ -138,5 +138,5 @@
 }
 
 .bg-action svg path {
-        stroke: var(--action-foreground);
-    }
+    stroke: var(--action-foreground);
+}
