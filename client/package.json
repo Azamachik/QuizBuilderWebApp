@@ -9,7 +9,6 @@
     "start:dev:server": "node ./json-server/index.js",
     "build": "tsc -b && vite build",
     "test:unit": "vitest --config vitest.config.ts",
-    "test:ui": "npx chromatic --project-token=chpt_4f3058a7c89216b",
     "test:coverage": "vitest --config vitest.config.ts --coverage",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
