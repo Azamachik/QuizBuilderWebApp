@@ -129,5 +129,4 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: chpt_4f3058a7c89216b
-          # exitZeroOnChanges: false
           workingDir: client
