@@ -136,3 +136,7 @@
         @apply font-sans;
     }
 }
+
+.bg-action svg path {
+        stroke: var(--action-foreground);
+    }

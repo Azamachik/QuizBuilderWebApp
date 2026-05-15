@@ -69,11 +69,11 @@ const PRICING = [
 const FAQ = [
     {
         q: 'Как добавить картинку в вопрос?',
-        a: 'В редакторе вопроса нажмите на иконку вложения и выберите изображение с устройства или вставьте URL.'
+        a: 'Будет реализовано в будущих версиях.'
     },
     {
         q: 'Можно ли интегрировать форму на сайт?',
-        a: 'Да, после публикации теста вы получите ссылку и iframe-код для встраивания на любой сайт.'
+        a: 'Будет реализовано в будущих версиях.'
     },
     {
         q: 'Сколько стоит использование?',
@@ -86,7 +86,6 @@ export default function LandingPage() {
     if (isMobile) return <LandingPageMobile />;
     return (
         <div className='min-h-screen bg-background'>
-            {/* Hero */}
             <section className='mx-auto max-w-4xl px-6 pb-16 pt-8 text-center'>
                 <div className='mb-8 inline-flex items-center gap-2 rounded-full border border-action/30 bg-action/10 px-4 py-1.5 text-xs text-action'>
                     <span className='size-1.5 rounded-full bg-action' />
@@ -132,7 +131,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Возможности */}
             <section id='features' className='mx-auto max-w-4xl px-6 py-16 text-center'>
                 <h2 className='mb-2 text-3xl font-bold'>Все, что нужно для аналитики</h2>
                 <p className='mb-12 text-muted-foreground'>Никакого визуального шума, только важные инструменты.</p>
@@ -150,7 +148,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Кейсы */}
             <section id='cases' className='bg-muted/40 py-16'>
                 <div className='mx-auto max-w-4xl px-6 text-center'>
                     <h2 className='mb-2 text-3xl font-bold'>Кейсы использования</h2>
@@ -170,7 +167,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Цены */}
             <section id='pricing' className='mx-auto max-w-4xl px-6 py-16 text-center'>
                 <h2 className='mb-2 text-3xl font-bold'>Простые и честные цены</h2>
                 <p className='mb-12 text-muted-foreground'>Начните бесплатно, масштабируйтесь по мере роста.</p>
@@ -201,7 +197,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* FAQ */}
             <section className='bg-muted/40 py-16'>
                 <div className='mx-auto max-w-2xl px-6'>
                     <h2 className='mb-10 text-center text-3xl font-bold'>Вопрос — Ответ</h2>

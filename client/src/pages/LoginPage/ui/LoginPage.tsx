@@ -36,14 +36,14 @@ export default function LoginPage() {
                     <button
                         type='button'
                         onClick={() => setWarningOpen(true)}
-                        className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors hover:bg-yandex hover:text-white'
+                        className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors bg-yandex text-white hover:bg-yandex/80'
                     >
                         Я
                     </button>
                     <button
                         type='button'
                         onClick={() => setWarningOpen(true)}
-                        className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors hover:bg-vk hover:text-white'
+                        className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-border text-sm font-semibold transition-colors bg-vk text-white hover:bg-vk/80'
                     >
                         VK
                     </button>

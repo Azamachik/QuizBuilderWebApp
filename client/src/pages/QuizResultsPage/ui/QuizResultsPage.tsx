@@ -10,6 +10,7 @@ import { inviteLinkReducer, fetchSessionByToken, getTakingSession, getTakingSess
 import { attemptReducer, fetchAttemptById, getCurrentAttempt, getAttemptIsLoading, getAttemptSessionQuestions } from '@/entities/Attempt';
 import type { Question, Option } from '@/entities/Question';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
+import { ToggleTheme } from '@/features/ToggleTheme';
 
 const reducers: ReducersList = { inviteLink: inviteLinkReducer, attempt: attemptReducer };
 
@@ -24,7 +25,6 @@ export default function QuizResultsPage() {
     const sessionLoading = useAppSelector(getTakingSessionIsLoading);
     const attempt = useAppSelector(getCurrentAttempt);
     const attemptLoading = useAppSelector(getAttemptIsLoading);
-    // Questions snapshotted at submission time — always available after taking the quiz
     const sessionQuestions = useAppSelector(getAttemptSessionQuestions);
 
     const [expandedExplanations, setExpandedExplanations] = React.useState<Set<string>>(new Set());
@@ -38,7 +38,11 @@ export default function QuizResultsPage() {
     function toggleExplanation(questionId: string) {
         setExpandedExplanations((prev) => {
             const next = new Set(prev);
-            next.has(questionId) ? next.delete(questionId) : next.add(questionId);
+            if (next.has(questionId)) {
+                next.delete(questionId);
+            } else {
+                next.add(questionId);
+            }
             return next;
         });
     }
@@ -59,6 +63,7 @@ export default function QuizResultsPage() {
     if (isLoading) {
         return (
             <div className='flex min-h-screen items-center justify-center bg-background'>
+                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
                 <div className='w-full max-w-2xl space-y-4 px-6'>
                     <div className='h-32 animate-pulse rounded-3xl bg-muted' />
                     <div className='h-24 animate-pulse rounded-3xl bg-muted' />
@@ -71,6 +76,7 @@ export default function QuizResultsPage() {
     if (!attempt) {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center'>
+                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
                 <ClipboardList className='size-12 text-muted-foreground' />
                 <h1 className='text-2xl font-bold'>Результаты не найдены</h1>
                 <Button variant='outline' className='gap-2' onClick={() => navigate('/')}>
@@ -92,6 +98,9 @@ export default function QuizResultsPage() {
             {/* Score card */}
             <div className='border-b border-border bg-card'>
                 <div className='mx-auto max-w-2xl px-4 py-8 text-center md:px-6 md:py-10'>
+                    <div className='mb-2 flex justify-end'>
+                        <ToggleTheme />
+                    </div>
                     <p className='mb-1 text-sm text-muted-foreground'>{attempt.quizTitle}</p>
                     <div className='relative mx-auto mb-4 flex h-32 w-32 items-center justify-center'>
                         <svg className='-rotate-90' viewBox='0 0 100 100' width='128' height='128'>

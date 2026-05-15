@@ -31,29 +31,29 @@ jobs:
         run: pnpm run build
         working-directory: client
 
-  # lint:
-  #   name: ESLint
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - uses: pnpm/action-setup@v4
-  #       with:
-  #         version: latest
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
 
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '22.x'
-  #         cache: 'pnpm'
-  #         cache-dependency-path: client/pnpm-lock.yaml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'pnpm'
+          cache-dependency-path: client/pnpm-lock.yaml
 
-  #     - name: Install dependencies
-  #       run: pnpm install --frozen-lockfile --ignore-scripts
-  #       working-directory: client
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+        working-directory: client
 
-  #     - name: ESLint
-  #       run: pnpm run lint:ts
-  #       working-directory: client
+      - name: ESLint
+        run: pnpm run lint:ts
+        working-directory: client
 
   prettier:
     name: Prettier
@@ -102,3 +102,31 @@ jobs:
       - name: Unit tests
         run: pnpm run test:unit --run
         working-directory: client
+
+  chromatic:
+    name: Screenshot testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'pnpm'
+          cache-dependency-path: client/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+        working-directory: client
+
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: chpt_4f3058a7c89216b
+          workingDir: client

@@ -23,7 +23,7 @@ export function createReduxStore(initialState?: Partial<StateSchema>, asyncReduc
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: { extraArgument } }).concat(rtkApi.middleware)
     });
 
-    // @ts-ignore
+    // @ts-expect-error reducerManager is not part of the official Store type
     store.reducerManager = reducerManager;
 
     return store;

@@ -43,7 +43,7 @@
       "authorId": "1",
       "isPublished": true,
       "createdAt": "2023-10-12T00:00:00.000Z",
-      "attemptsCount": 1241,
+      "attemptsCount": 1243,
       "questionsCount": 3
     },
     {
@@ -233,7 +233,7 @@
       "token": "demo-token-ux",
       "label": "Общая ссылка",
       "maxUses": null,
-      "usedCount": 4,
+      "usedCount": 6,
       "expiresAt": null,
       "isActive": true,
       "createdAt": "2023-10-12T00:00:00.000Z",
@@ -467,6 +467,64 @@
       "completedAt": "2026-05-12T09:40:46.177Z",
       "id": "1778578846270",
       "createdAt": "2026-05-12T09:40:46.270Z"
+    },
+    {
+      "quizId": "1",
+      "quizTitle": "UX/UI Best Practices Quiz",
+      "inviteLinkToken": "demo-token-ux",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIds": [
+            "a"
+          ]
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIds": [
+            "b"
+          ]
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIds": [
+            "66487a21-6725-4188-b7cf-509a8d2d16df"
+          ]
+        }
+      ],
+      "score": 1,
+      "total": 3,
+      "label": "Общая ссылка",
+      "completedAt": "2026-05-15T18:32:08.630Z",
+      "id": "1778869928793",
+      "createdAt": "2026-05-15T18:32:08.793Z"
+    },
+    {
+      "quizId": "1",
+      "quizTitle": "UX/UI Best Practices Quiz",
+      "inviteLinkToken": "demo-token-ux",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIds": [
+            "a"
+          ]
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIds": []
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIds": []
+        }
+      ],
+      "score": 2,
+      "total": 3,
+      "label": "Общая ссылка",
+      "completedAt": "2026-05-15T19:18:09.403Z",
+      "id": "1778872689489",
+      "createdAt": "2026-05-15T19:18:09.489Z"
     }
   ]
 }

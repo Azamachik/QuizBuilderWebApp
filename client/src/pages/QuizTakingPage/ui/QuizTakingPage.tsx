@@ -17,6 +17,8 @@ import { attemptReducer, submitAttempt, setSessionQuestions, getAttemptIsSubmitt
 import type { Question, Option } from '@/entities/Question';
 import type { AttemptAnswer } from '@/entities/Attempt';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
+import { ToggleTheme } from '@/features/ToggleTheme';
+// import './QuizTakingPage.css';
 
 const reducers: ReducersList = { inviteLink: inviteLinkReducer, attempt: attemptReducer };
 
@@ -134,6 +136,7 @@ export default function QuizTakingPage() {
     if (isLoading) {
         return (
             <div className='flex min-h-screen items-center justify-center bg-background'>
+                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
                 <div className='w-full max-w-2xl space-y-4 px-6'>
                     <div className='h-6 w-1/3 animate-pulse rounded-lg bg-muted' />
                     <div className='h-48 animate-pulse rounded-3xl bg-muted' />
@@ -147,6 +150,7 @@ export default function QuizTakingPage() {
     if (error) {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center'>
+                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
                 <ClipboardList className='size-12 text-muted-foreground' />
                 <h1 className='text-2xl font-bold'>Тест недоступен</h1>
                 <p className='text-muted-foreground'>{error}</p>
@@ -159,6 +163,7 @@ export default function QuizTakingPage() {
     if (questions.length === 0) {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center'>
+                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
                 <ClipboardList className='size-12 text-muted-foreground' />
                 <h1 className='text-2xl font-bold'>{session.quiz.title}</h1>
                 <p className='text-muted-foreground'>В этом тесте пока нет вопросов.</p>
@@ -169,6 +174,7 @@ export default function QuizTakingPage() {
     if (phase === 'complete') {
         return (
             <div className='flex min-h-screen flex-col items-center justify-center gap-6 bg-background px-6'>
+                <div className='fixed top-4 right-4 z-50'><ToggleTheme /></div>
                 <div className='flex flex-col items-center gap-4 text-center'>
                     <div className='flex h-20 w-20 items-center justify-center rounded-full bg-action/10'>
                         <CheckCircle2 className='size-10 text-action' />
@@ -212,10 +218,12 @@ export default function QuizTakingPage() {
 
     return (
         <div className='flex min-h-screen flex-col bg-background'>
-            {/* Header */}
             <div className='border-b border-border bg-card px-4 py-4 md:px-6'>
                 <div className='mx-auto max-w-2xl'>
-                    <p className='text-sm text-muted-foreground'>{session.quiz.title}</p>
+                    <div className='flex items-center justify-between'>
+                        <p className='text-sm text-muted-foreground'>{session.quiz.title}</p>
+                        <ToggleTheme />
+                    </div>
                     <div className='mt-2 flex items-center gap-2'>
                         <div className='h-1.5 flex-1 overflow-hidden rounded-full bg-muted'>
                             <div
@@ -230,12 +238,10 @@ export default function QuizTakingPage() {
                 </div>
             </div>
 
-            {/* Question */}
             <div className='flex flex-1 flex-col'>
                 <div className='mx-auto w-full max-w-2xl flex-1 px-4 py-6 md:px-6 md:py-8'>
                     {requiredWarning && (
                         <div className='mb-4 flex items-center gap-2 rounded-2xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive'>
-                            <span className='shrink-0'>⚠</span>
                             Этот вопрос обязателен — пожалуйста, ответьте перед продолжением.
                         </div>
                     )}
@@ -280,7 +286,7 @@ export default function QuizTakingPage() {
                                                 isSelected ? 'border-action bg-action' : 'border-muted-foreground'
                                             } ${currentQuestion.type === 'multiple' ? 'rounded-md' : 'rounded-full'}`}
                                         >
-                                            {isSelected && <span className='block h-2 w-2 rounded-full bg-action-foreground' />}
+                                            {isSelected && <span className='block h-2 w-2 rounded-full bg-white' />}
                                         </span>
                                         {option.text}
                                     </button>
@@ -291,13 +297,12 @@ export default function QuizTakingPage() {
                 </div>
             </div>
 
-            {/* Navigation */}
-            <div className='border-t border-border bg-card px-4 py-4 md:px-6'>
+            <div className='sticky bottom-0 z-10 border-t border-border bg-card px-4 py-4 md:px-6'>
                 <div className='mx-auto flex max-w-2xl items-center justify-between gap-3'>
                     <Button variant='outline' className='gap-2 rounded-xl' onClick={handleBack} disabled={currentIndex === 0}>
                         <ChevronLeft className='size-4' /> Назад
                     </Button>
-                    <Button variant='action' className='gap-2 rounded-xl px-6' onClick={handleNext}>
+                    <Button variant='action' className='bg-action gap-2 rounded-xl px-6' onClick={handleNext}>
                         {currentIndex < totalCount - 1 ? (
                             <>
                                 Далее <ChevronRight className='size-4' />

@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/app/styles/global.css';
+import 'loki/configure-react';
 
 const preview: Preview = {
     parameters: {
