@@ -21,7 +21,7 @@ export default defineConfig({
   },
   define: {
     __IS_DEV__: JSON.stringify(true),
-    __API__: JSON.stringify('quizbuilderserver-mhjcsfc7.b4a.run/'),
+    __API__: JSON.stringify('https://quizbuilderserver-mhjcsfc7.b4a.run/'),
     __PROJECT__: JSON.stringify('frontend')
   },
   test: {
