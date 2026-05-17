@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Plus } from 'lucide-react';
+import { toast } from 'sonner';
 import {
     QuizCard,
     QuizCardSkeleton,
@@ -56,6 +57,14 @@ export function QuizzesPageMobile() {
         dispatch(deleteQuiz(id));
     }
 
+    function handleCreateLink(quiz: Quiz) {
+        if (!quiz.isPublished) {
+            toast.warning('Опубликуйте тест перед созданием ссылки');
+            return;
+        }
+        setLinkQuiz(quiz);
+    }
+
     return (
         <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
             <div className='px-4 py-6'>
@@ -73,7 +82,7 @@ export function QuizzesPageMobile() {
                                 quiz={quiz}
                                 onEdit={setEditingQuiz}
                                 onToggleStatus={handleToggleStatus}
-                                onCreateLink={setLinkQuiz}
+                                onCreateLink={handleCreateLink}
                                 onDelete={handleDelete}
                             />
                         ))}

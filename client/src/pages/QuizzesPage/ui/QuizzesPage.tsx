@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LayoutGrid, List, Plus } from 'lucide-react';
+import { toast } from 'sonner';
 import { cn } from '@/shared/lib/utils/utils';
 import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile/useIsMobile';
 import { QuizzesPageMobile } from './QuizzesPage.mobile';
@@ -69,6 +70,14 @@ function QuizzesPageDesktop() {
         dispatch(deleteQuiz(id));
     }
 
+    function handleCreateLink(quiz: Quiz) {
+        if (!quiz.isPublished) {
+            toast.warning('Опубликуйте тест перед созданием ссылки');
+            return;
+        }
+        setLinkQuiz(quiz);
+    }
+
     return (
         <main className='min-h-[calc(100vh-3.5rem)] bg-background'>
             <div className='mx-auto max-w-5xl px-6 py-10'>
@@ -115,7 +124,7 @@ function QuizzesPageDesktop() {
                                 quiz={quiz}
                                 onEdit={setEditingQuiz}
                                 onToggleStatus={handleToggleStatus}
-                                onCreateLink={setLinkQuiz}
+                                onCreateLink={handleCreateLink}
                                 onDelete={handleDelete}
                             />
                         ))}
@@ -128,7 +137,7 @@ function QuizzesPageDesktop() {
                                 quiz={quiz}
                                 onEdit={setEditingQuiz}
                                 onToggleStatus={handleToggleStatus}
-                                onCreateLink={setLinkQuiz}
+                                onCreateLink={handleCreateLink}
                                 onDelete={handleDelete}
                             />
                         ))}

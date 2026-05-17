@@ -95,8 +95,9 @@ export function QuizCard({ quiz, onEdit, onToggleStatus, onCreateLink, onDelete 
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <button
+                                    data-testid='btn-create-link'
                                     onClick={() => onCreateLink(quiz)}
-                                    className='flex h-8 w-8 items-center justify-center rounded-xl bg-muted text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground'
+                                    className={`flex h-8 w-8 items-center justify-center rounded-xl bg-muted text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground${!quiz.isPublished ? ' opacity-50' : ''}`}
                                 >
                                     <Link2 className='size-3.5' />
                                 </button>

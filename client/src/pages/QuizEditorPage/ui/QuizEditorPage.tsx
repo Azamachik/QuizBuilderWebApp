@@ -172,7 +172,17 @@ function QuizEditorPageDesktop() {
                     <Save className='size-4' />
                     {isSaving ? 'Сохранение...' : 'Сохранить'}
                 </Button>
-                <Button variant='outline' className='gap-2' onClick={() => setLinkOpen(true)}>
+                <Button
+                    variant='outline'
+                    className={`gap-2${!currentQuiz?.isPublished ? ' opacity-50' : ''}`}
+                    onClick={() => {
+                        if (!currentQuiz?.isPublished) {
+                            toast.warning('Опубликуйте тест перед созданием ссылки');
+                            return;
+                        }
+                        setLinkOpen(true);
+                    }}
+                >
                     <Link2 className='size-4' /> Создать ссылку
                 </Button>
                 <Button variant='action' className='gap-2' onClick={handlePublish} disabled={!currentQuiz}>

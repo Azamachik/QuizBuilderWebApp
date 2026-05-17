@@ -51,7 +51,7 @@
       "title": "Figma Shortcuts Masterclass",
       "description": "",
       "authorId": "1",
-      "isPublished": true,
+      "isPublished": false,
       "createdAt": "2023-10-12T00:00:00.000Z",
       "attemptsCount": 393,
       "questionsCount": 1
@@ -61,7 +61,7 @@
       "description": "",
       "authorId": "1",
       "isPublished": true,
-      "attemptsCount": 1,
+      "attemptsCount": 2,
       "createdAt": "2026-05-10T22:34:07.903Z",
       "id": "3ua_U6o",
       "questionsCount": 3
@@ -70,10 +70,11 @@
       "title": "fasd",
       "description": "",
       "authorId": "1",
-      "isPublished": false,
+      "isPublished": true,
       "attemptsCount": 0,
       "createdAt": "2026-05-13T23:06:24.799Z",
-      "id": "GQ5uOIQ"
+      "id": "GQ5uOIQ",
+      "questionsCount": 1
     }
   ],
   "questions": [
@@ -224,6 +225,26 @@
       "quizId": "3ua_U6o",
       "order": 2,
       "id": "1i7r5Yy"
+    },
+    {
+      "text": "sdfsdf",
+      "type": "single",
+      "options": [
+        {
+          "id": "decc1789-c337-4884-b59f-e0c083aa4f81",
+          "text": "Первый вариант",
+          "isCorrect": true
+        },
+        {
+          "id": "613848fc-c903-49eb-b3fc-63fdbb7325db",
+          "text": "Второй вариант",
+          "isCorrect": false
+        }
+      ],
+      "required": true,
+      "quizId": "GQ5uOIQ",
+      "order": 1,
+      "id": "R6btgBe"
     }
   ],
   "inviteLinks": [
@@ -304,7 +325,7 @@
       "token": "g5lte-u096b-jskf8",
       "label": "4311",
       "maxUses": 1,
-      "usedCount": 0,
+      "usedCount": 1,
       "expiresAt": null,
       "isActive": true,
       "createdAt": "2026-05-11T17:20:44.373Z",
@@ -525,6 +546,36 @@
       "completedAt": "2026-05-15T19:18:09.403Z",
       "id": "1778872689489",
       "createdAt": "2026-05-15T19:18:09.489Z"
+    },
+    {
+      "quizId": "3ua_U6o",
+      "quizTitle": "asdf",
+      "inviteLinkToken": "g5lte-u096b-jskf8",
+      "answers": [
+        {
+          "questionId": "kYfPtVj",
+          "selectedOptionIds": [
+            "4e338abb-0c71-4e91-884c-7cd2cc195d8d"
+          ]
+        },
+        {
+          "questionId": "1i7r5Yy",
+          "selectedOptionIds": [
+            "fc5ae04c-4328-464f-a3af-738358b50bfb"
+          ]
+        },
+        {
+          "questionId": "VyLSK3x",
+          "selectedOptionIds": [],
+          "textAnswer": "sdf"
+        }
+      ],
+      "score": 1,
+      "total": 2,
+      "label": "4311",
+      "completedAt": "2026-05-17T14:05:10.398Z",
+      "id": "1779026710465",
+      "createdAt": "2026-05-17T14:05:10.466Z"
     }
   ]
 }

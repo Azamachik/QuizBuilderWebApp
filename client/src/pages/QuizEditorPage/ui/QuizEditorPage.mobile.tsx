@@ -167,7 +167,17 @@ export function QuizEditorPageMobile() {
                         <Save className='size-3.5' />
                         {isSaving ? 'Сохраняем...' : 'Сохранить'}
                     </Button>
-                    <Button variant='outline' className='flex-1 gap-1.5 text-xs' onClick={() => setLinkOpen(true)}>
+                    <Button
+                        variant='outline'
+                        className={`flex-1 gap-1.5 text-xs${!currentQuiz?.isPublished ? ' opacity-50' : ''}`}
+                        onClick={() => {
+                            if (!currentQuiz?.isPublished) {
+                                toast.warning('Опубликуйте тест перед созданием ссылки');
+                                return;
+                            }
+                            setLinkOpen(true);
+                        }}
+                    >
                         <Link2 className='size-3.5' /> Создать ссылку
                     </Button>
                 </div>
