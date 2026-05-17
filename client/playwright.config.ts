@@ -10,7 +10,7 @@ export default defineConfig({
     workers: process.env.CI ? 1 : undefined,
     reporter: 'html',
     use: {
-        baseURL: API_URL,
+        baseURL: 'http://localhost:5173',
         trace: 'on-first-retry',
     },
     projects: [
@@ -21,7 +21,7 @@ export default defineConfig({
     ],
     webServer: {
         command: 'pnpm run start',
-        url: API_URL,
+        url: 'http://localhost:5173',
         reuseExistingServer: !process.env.CI,
     },
 });

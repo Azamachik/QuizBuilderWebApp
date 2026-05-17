@@ -21,7 +21,14 @@ import {
     getQuestionsIsSaving
 } from '@/entities/Question';
 import type { Question } from '@/entities/Question';
-import { quizReducer, fetchQuizById, toggleQuizStatus, getCurrentQuiz, getCurrentQuizIsLoading, getCurrentQuizError } from '@/entities/Quiz';
+import {
+    quizReducer,
+    fetchQuizById,
+    toggleQuizStatus,
+    getCurrentQuiz,
+    getCurrentQuizIsLoading,
+    getCurrentQuizError
+} from '@/entities/Quiz';
 import { CreateQuestionModal } from '@/features/CreateQuestion';
 import type { QuestionFormData } from '@/features/CreateQuestion';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
