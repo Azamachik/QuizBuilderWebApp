@@ -4,6 +4,7 @@ export interface Profile {
     lastName: string;
     avatarUrl: string;
     createdAt?: string;
+    avgScore?: number | null;
 }
 
 export interface ProfileSchema {

@@ -6,4 +6,5 @@ export interface QuizSchema {
     error?: string;
     currentQuiz?: Quiz;
     currentQuizIsLoading: boolean;
+    currentQuizError?: string;
 }

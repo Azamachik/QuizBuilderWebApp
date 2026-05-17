@@ -35,13 +35,15 @@ export const quizSlice = createSlice({
             // fetchQuizById
             .addCase(fetchQuizById.pending, (state) => {
                 state.currentQuizIsLoading = true;
+                state.currentQuizError = undefined;
             })
             .addCase(fetchQuizById.fulfilled, (state, { payload }) => {
                 state.currentQuizIsLoading = false;
                 state.currentQuiz = payload;
             })
-            .addCase(fetchQuizById.rejected, (state) => {
+            .addCase(fetchQuizById.rejected, (state, { payload }) => {
                 state.currentQuizIsLoading = false;
+                state.currentQuizError = payload;
             })
             // createQuiz
             .addCase(createQuiz.fulfilled, (state, { payload }) => {

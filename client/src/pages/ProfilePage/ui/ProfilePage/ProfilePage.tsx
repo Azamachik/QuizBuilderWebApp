@@ -122,7 +122,10 @@ function ProfilePageDesktop() {
                     <StatCard value={stats.published} label='Опубликовано' />
                     <StatCard value={stats.drafts} label='Черновики' />
                     <StatCard value={stats.attempts} label='Прохождений' />
-                    <StatCard value='—' label='Средний результат' />
+                    <StatCard
+                        value={display.avgScore != null ? `${display.avgScore}%` : '—'}
+                        label='Средний результат'
+                    />
                 </div>
 
                 <ActivityHeatmap quizDates={quizDates} />

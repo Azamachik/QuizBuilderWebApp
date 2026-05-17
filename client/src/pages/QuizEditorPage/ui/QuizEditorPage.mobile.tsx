@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link2, Plus, Save, Send } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/shared/ui/Button/Button';
@@ -19,7 +19,7 @@ import {
     getQuestionsIsSaving
 } from '@/entities/Question';
 import type { Question } from '@/entities/Question';
-import { quizReducer, fetchQuizById, toggleQuizStatus, getCurrentQuiz, getCurrentQuizIsLoading } from '@/entities/Quiz';
+import { quizReducer, fetchQuizById, toggleQuizStatus, getCurrentQuiz, getCurrentQuizIsLoading, getCurrentQuizError } from '@/entities/Quiz';
 import { CreateQuestionModal } from '@/features/CreateQuestion';
 import type { QuestionFormData } from '@/features/CreateQuestion';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
@@ -33,10 +33,12 @@ export function QuizEditorPageMobile() {
     useDynamicModuleLoader(reducers, false);
 
     const { id: quizId = '' } = useParams<{ id: string }>();
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const currentQuiz = useAppSelector(getCurrentQuiz);
     const quizIsLoading = useAppSelector(getCurrentQuizIsLoading);
+    const quizError = useAppSelector(getCurrentQuizError);
     const questions = useAppSelector(getQuestions);
     const questionsLoading = useAppSelector(getQuestionsIsLoading);
     const isSaving = useAppSelector(getQuestionsIsSaving);
@@ -51,6 +53,10 @@ export function QuizEditorPageMobile() {
             dispatch(fetchQuestions(quizId));
         }
     }, [dispatch, quizId]);
+
+    React.useEffect(() => {
+        if (quizError) navigate('/not-found', { replace: true });
+    }, [quizError, navigate]);
 
     const sorted = [...questions].sort((a, b) => a.order - b.order);
 

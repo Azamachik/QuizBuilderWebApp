@@ -5,6 +5,7 @@ export const getQuizzesIsLoading = (state: StateSchema) => state.quizzes?.isLoad
 export const getQuizzesError = (state: StateSchema) => state.quizzes?.error;
 export const getCurrentQuiz = (state: StateSchema) => state.quizzes?.currentQuiz;
 export const getCurrentQuizIsLoading = (state: StateSchema) => state.quizzes?.currentQuizIsLoading ?? false;
+export const getCurrentQuizError = (state: StateSchema) => state.quizzes?.currentQuizError;
 
 export const getProfileStats = (state: StateSchema) => {
     const quizzes = state.quizzes?.quizzes ?? [];

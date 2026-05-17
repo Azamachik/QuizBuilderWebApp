@@ -53,7 +53,7 @@ function getCellDate(wi: number, di: number): Date {
 }
 
 function toDateKey(date: Date): string {
-    return date.toISOString().slice(0, 10);
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
 function formatDate(date: Date): string {
@@ -115,7 +115,7 @@ interface ActivityHeatmapProps {
 export function ActivityHeatmap({ quizDates = [] }: ActivityHeatmapProps) {
     const countByDay: Record<string, number> = {};
     for (const iso of quizDates) {
-        const key = iso.slice(0, 10);
+        const key = toDateKey(new Date(iso));
         countByDay[key] = (countByDay[key] ?? 0) + 1;
     }
 
@@ -128,9 +128,11 @@ export function ActivityHeatmap({ quizDates = [] }: ActivityHeatmapProps) {
     );
 
     const monthLabels = buildMonthLabels();
+    const startKey = toDateKey(HEATMAP_START);
+    const todayKey = toDateKey(TODAY);
     const yearTotal = quizDates.filter((iso) => {
-        const d = new Date(iso);
-        return d >= HEATMAP_START && d <= TODAY;
+        const key = toDateKey(new Date(iso));
+        return key >= startKey && key <= todayKey;
     }).length;
 
     return (
