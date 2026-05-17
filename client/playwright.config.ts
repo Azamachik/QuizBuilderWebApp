@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-export const API_URL = process.env.API_URL ?? 'http://localhost:8000/';
+export const API_URL = process.env.API_URL ?? 'https://quizbuilderserver-production.up.railway.app/';
 
 export default defineConfig({
     testDir: './playwright/e2e',
