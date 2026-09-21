@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { Shield } from 'lucide-react';
 import { ToggleTheme } from '@/features/ToggleTheme';
 import Favicon from '@/shared/assets/icons/favicon.svg?react';
 import Logout from '@/shared/assets/icons/logout.svg?react';
@@ -10,7 +11,7 @@ import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
 import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
 import { useIsMobile } from '@/shared/lib/helpers/hooks/useIsMobile/useIsMobile';
-import { getUserData, logout } from '@/entities/User';
+import { getUserData, getUserRole, logout } from '@/entities/User';
 import { HeaderMobile } from './Header.mobile';
 import './Header.css';
 
@@ -31,6 +32,7 @@ function HeaderDesktop() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const userData = useAppSelector(getUserData);
+    const userRole = useAppSelector(getUserRole);
 
     function handleLogout() {
         dispatch(logout());
@@ -50,6 +52,12 @@ function HeaderDesktop() {
                             <Link to={`${RoutePath[AppRoutes.QUIZZES]}?create=true`}>+ Создать тест</Link>
                         </Button>
                         <NavLink to={RoutePath[AppRoutes.QUIZZES]}>Тесты</NavLink>
+                        {userRole === 'admin' && (
+                            <NavLink to={RoutePath[AppRoutes.ADMIN]} className='flex items-center gap-1.5'>
+                                <Shield className='size-3.5' />
+                                Админ
+                            </NavLink>
+                        )}
                     </div>
 
                     <div className='flex items-center gap-2'>

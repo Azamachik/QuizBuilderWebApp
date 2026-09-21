@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-DnJy8xQt.js";import{t}from"./jsx-runtime-BGU0mfus.js";import{r as n,t as r}from"./dist-2b_nJcmm.js";var i,a,o=e((()=>{r(),i=t(),a=e=>(0,i.jsx)(n,{children:(0,i.jsx)(e,{})}),a.__docgenInfo={description:``,methods:[],displayName:`BrowserDecorator`}}));export{o as n,a as t};

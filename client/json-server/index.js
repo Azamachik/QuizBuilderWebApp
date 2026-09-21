@@ -15,11 +15,12 @@ server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
 function readDb() {
-    return JSON.parse(fs.readFileSync(resolve(__dirname, 'db.json'), 'UTF-8'));
+    return router.db.getState();
 }
 
 function writeDb(db) {
-    fs.writeFileSync(resolve(__dirname, 'db.json'), JSON.stringify(db, null, 2));
+    router.db.setState(db);
+    router.db.write();
 }
 
 // Login by email
@@ -155,6 +156,25 @@ server.get('/public/attempts/:id', (req, res) => {
         const attempt = (db.attempts ?? []).find((a) => a.id === id);
         if (!attempt) return res.status(404).json({ message: 'Попытка не найдена' });
         return res.json(attempt);
+    } catch (e) {
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+server.get('/profile/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const db = readDb();
+        const profile = (db.profile ?? []).find((p) => p.id === id);
+        if (!profile) return res.status(404).json({ message: 'Профиль не найден' });
+
+        const quizIds = new Set((db.quizzes ?? []).filter((q) => q.authorId === id).map((q) => q.id));
+        const attempts = (db.attempts ?? []).filter((a) => quizIds.has(a.quizId) && a.total > 0);
+        const avgScore = attempts.length > 0
+            ? Math.round(attempts.reduce((sum, a) => sum + (a.score / a.total) * 100, 0) / attempts.length)
+            : null;
+
+        return res.json({ ...profile, avgScore });
     } catch (e) {
         return res.status(500).json({ message: e.message });
     }

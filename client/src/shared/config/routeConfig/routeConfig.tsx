@@ -8,11 +8,13 @@ import { QuizEditorPage } from '@/pages/QuizEditorPage';
 import { QuizTakingPage } from '@/pages/QuizTakingPage';
 import { QuizResultsPage } from '@/pages/QuizResultsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage/ui/NotFoundPage';
+import { AdminPage } from '@/pages/AdminPage';
 
 export interface AppRouteProps {
     path: string;
     element: ReactNode;
     authOnly?: boolean;
+    adminOnly?: boolean;
     guestOnly?: boolean;
 }
 
@@ -25,6 +27,7 @@ export const AppRoutes = {
     QUIZ_RESULTS: 'quiz_results',
     LOGIN: 'login',
     REGISTER: 'register',
+    ADMIN: 'admin',
     NOT_FOUND: 'not_found'
 } as const;
 
@@ -39,6 +42,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.QUIZ_RESULTS]: '/quiz/:token/results/:attemptId',
     [AppRoutes.LOGIN]: '/login',
     [AppRoutes.REGISTER]: '/register',
+    [AppRoutes.ADMIN]: '/admin',
     [AppRoutes.NOT_FOUND]: '*'
 };
 
@@ -80,6 +84,11 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePath[AppRoutes.REGISTER],
         element: <RegisterPage />,
         guestOnly: true
+    },
+    [AppRoutes.ADMIN]: {
+        path: RoutePath[AppRoutes.ADMIN],
+        element: <AdminPage />,
+        adminOnly: true
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath[AppRoutes.NOT_FOUND],

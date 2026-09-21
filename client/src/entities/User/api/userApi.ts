@@ -5,8 +5,11 @@ export const userApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getUser: build.query<User, string>({
             query: (id) => `/users/${id}`
+        }),
+        getAllUsers: build.query<User[], void>({
+            query: () => '/users'
         })
     })
 });
 
-export const { useGetUserQuery } = userApi;
+export const { useGetUserQuery, useGetAllUsersQuery } = userApi;

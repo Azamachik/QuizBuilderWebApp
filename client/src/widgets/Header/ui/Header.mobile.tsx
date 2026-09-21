@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LogOut, Menu, Plus, User, X } from 'lucide-react';
+import { LogOut, Menu, Plus, Shield, User, X } from 'lucide-react';
 import { ToggleTheme } from '@/features/ToggleTheme';
 import Favicon from '@/shared/assets/icons/favicon.svg?react';
 import { Button } from '@/shared/ui/Button/Button';
@@ -8,7 +8,7 @@ import { NavLink } from '@/shared/ui/NavLink/NavLink';
 import { RoutePath, AppRoutes } from '@/shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from '@/shared/lib/helpers/hooks/useAppDispatch/useAppDispatch';
 import { useAppSelector } from '@/shared/lib/helpers/hooks/useAppSelector/useAppSelector';
-import { getUserData, logout } from '@/entities/User';
+import { getUserData, getUserRole, logout } from '@/entities/User';
 
 const NAV_LINKS = [
     { label: 'Возможности', href: '/#features' },
@@ -20,6 +20,7 @@ export function HeaderMobile() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const userData = useAppSelector(getUserData);
+    const userRole = useAppSelector(getUserRole);
     const [open, setOpen] = useState(false);
 
     function handleLogout() {

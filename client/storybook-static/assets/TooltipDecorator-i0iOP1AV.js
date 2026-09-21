@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-DnJy8xQt.js";import{t}from"./jsx-runtime-BGU0mfus.js";import{a as n,r}from"./Tooltip-BaFKnH-V.js";var i,a,o=e((()=>{n(),i=t(),a=e=>(0,i.jsx)(r,{children:(0,i.jsx)(e,{})}),a.__docgenInfo={description:``,methods:[],displayName:`TooltipDecorator`}}));export{o as n,a as t};

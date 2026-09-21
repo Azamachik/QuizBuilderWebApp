@@ -1,0 +1,1 @@
+import{a as e,n as t}from"./chunk-DnJy8xQt.js";import{O as n}from"./iframe-C_i6FxQI.js";var r,i,a,o=t((()=>{r=e(n(),1),i={theme:`system`,setTheme:()=>null},a=(0,r.createContext)(i)})),s,c,l=t((()=>{o(),s=e(n(),1),c=()=>{let e=(0,s.useContext)(a);if(e===void 0)throw Error(`useTheme must be used within a ThemeProvider`);return e}}));export{c as n,l as t};

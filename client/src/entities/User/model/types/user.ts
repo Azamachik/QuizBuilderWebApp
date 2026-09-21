@@ -1,3 +1,5 @@
+export type UserRole = 'admin' | 'user';
+
 export interface User {
     id: string;
     username: string;
@@ -5,6 +7,7 @@ export interface User {
     token: string;
     avatar?: string;
     createdAt?: string;
+    role?: UserRole;
 }
 
 export interface UserSchema {

@@ -7,7 +7,7 @@
       "password": "1234",
       "token": "token_admin",
       "avatar": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
-      "createdAt": "12.10.2023"
+      "createdAt": "12.05.2026"
     },
     {
       "id": "1778433741252",
@@ -17,6 +17,15 @@
       "avatar": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
       "token": "token_1778433741252",
       "createdAt": "10.05.2026"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "email": "user@mail.ru",
+      "password": "1234",
+      "token": "token_user",
+      "avatar": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
+      "createdAt": "17.05.2026"
     }
   ],
   "profile": [
@@ -25,7 +34,7 @@
       "firstName": "Азамат_",
       "lastName": "sdf",
       "avatarUrl": "https://avatars.mds.yandex.net/i?id=173df4e04c7b771f188bb66f67851589-5652956-images-thumbs&n=13",
-      "createdAt": "12.10.2023"
+      "createdAt": "12.05.2026"
     },
     {
       "id": "1778433741252",
@@ -33,549 +42,1186 @@
       "lastName": "",
       "avatarUrl": "",
       "createdAt": "10.05.2026"
+    },
+    {
+      "id": "2",
+      "firstName": "User",
+      "lastName": "",
+      "avatarUrl": "",
+      "createdAt": "17.05.2026"
     }
   ],
   "quizzes": [
     {
-      "id": "1",
-      "title": "UX/UI Best Practices Quiz",
-      "description": "Проверьте свои знания в области UX/UI дизайна",
+      "id": "quiz-js",
+      "title": "JavaScript: Основы и продвинутые концепции",
+      "description": "Проверьте знания JavaScript: типы данных, замыкания, асинхронность и многое другое",
       "authorId": "1",
       "isPublished": true,
-      "createdAt": "2023-10-12T00:00:00.000Z",
-      "attemptsCount": 1243,
-      "questionsCount": 3
-    },
-    {
-      "id": "3",
-      "title": "Figma Shortcuts Masterclass",
-      "description": "",
-      "authorId": "1",
-      "isPublished": false,
-      "createdAt": "2023-10-12T00:00:00.000Z",
-      "attemptsCount": 393,
-      "questionsCount": 1
-    },
-    {
-      "title": "asdf",
-      "description": "",
-      "authorId": "1",
-      "isPublished": true,
-      "attemptsCount": 2,
-      "createdAt": "2026-05-10T22:34:07.903Z",
-      "id": "3ua_U6o",
-      "questionsCount": 3
-    },
-    {
-      "title": "fasd",
-      "description": "",
-      "authorId": "1",
-      "isPublished": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "attemptsCount": 0,
-      "createdAt": "2026-05-13T23:06:24.799Z",
-      "id": "GQ5uOIQ",
-      "questionsCount": 1
+      "questionsCount": 10
+    },
+    {
+      "id": "quiz-ts",
+      "title": "TypeScript: Типизация и возможности",
+      "description": "Тест на знание TypeScript: типы, интерфейсы, дженерики и advanced-концепции",
+      "authorId": "1",
+      "isPublished": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 10
+    },
+    {
+      "id": "quiz-html",
+      "title": "HTML: Семантика и стандарты",
+      "description": "Проверьте знания HTML: семантические теги, атрибуты, доступность",
+      "authorId": "1",
+      "isPublished": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 10
+    },
+    {
+      "id": "quiz-css",
+      "title": "CSS: Стили, макеты и позиционирование",
+      "description": "Тест на знание CSS: специфичность, flexbox, grid, позиционирование и анимации",
+      "authorId": "1",
+      "isPublished": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 10
+    },
+    {
+      "id": "quiz-react",
+      "title": "React: Компоненты, хуки и паттерны",
+      "description": "Проверьте знания React: хуки, Virtual DOM, жизненный цикл и оптимизация",
+      "authorId": "1",
+      "isPublished": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 10
+    },
+    {
+      "id": "quiz-math",
+      "title": "Математика: Основы и базовые концепции",
+      "description": "Проверьте знания математики: арифметика, геометрия, тригонометрия",
+      "authorId": "2",
+      "isPublished": true,
+      "createdAt": "2026-05-17T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 5
+    },
+    {
+      "id": "quiz-english",
+      "title": "Английский язык: Грамматика и лексика",
+      "description": "Тест на знание английского: времена, предлоги, словарный запас",
+      "authorId": "2",
+      "isPublished": true,
+      "createdAt": "2026-05-17T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 5
+    },
+    {
+      "id": "quiz-russian",
+      "title": "Русский язык: Грамматика и орфография",
+      "description": "Тест на знание русского языка: правописание, морфология, синтаксис",
+      "authorId": "2",
+      "isPublished": true,
+      "createdAt": "2026-05-17T00:00:00.000Z",
+      "attemptsCount": 0,
+      "questionsCount": 5
     }
   ],
   "questions": [
     {
-      "id": "q1",
-      "quizId": "1",
+      "id": "js-q1",
+      "quizId": "quiz-js",
       "order": 1,
-      "text": "Что такое Закон Фиттса?",
+      "text": "Что вернёт выражение `typeof null`?",
       "type": "single",
       "options": [
-        {
-          "id": "a",
-          "text": "Чем дальше и меньше цель, тем больше времени требуется на ее достижение",
-          "isCorrect": true
-        },
-        {
-          "id": "b",
-          "text": "Время принятия решения зависит от количества вариантов",
-          "isCorrect": false
-        },
-        {
-          "id": "c",
-          "text": "Люди запоминают первую и последнюю часть информации лучше",
-          "isCorrect": false
-        }
+        { "id": "js-q1-a", "text": "\"object\"", "isCorrect": true },
+        { "id": "js-q1-b", "text": "\"null\"", "isCorrect": false },
+        { "id": "js-q1-c", "text": "\"undefined\"", "isCorrect": false },
+        { "id": "js-q1-d", "text": "\"boolean\"", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Это историческая ошибка JavaScript. typeof null возвращает \"object\", хотя null не является объектом."
+    },
+    {
+      "id": "js-q2",
+      "quizId": "quiz-js",
+      "order": 2,
+      "text": "Что такое замыкание (closure) в JavaScript?",
+      "type": "single",
+      "options": [
+        { "id": "js-q2-a", "text": "Функция, имеющая доступ к переменным внешней функции даже после завершения её выполнения", "isCorrect": true },
+        { "id": "js-q2-b", "text": "Механизм защиты переменных от изменения извне", "isCorrect": false },
+        { "id": "js-q2-c", "text": "Способ объявления глобальных переменных", "isCorrect": false },
+        { "id": "js-q2-d", "text": "Метод глубокого копирования объектов", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Замыкание — это функция вместе со своим лексическим окружением (переменными из внешних областей видимости)."
+    },
+    {
+      "id": "js-q3",
+      "quizId": "quiz-js",
+      "order": 3,
+      "text": "В чём разница между операторами `==` и `===`?",
+      "type": "single",
+      "options": [
+        { "id": "js-q3-a", "text": "`===` проверяет значение И тип; `==` приводит типы перед сравнением", "isCorrect": true },
+        { "id": "js-q3-b", "text": "`===` работает только с числами, `==` — с любыми типами", "isCorrect": false },
+        { "id": "js-q3-c", "text": "Никакой разницы нет, это синонимы", "isCorrect": false },
+        { "id": "js-q3-d", "text": "`==` проверяет значение и тип, `===` — только значение", "isCorrect": false }
       ],
       "required": true
     },
     {
-      "id": "q2",
-      "quizId": "1",
+      "id": "js-q4",
+      "quizId": "quiz-js",
+      "order": 4,
+      "text": "Что выведет `console.log(0.1 + 0.2 === 0.3)`?",
+      "type": "single",
+      "options": [
+        { "id": "js-q4-a", "text": "false", "isCorrect": true },
+        { "id": "js-q4-b", "text": "true", "isCorrect": false },
+        { "id": "js-q4-c", "text": "NaN", "isCorrect": false },
+        { "id": "js-q4-d", "text": "undefined", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Из-за особенностей представления чисел с плавающей точкой (IEEE 754) результат 0.1 + 0.2 равен 0.30000000000000004, а не 0.3."
+    },
+    {
+      "id": "js-q5",
+      "quizId": "quiz-js",
+      "order": 5,
+      "text": "Какие из методов массива возвращают новый массив?",
+      "type": "multiple",
+      "options": [
+        { "id": "js-q5-a", "text": "map()", "isCorrect": true },
+        { "id": "js-q5-b", "text": "filter()", "isCorrect": true },
+        { "id": "js-q5-c", "text": "forEach()", "isCorrect": false },
+        { "id": "js-q5-d", "text": "push()", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "map() и filter() возвращают новый массив. forEach() возвращает undefined, push() изменяет исходный массив и возвращает его длину."
+    },
+    {
+      "id": "js-q6",
+      "quizId": "quiz-js",
+      "order": 6,
+      "text": "Что такое `Promise` в JavaScript?",
+      "type": "single",
+      "options": [
+        { "id": "js-q6-a", "text": "Объект, представляющий результат асинхронной операции, которая может завершиться успехом или ошибкой", "isCorrect": true },
+        { "id": "js-q6-b", "text": "Синхронная функция для обработки ошибок", "isCorrect": false },
+        { "id": "js-q6-c", "text": "Способ блокировать выполнение кода до получения результата", "isCorrect": false },
+        { "id": "js-q6-d", "text": "Метод для создания глубоких копий объектов", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "js-q7",
+      "quizId": "quiz-js",
+      "order": 7,
+      "text": "Что выведет `console.log(1 + \"2\" + 3)`?",
+      "type": "single",
+      "options": [
+        { "id": "js-q7-a", "text": "\"123\"", "isCorrect": true },
+        { "id": "js-q7-b", "text": "6", "isCorrect": false },
+        { "id": "js-q7-c", "text": "\"15\"", "isCorrect": false },
+        { "id": "js-q7-d", "text": "NaN", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "1 + \"2\" даёт \"12\" (число приводится к строке), затем \"12\" + 3 даёт \"123\"."
+    },
+    {
+      "id": "js-q8",
+      "quizId": "quiz-js",
+      "order": 8,
+      "text": "Что такое hoisting в JavaScript?",
+      "type": "single",
+      "options": [
+        { "id": "js-q8-a", "text": "Механизм, при котором объявления переменных и функций поднимаются в начало своей области видимости на этапе компиляции", "isCorrect": true },
+        { "id": "js-q8-b", "text": "Способ оптимизации кода JS-движком во время выполнения", "isCorrect": false },
+        { "id": "js-q8-c", "text": "Механизм асинхронного выполнения функций", "isCorrect": false },
+        { "id": "js-q8-d", "text": "Способ создания приватных переменных в модуле", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "js-q9",
+      "quizId": "quiz-js",
+      "order": 9,
+      "text": "Что делает метод `Array.prototype.reduce`?",
+      "type": "single",
+      "options": [
+        { "id": "js-q9-a", "text": "Применяет функцию к аккумулятору и каждому элементу массива, сводя его к единственному значению", "isCorrect": true },
+        { "id": "js-q9-b", "text": "Удаляет дублирующиеся элементы из массива", "isCorrect": false },
+        { "id": "js-q9-c", "text": "Сортирует элементы массива по убыванию", "isCorrect": false },
+        { "id": "js-q9-d", "text": "Разбивает массив на подмассивы заданного размера", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "js-q10",
+      "quizId": "quiz-js",
+      "order": 10,
+      "text": "В чём разница между `let`, `const` и `var`?",
+      "type": "single",
+      "options": [
+        { "id": "js-q10-a", "text": "`var` — функциональная область видимости и hoisting; `let`/`const` — блочная; `const` нельзя переприсвоить", "isCorrect": true },
+        { "id": "js-q10-b", "text": "`let` — глобальная переменная, `const` — локальная, `var` — блочная", "isCorrect": false },
+        { "id": "js-q10-c", "text": "Между ними нет разницы, это полные синонимы", "isCorrect": false },
+        { "id": "js-q10-d", "text": "`const` делает объект полностью неизменяемым, `let` и `var` идентичны", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "const запрещает переприсвоение переменной, но не делает объект/массив глубоко иммутабельным — его свойства можно изменять."
+    },
+
+    {
+      "id": "ts-q1",
+      "quizId": "quiz-ts",
+      "order": 1,
+      "text": "Что такое `interface` в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q1-a", "text": "Способ описать структуру (форму) объекта или класса", "isCorrect": true },
+        { "id": "ts-q1-b", "text": "Класс без реализации методов (абстрактный класс)", "isCorrect": false },
+        { "id": "ts-q1-c", "text": "Аналог enum для строковых значений", "isCorrect": false },
+        { "id": "ts-q1-d", "text": "Специальный тип для функций высшего порядка", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "ts-q2",
+      "quizId": "quiz-ts",
       "order": 2,
-      "text": "Какие из этих элементов относятся к UI?",
-      "type": "multiple",
-      "options": [
-        {
-          "id": "a",
-          "text": "Типографика",
-          "isCorrect": true
-        },
-        {
-          "id": "b",
-          "text": "Исследование аудитории",
-          "isCorrect": false
-        },
-        {
-          "id": "c",
-          "text": "Цветовая палитра",
-          "isCorrect": true
-        }
-      ],
-      "required": false
-    },
-    {
-      "id": "q3",
-      "quizId": "1",
-      "order": 3,
-      "text": "Опишите ваш опыт работы с UI/UX.",
-      "type": "multiple",
-      "options": [
-        {
-          "id": "eabdb728-fff6-43c7-8b90-7764512eaf2c",
-          "text": "Первый вариант",
-          "isCorrect": false
-        },
-        {
-          "id": "66487a21-6725-4188-b7cf-509a8d2d16df",
-          "text": "Второй вариант",
-          "isCorrect": false
-        }
-      ],
-      "required": false,
-      "explanation": "Расскажите о своих проектах и используемых инструментах."
-    },
-    {
-      "text": "asdfasdf",
+      "text": "В чём ключевое отличие `type` от `interface` в TypeScript?",
       "type": "single",
       "options": [
-        {
-          "id": "50294dbb-12b4-47a9-8d3c-881f967e53bb",
-          "text": "Первый вариант",
-          "isCorrect": true
-        },
-        {
-          "id": "488982e7-ecf4-40fa-a281-9a69378c1437",
-          "text": "Второй вариант",
-          "isCorrect": false
-        }
+        { "id": "ts-q2-a", "text": "`interface` поддерживает декларативное слияние (declaration merging); `type` может описывать union, tuple и примитивы", "isCorrect": true },
+        { "id": "ts-q2-b", "text": "`type` компилируется быстрее и используется для производительности", "isCorrect": false },
+        { "id": "ts-q2-c", "text": "`interface` нельзя использовать для описания объектов", "isCorrect": false },
+        { "id": "ts-q2-d", "text": "Никакой разницы нет, это полные синонимы", "isCorrect": false }
       ],
-      "required": true,
-      "quizId": "3",
-      "order": 1,
-      "id": "HUYPzcs",
-      "explanation": "фывафыаыфва"
+      "required": true
     },
     {
-      "text": "фывафыва",
+      "id": "ts-q3",
+      "quizId": "quiz-ts",
+      "order": 3,
+      "text": "Что такое тип `unknown` в TypeScript?",
       "type": "single",
       "options": [
-        {
-          "id": "4e338abb-0c71-4e91-884c-7cd2cc195d8d",
-          "text": "Первый вариант",
-          "isCorrect": true
-        },
-        {
-          "id": "fc5ae04c-4328-464f-a3af-738358b50bfb",
-          "text": "Второй вариант",
-          "isCorrect": false
-        },
-        {
-          "id": "7e1e6776-35e8-4b03-8337-c234faf27c9f",
-          "text": "",
-          "isCorrect": false
-        }
+        { "id": "ts-q3-a", "text": "Типобезопасный вариант `any`: присвоить можно что угодно, но использовать без проверки типа нельзя", "isCorrect": true },
+        { "id": "ts-q3-b", "text": "Тип для значений, которые никогда не возникнут (невозможные ветки кода)", "isCorrect": false },
+        { "id": "ts-q3-c", "text": "Псевдоним для `undefined`", "isCorrect": false },
+        { "id": "ts-q3-d", "text": "Тип для пустых объектов без свойств", "isCorrect": false }
       ],
       "required": true,
-      "quizId": "3ua_U6o",
-      "order": 1,
-      "id": "kYfPtVj"
+      "explanation": "unknown — это \"я не знаю тип\", что требует явной проверки перед использованием. any — \"мне всё равно на тип\"."
     },
     {
-      "text": "фывайц",
-      "type": "text",
-      "options": [],
+      "id": "ts-q4",
+      "quizId": "quiz-ts",
+      "order": 4,
+      "text": "Что делает оператор `!` (non-null assertion) в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q4-a", "text": "Сообщает компилятору, что значение не равно `null` или `undefined` (разработчик берёт ответственность на себя)", "isCorrect": true },
+        { "id": "ts-q4-b", "text": "Инвертирует булево значение переменной", "isCorrect": false },
+        { "id": "ts-q4-c", "text": "Автоматически преобразует значение в булев тип", "isCorrect": false },
+        { "id": "ts-q4-d", "text": "Генерирует исключение, если значение равно null во время выполнения", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "ts-q5",
+      "quizId": "quiz-ts",
+      "order": 5,
+      "text": "Что такое дженерики (generics) в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q5-a", "text": "Параметры типов, позволяющие писать гибкий повторно используемый код, работающий с разными типами", "isCorrect": true },
+        { "id": "ts-q5-b", "text": "Особый синтаксис для описания типизированных массивов", "isCorrect": false },
+        { "id": "ts-q5-c", "text": "Набор встроенных utility-типов TypeScript (Partial, Pick и т.д.)", "isCorrect": false },
+        { "id": "ts-q5-d", "text": "Способ создания перечислений с обобщёнными значениями", "isCorrect": false }
+      ],
       "required": true,
-      "explanation": "фывафыва",
-      "quizId": "3ua_U6o",
-      "order": 3,
-      "id": "VyLSK3x"
+      "explanation": "Пример: function identity<T>(arg: T): T { return arg; } — работает для любого типа T."
     },
     {
-      "text": "фывфыва",
+      "id": "ts-q6",
+      "quizId": "quiz-ts",
+      "order": 6,
+      "text": "Что такое `enum` в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q6-a", "text": "Тип, позволяющий определить набор именованных констант (числовых или строковых)", "isCorrect": true },
+        { "id": "ts-q6-b", "text": "Аналог generics для определения обобщённых функций", "isCorrect": false },
+        { "id": "ts-q6-c", "text": "Интерфейс для примитивных типов данных", "isCorrect": false },
+        { "id": "ts-q6-d", "text": "Специальный способ декларирования констант модуля", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "ts-q7",
+      "quizId": "quiz-ts",
+      "order": 7,
+      "text": "Что такое Union-тип (`A | B`) в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q7-a", "text": "Значение, которое может иметь один из нескольких указанных типов", "isCorrect": true },
+        { "id": "ts-q7-b", "text": "Тип, объединяющий все поля обоих типов в один объект", "isCorrect": false },
+        { "id": "ts-q7-c", "text": "Тип, наследующий свойства двух родительских типов", "isCorrect": false },
+        { "id": "ts-q7-d", "text": "Массив из двух элементов разных типов (tuple)", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "ts-q8",
+      "quizId": "quiz-ts",
+      "order": 8,
+      "text": "Что такое Intersection-тип (`A & B`) в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q8-a", "text": "Тип, объединяющий все поля обоих типов: значение должно соответствовать одновременно A и B", "isCorrect": true },
+        { "id": "ts-q8-b", "text": "Тип, содержащий только общие поля двух типов", "isCorrect": false },
+        { "id": "ts-q8-c", "text": "Логический оператор AND для проверки условий в типах", "isCorrect": false },
+        { "id": "ts-q8-d", "text": "Тип, который может быть либо A, либо B, но не обоими", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Intersection объединяет (мержит) все свойства. Union означает «один из». Их легко перепутать — запомните: & = «и то, и то»."
+    },
+    {
+      "id": "ts-q9",
+      "quizId": "quiz-ts",
+      "order": 9,
+      "text": "Какие из утверждений верны для модификатора `readonly`?",
       "type": "multiple",
       "options": [
-        {
-          "id": "4e338abb-0c71-4e91-884c-7cd2cc195d8d",
-          "text": "Первый вариант",
-          "isCorrect": true
-        },
-        {
-          "id": "fc5ae04c-4328-464f-a3af-738358b50bfb",
-          "text": "Второй вариант",
-          "isCorrect": true
-        }
+        { "id": "ts-q9-a", "text": "Запрещает переприсвоение свойства после инициализации", "isCorrect": true },
+        { "id": "ts-q9-b", "text": "Работает как в интерфейсах, так и в псевдонимах типов (type)", "isCorrect": true },
+        { "id": "ts-q9-c", "text": "Делает свойство необязательным (как ?)", "isCorrect": false },
+        { "id": "ts-q9-d", "text": "Автоматически делает вложенные объекты тоже readonly", "isCorrect": false }
       ],
-      "required": false,
-      "explanation": "фыва",
-      "quizId": "3ua_U6o",
+      "required": true,
+      "explanation": "readonly не является глубоким (deep) — вложенные объекты остаются изменяемыми. Для глубокой неизменяемости используют DeepReadonly или as const."
+    },
+    {
+      "id": "ts-q10",
+      "quizId": "quiz-ts",
+      "order": 10,
+      "text": "Что такое type guard в TypeScript?",
+      "type": "single",
+      "options": [
+        { "id": "ts-q10-a", "text": "Конструкция, позволяющая сузить (narrow) тип переменной внутри условной ветки кода", "isCorrect": true },
+        { "id": "ts-q10-b", "text": "Специальный декоратор для защиты свойств класса от внешнего доступа", "isCorrect": false },
+        { "id": "ts-q10-c", "text": "Механизм блокировки изменений типа после первого присвоения", "isCorrect": false },
+        { "id": "ts-q10-d", "text": "Утилитарный тип для создания защищённых (protected) полей", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Примеры type guards: typeof, instanceof, in, а также user-defined guards с предикатом `value is Type`."
+    },
+
+    {
+      "id": "html-q1",
+      "quizId": "quiz-html",
+      "order": 1,
+      "text": "Что такое семантический HTML?",
+      "type": "single",
+      "options": [
+        { "id": "html-q1-a", "text": "Использование тегов по их смысловому назначению, что улучшает доступность и SEO", "isCorrect": true },
+        { "id": "html-q1-b", "text": "Написание HTML-кода без использования CSS-стилей", "isCorrect": false },
+        { "id": "html-q1-c", "text": "Использование только строчных (inline) тегов в разметке", "isCorrect": false },
+        { "id": "html-q1-d", "text": "Валидный HTML без единой ошибки в разметке", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "html-q2",
+      "quizId": "quiz-html",
       "order": 2,
-      "id": "1i7r5Yy"
-    },
-    {
-      "text": "sdfsdf",
+      "text": "Какой атрибут задаёт альтернативный текст для изображения `<img>`?",
       "type": "single",
       "options": [
-        {
-          "id": "decc1789-c337-4884-b59f-e0c083aa4f81",
-          "text": "Первый вариант",
-          "isCorrect": true
-        },
-        {
-          "id": "613848fc-c903-49eb-b3fc-63fdbb7325db",
-          "text": "Второй вариант",
-          "isCorrect": false
-        }
+        { "id": "html-q2-a", "text": "alt", "isCorrect": true },
+        { "id": "html-q2-b", "text": "title", "isCorrect": false },
+        { "id": "html-q2-c", "text": "description", "isCorrect": false },
+        { "id": "html-q2-d", "text": "label", "isCorrect": false }
       ],
       "required": true,
-      "quizId": "GQ5uOIQ",
+      "explanation": "alt обязателен для доступности: скринридеры зачитывают его содержимое. title — всплывающая подсказка при наведении."
+    },
+    {
+      "id": "html-q3",
+      "quizId": "quiz-html",
+      "order": 3,
+      "text": "Какие из перечисленных тегов являются семантическими?",
+      "type": "multiple",
+      "options": [
+        { "id": "html-q3-a", "text": "<header>", "isCorrect": true },
+        { "id": "html-q3-b", "text": "<article>", "isCorrect": true },
+        { "id": "html-q3-c", "text": "<div>", "isCorrect": false },
+        { "id": "html-q3-d", "text": "<span>", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "<div> и <span> — контейнеры без смысла. Семантические теги: header, footer, main, nav, section, article, aside и др."
+    },
+    {
+      "id": "html-q4",
+      "quizId": "quiz-html",
+      "order": 4,
+      "text": "Что делает атрибут `defer` у тега `<script>`?",
+      "type": "single",
+      "options": [
+        { "id": "html-q4-a", "text": "Откладывает выполнение скрипта до полного разбора HTML, не блокируя парсинг страницы", "isCorrect": true },
+        { "id": "html-q4-b", "text": "Загружает скрипт асинхронно и выполняет сразу после загрузки, не дожидаясь HTML", "isCorrect": false },
+        { "id": "html-q4-c", "text": "Отключает кэширование скрипта браузером", "isCorrect": false },
+        { "id": "html-q4-d", "text": "Запрещает выполнение скрипта без явного вызова", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "async — загружает и выполняет сразу, не ждёт HTML. defer — загружает параллельно, выполняет после парсинга, сохраняя порядок."
+    },
+    {
+      "id": "html-q5",
+      "quizId": "quiz-html",
+      "order": 5,
+      "text": "Что такое DOCTYPE и зачем он нужен?",
+      "type": "single",
+      "options": [
+        { "id": "html-q5-a", "text": "Объявление, указывающее браузеру тип документа и переключающее его в стандартный режим рендеринга", "isCorrect": true },
+        { "id": "html-q5-b", "text": "Тег для описания метаданных страницы (автор, описание, ключевые слова)", "isCorrect": false },
+        { "id": "html-q5-c", "text": "Комментарий, полностью игнорируемый браузером", "isCorrect": false },
+        { "id": "html-q5-d", "text": "Директива для подключения внешних CSS-стилей", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Без DOCTYPE браузер переходит в «quirks mode» (режим совместимости), что может нарушить отображение CSS-свойств."
+    },
+    {
+      "id": "html-q6",
+      "quizId": "quiz-html",
+      "order": 6,
+      "text": "Для чего используется атрибут `aria-label`?",
+      "type": "single",
+      "options": [
+        { "id": "html-q6-a", "text": "Предоставляет текстовое описание элемента для вспомогательных технологий (скринридеров)", "isCorrect": true },
+        { "id": "html-q6-b", "text": "Задаёт CSS-класс для плавной анимации при появлении элемента", "isCorrect": false },
+        { "id": "html-q6-c", "text": "Устанавливает язык текстового содержимого элемента", "isCorrect": false },
+        { "id": "html-q6-d", "text": "Привязывает элемент к ближайшей HTML-форме", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "html-q7",
+      "quizId": "quiz-html",
+      "order": 7,
+      "text": "Что делает тег `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">`?",
+      "type": "single",
+      "options": [
+        { "id": "html-q7-a", "text": "Настраивает ширину и масштаб viewport для корректного отображения на мобильных устройствах", "isCorrect": true },
+        { "id": "html-q7-b", "text": "Устанавливает кодировку символов страницы (аналог charset)", "isCorrect": false },
+        { "id": "html-q7-c", "text": "Задаёт базовый размер шрифта для адаптивной вёрстки", "isCorrect": false },
+        { "id": "html-q7-d", "text": "Полностью отключает масштабирование страницы пользователем", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "html-q8",
+      "quizId": "quiz-html",
+      "order": 8,
+      "text": "Какие из перечисленных тегов являются строчными (inline)?",
+      "type": "multiple",
+      "options": [
+        { "id": "html-q8-a", "text": "<span>", "isCorrect": true },
+        { "id": "html-q8-b", "text": "<a>", "isCorrect": true },
+        { "id": "html-q8-c", "text": "<div>", "isCorrect": false },
+        { "id": "html-q8-d", "text": "<p>", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "<div> и <p> — блочные элементы. Inline: span, a, strong, em, img, input и другие."
+    },
+    {
+      "id": "html-q9",
+      "quizId": "quiz-html",
+      "order": 9,
+      "text": "В чём разница между методами `GET` и `POST` HTML-формы?",
+      "type": "single",
+      "options": [
+        { "id": "html-q9-a", "text": "GET передаёт данные в URL (виден, кэшируется); POST — в теле запроса (скрыт, подходит для чувствительных данных)", "isCorrect": true },
+        { "id": "html-q9-b", "text": "GET всегда быстрее POST из-за отсутствия тела запроса", "isCorrect": false },
+        { "id": "html-q9-c", "text": "POST возвращает данные от сервера, GET — отправляет данные", "isCorrect": false },
+        { "id": "html-q9-d", "text": "Никакой разницы нет, оба метода работают одинаково", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "html-q10",
+      "quizId": "quiz-html",
+      "order": 10,
+      "text": "Для чего используется тег `<label>` в HTML-формах?",
+      "type": "single",
+      "options": [
+        { "id": "html-q10-a", "text": "Связывает текстовое описание с полем ввода, улучшая доступность: клик по label фокусирует поле", "isCorrect": true },
+        { "id": "html-q10-b", "text": "Задаёт стиль и тему оформления для группы элементов формы", "isCorrect": false },
+        { "id": "html-q10-c", "text": "Создаёт многострочную текстовую область для ввода", "isCorrect": false },
+        { "id": "html-q10-d", "text": "Группирует связанные поля формы с визуальной рамкой", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Связь label с input осуществляется через атрибут for=\"input-id\" или оборачиванием input внутрь label."
+    },
+
+    {
+      "id": "css-q1",
+      "quizId": "quiz-css",
       "order": 1,
-      "id": "R6btgBe"
+      "text": "Как определяется специфичность (specificity) в CSS?",
+      "type": "single",
+      "options": [
+        { "id": "css-q1-a", "text": "По типу селектора: inline-стили > ID > класс/атрибут/псевдокласс > тег", "isCorrect": true },
+        { "id": "css-q1-b", "text": "По порядку объявления правил: последнее правило всегда побеждает", "isCorrect": false },
+        { "id": "css-q1-c", "text": "По длине CSS-селектора — чем длиннее, тем выше приоритет", "isCorrect": false },
+        { "id": "css-q1-d", "text": "По алфавитному порядку CSS-свойств внутри правила", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Специфичность считается как (A, B, C): A — inline, B — количество ID, C — классы/атрибуты + теги. Сравнение идёт слева направо."
+    },
+    {
+      "id": "css-q2",
+      "quizId": "quiz-css",
+      "order": 2,
+      "text": "Что делает `position: sticky`?",
+      "type": "single",
+      "options": [
+        { "id": "css-q2-a", "text": "Ведёт себя как relative до достижения порога прокрутки, после чего «прилипает» как fixed", "isCorrect": true },
+        { "id": "css-q2-b", "text": "Фиксирует элемент строго в центре экрана при любой прокрутке", "isCorrect": false },
+        { "id": "css-q2-c", "text": "Всегда отображает элемент поверх всех остальных (z-index: 9999)", "isCorrect": false },
+        { "id": "css-q2-d", "text": "Удаляет элемент из обычного потока документа полностью", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "sticky требует указания хотя бы одного из top/bottom/left/right. Работает внутри скроллируемого родителя."
+    },
+    {
+      "id": "css-q3",
+      "quizId": "quiz-css",
+      "order": 3,
+      "text": "Чем отличается `display: flex` от `display: grid`?",
+      "type": "single",
+      "options": [
+        { "id": "css-q3-a", "text": "flex — одномерная раскладка (строка или столбец); grid — двумерная (строки и столбцы одновременно)", "isCorrect": true },
+        { "id": "css-q3-b", "text": "grid работает только в современных браузерах; flex поддерживается везде включая IE6", "isCorrect": false },
+        { "id": "css-q3-c", "text": "flex предназначен для блочных элементов, grid — для строчных", "isCorrect": false },
+        { "id": "css-q3-d", "text": "Никакой разницы нет, оба создают одинаковые раскладки", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "css-q4",
+      "quizId": "quiz-css",
+      "order": 4,
+      "text": "Что входит в CSS box model?",
+      "type": "single",
+      "options": [
+        { "id": "css-q4-a", "text": "content, padding, border, margin", "isCorrect": true },
+        { "id": "css-q4-b", "text": "width, height, background, color", "isCorrect": false },
+        { "id": "css-q4-c", "text": "display, position, float, clear", "isCorrect": false },
+        { "id": "css-q4-d", "text": "font-size, line-height, letter-spacing, word-spacing", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "box-sizing: content-box считает width как только content. box-sizing: border-box включает padding и border в width."
+    },
+    {
+      "id": "css-q5",
+      "quizId": "quiz-css",
+      "order": 5,
+      "text": "Что делает свойство `z-index`?",
+      "type": "single",
+      "options": [
+        { "id": "css-q5-a", "text": "Управляет порядком наложения позиционированных элементов по оси Z (глубина)", "isCorrect": true },
+        { "id": "css-q5-b", "text": "Задаёт уровень прозрачности элемента от 0 до 1", "isCorrect": false },
+        { "id": "css-q5-c", "text": "Управляет масштабированием элемента относительно родителя", "isCorrect": false },
+        { "id": "css-q5-d", "text": "Определяет расстояние элемента от краёв экрана", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "z-index работает только на позиционированных элементах (position !== static). Значение auto означает тот же stacking context, что и родитель."
+    },
+    {
+      "id": "css-q6",
+      "quizId": "quiz-css",
+      "order": 6,
+      "text": "Что делает `overflow: hidden`?",
+      "type": "single",
+      "options": [
+        { "id": "css-q6-a", "text": "Обрезает содержимое, выходящее за границы элемента, и скрывает полосы прокрутки", "isCorrect": true },
+        { "id": "css-q6-b", "text": "Делает сам элемент полностью невидимым, но сохраняет его место", "isCorrect": false },
+        { "id": "css-q6-c", "text": "Скрывает элемент аналогично display: none", "isCorrect": false },
+        { "id": "css-q6-d", "text": "Отключает pointer events для дочерних элементов", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "overflow: hidden также создаёт новый Block Formatting Context (BFC), что часто используется для «схлопывания» флоатов."
+    },
+    {
+      "id": "css-q7",
+      "quizId": "quiz-css",
+      "order": 7,
+      "text": "Что такое CSS Custom Properties (CSS-переменные)?",
+      "type": "single",
+      "options": [
+        { "id": "css-q7-a", "text": "Переменные, объявляемые через `--name: value` и используемые через `var(--name)`, наследуемые по DOM", "isCorrect": true },
+        { "id": "css-q7-b", "text": "Предопределённые константы браузера для системных цветов и шрифтов", "isCorrect": false },
+        { "id": "css-q7-c", "text": "Переменные препроцессора SCSS, компилируемые в статические значения", "isCorrect": false },
+        { "id": "css-q7-d", "text": "Специальные атрибуты HTML для передачи данных в CSS", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "В отличие от SCSS-переменных, CSS-переменные живут в рантайме, их можно менять через JS и они наследуются через DOM."
+    },
+    {
+      "id": "css-q8",
+      "quizId": "quiz-css",
+      "order": 8,
+      "text": "Чем отличается `display: none` от `visibility: hidden`?",
+      "type": "single",
+      "options": [
+        { "id": "css-q8-a", "text": "`display: none` удаляет элемент из потока (места нет); `visibility: hidden` скрывает визуально, но место сохраняется", "isCorrect": true },
+        { "id": "css-q8-b", "text": "`visibility: hidden` быстрее рендерится и не вызывает reflow", "isCorrect": false },
+        { "id": "css-q8-c", "text": "`display: none` только скрывает элемент, а `visibility: hidden` удаляет его из потока", "isCorrect": false },
+        { "id": "css-q8-d", "text": "Никакой разницы нет, оба свойства работают одинаково", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "opacity: 0 тоже скрывает визуально, но сохраняет место И обрабатывает события. visibility: hidden — скрывает и блокирует события дочерних элементов."
+    },
+    {
+      "id": "css-q9",
+      "quizId": "quiz-css",
+      "order": 9,
+      "text": "Для чего используются медиазапросы (`@media`)?",
+      "type": "single",
+      "options": [
+        { "id": "css-q9-a", "text": "Для применения разных стилей в зависимости от характеристик устройства (ширина экрана, ориентация, разрешение)", "isCorrect": true },
+        { "id": "css-q9-b", "text": "Для условной загрузки разных CSS-файлов с сервера", "isCorrect": false },
+        { "id": "css-q9-c", "text": "Для создания анимаций, запускаемых при определённых условиях", "isCorrect": false },
+        { "id": "css-q9-d", "text": "Для объявления CSS-переменных с областью видимости", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "css-q10",
+      "quizId": "quiz-css",
+      "order": 10,
+      "text": "Что делает псевдоэлемент `::before`?",
+      "type": "single",
+      "options": [
+        { "id": "css-q10-a", "text": "Создаёт первый дочерний элемент внутри выбранного, не добавляя его в HTML-разметку", "isCorrect": true },
+        { "id": "css-q10-b", "text": "Применяет стили к первому дочернему элементу в DOM (аналог :first-child)", "isCorrect": false },
+        { "id": "css-q10-c", "text": "Добавляет стили перед блоком CSS-правил в каскаде", "isCorrect": false },
+        { "id": "css-q10-d", "text": "Создаёт клон элемента и вставляет его перед оригиналом в потоке", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "::before и ::after требуют обязательного свойства content (даже content: '' для пустого содержимого) для отображения."
+    },
+
+    {
+      "id": "react-q1",
+      "quizId": "quiz-react",
+      "order": 1,
+      "text": "Что такое Virtual DOM в React?",
+      "type": "single",
+      "options": [
+        { "id": "react-q1-a", "text": "Лёгкая копия реального DOM в памяти, которую React использует для вычисления минимального набора изменений", "isCorrect": true },
+        { "id": "react-q1-b", "text": "Прямой способ работы с DOM, минующий браузерные API", "isCorrect": false },
+        { "id": "react-q1-c", "text": "Теневой DOM (Shadow DOM) для изоляции стилей компонента", "isCorrect": false },
+        { "id": "react-q1-d", "text": "Серверный DOM, используемый при SSR-рендеринге", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "React сравнивает новый Virtual DOM со старым (diffing), находит изменения и применяет только их к реальному DOM (reconciliation)."
+    },
+    {
+      "id": "react-q2",
+      "quizId": "quiz-react",
+      "order": 2,
+      "text": "Что делает хук `useEffect`?",
+      "type": "single",
+      "options": [
+        { "id": "react-q2-a", "text": "Выполняет побочные эффекты (запросы к API, подписки, работа с DOM) после рендера компонента", "isCorrect": true },
+        { "id": "react-q2-b", "text": "Запоминает результат дорогостоящих вычислений между рендерами", "isCorrect": false },
+        { "id": "react-q2-c", "text": "Управляет локальным состоянием функционального компонента", "isCorrect": false },
+        { "id": "react-q2-d", "text": "Мемоизирует callback-функцию для предотвращения лишних ре-рендеров", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "useEffect с пустым массивом зависимостей [] выполняется только после первого рендера. Функция возврата — cleanup при размонтировании."
+    },
+    {
+      "id": "react-q3",
+      "quizId": "quiz-react",
+      "order": 3,
+      "text": "В чём разница между `state` и `props`?",
+      "type": "single",
+      "options": [
+        { "id": "react-q3-a", "text": "`props` передаются снаружи (read-only для компонента); `state` — внутреннее изменяемое состояние компонента", "isCorrect": true },
+        { "id": "react-q3-b", "text": "`state` передаётся от родителя, `props` хранится локально в компоненте", "isCorrect": false },
+        { "id": "react-q3-c", "text": "Это синонимы, разница только в синтаксисе использования", "isCorrect": false },
+        { "id": "react-q3-d", "text": "`props` хранится в Redux store, `state` — в самом компоненте", "isCorrect": false }
+      ],
+      "required": true
+    },
+    {
+      "id": "react-q4",
+      "quizId": "quiz-react",
+      "order": 4,
+      "text": "В каких случаях компонент React перерендеривается?",
+      "type": "multiple",
+      "options": [
+        { "id": "react-q4-a", "text": "При изменении state компонента", "isCorrect": true },
+        { "id": "react-q4-b", "text": "При изменении props, переданных компоненту", "isCorrect": true },
+        { "id": "react-q4-c", "text": "При ре-рендере родительского компонента (если не обёрнут в React.memo)", "isCorrect": true },
+        { "id": "react-q4-d", "text": "При изменении inline CSS-стилей через атрибут style", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Изменение ref или переменных вне state/props НЕ вызывает ре-рендер. CSS-изменения не триггерят рендер React."
+    },
+    {
+      "id": "react-q5",
+      "quizId": "quiz-react",
+      "order": 5,
+      "text": "Для чего используется атрибут `key` в списках React?",
+      "type": "single",
+      "options": [
+        { "id": "react-q5-a", "text": "Помогает React идентифицировать элементы списка и эффективно обновлять DOM при изменениях", "isCorrect": true },
+        { "id": "react-q5-b", "text": "Задаёт уникальный CSS-класс каждому элементу списка", "isCorrect": false },
+        { "id": "react-q5-c", "text": "Предотвращает повторный рендер конкретного элемента списка", "isCorrect": false },
+        { "id": "react-q5-d", "text": "Используется для доступа к DOM-узлу через useRef", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "key должен быть уникальным среди siblings и стабильным. Использование индекса массива как key — антипаттерн при изменяемых списках."
+    },
+    {
+      "id": "react-q6",
+      "quizId": "quiz-react",
+      "order": 6,
+      "text": "Что делает хук `useCallback`?",
+      "type": "single",
+      "options": [
+        { "id": "react-q6-a", "text": "Мемоизирует функцию, возвращая ту же ссылку между рендерами, если зависимости не изменились", "isCorrect": true },
+        { "id": "react-q6-b", "text": "Выполняет переданную функцию только один раз при монтировании компонента", "isCorrect": false },
+        { "id": "react-q6-c", "text": "Создаёт новый экземпляр функции при каждом рендере компонента", "isCorrect": false },
+        { "id": "react-q6-d", "text": "Заменяет useEffect для выполнения синхронных операций после рендера", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "useCallback актуален при передаче функций в дочерние компоненты, обёрнутые в React.memo — без него они всегда будут ре-рендериться."
+    },
+    {
+      "id": "react-q7",
+      "quizId": "quiz-react",
+      "order": 7,
+      "text": "Что такое Context API в React?",
+      "type": "single",
+      "options": [
+        { "id": "react-q7-a", "text": "Механизм для передачи данных через дерево компонентов без явного prop drilling на каждом уровне", "isCorrect": true },
+        { "id": "react-q7-b", "text": "Встроенный менеджер состояния, полностью заменяющий Redux и Zustand", "isCorrect": false },
+        { "id": "react-q7-c", "text": "Способ оптимизации рендеринга через мемоизацию поддерева компонентов", "isCorrect": false },
+        { "id": "react-q7-d", "text": "API для работы с браузерным контекстом (window, document)", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Context хорош для редко меняющихся данных (тема, язык, пользователь). Для частых обновлений лучше использовать специализированные менеджеры состояния."
+    },
+    {
+      "id": "react-q8",
+      "quizId": "quiz-react",
+      "order": 8,
+      "text": "Что делает хук `useMemo`?",
+      "type": "single",
+      "options": [
+        { "id": "react-q8-a", "text": "Мемоизирует результат вычисления, пересчитывая его только при изменении зависимостей", "isCorrect": true },
+        { "id": "react-q8-b", "text": "Мемоизирует callback-функцию (аналог useCallback)", "isCorrect": false },
+        { "id": "react-q8-c", "text": "Хранит изменяемое значение между рендерами без вызова ре-рендера (аналог useRef)", "isCorrect": false },
+        { "id": "react-q8-d", "text": "Запускает побочный эффект при изменении зависимостей (аналог useEffect)", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "useMemo(() => compute(a, b), [a, b]) — вернёт закэшированный результат, если a и b не изменились. Используй только для дорогостоящих вычислений."
+    },
+    {
+      "id": "react-q9",
+      "quizId": "quiz-react",
+      "order": 9,
+      "text": "Что делает `React.memo`?",
+      "type": "single",
+      "options": [
+        { "id": "react-q9-a", "text": "HOC, предотвращающий ре-рендер компонента, если его props не изменились (shallow comparison)", "isCorrect": true },
+        { "id": "react-q9-b", "text": "Мемоизирует результат хука внутри компонента", "isCorrect": false },
+        { "id": "react-q9-c", "text": "Автоматически оборачивает все дочерние компоненты в мемоизацию", "isCorrect": false },
+        { "id": "react-q9-d", "text": "Полностью заменяет shouldComponentUpdate в функциональных компонентах", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "React.memo делает shallow comparison props по умолчанию. Можно передать кастомную функцию сравнения вторым аргументом."
+    },
+    {
+      "id": "react-q10",
+      "quizId": "quiz-react",
+      "order": 10,
+      "text": "Что делает хук `useRef`?",
+      "type": "single",
+      "options": [
+        { "id": "react-q10-a", "text": "Возвращает объект с полем `.current`, изменение которого не вызывает ре-рендер и сохраняется между рендерами", "isCorrect": true },
+        { "id": "react-q10-b", "text": "Создаёт новую ссылку на компонент при каждом рендере", "isCorrect": false },
+        { "id": "react-q10-c", "text": "Работает как useState, но без вызова ре-рендера при изменении", "isCorrect": false },
+        { "id": "react-q10-d", "text": "Используется исключительно для доступа к DOM-узлам через атрибут ref", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "useRef используют для: 1) хранения DOM-ссылок, 2) хранения предыдущего значения state, 3) хранения таймеров/интервалов без ре-рендера."
+    },
+
+    {
+      "id": "math-q1",
+      "quizId": "quiz-math",
+      "order": 1,
+      "text": "Сколько будет 2^10 (два в степени десять)?",
+      "type": "single",
+      "options": [
+        { "id": "math-q1-a", "text": "1024", "isCorrect": true },
+        { "id": "math-q1-b", "text": "512", "isCorrect": false },
+        { "id": "math-q1-c", "text": "2048", "isCorrect": false },
+        { "id": "math-q1-d", "text": "256", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "2^10 = 2×2×2×2×2×2×2×2×2×2 = 1024. Это число часто встречается в информатике (1 КБ = 1024 байт)."
+    },
+    {
+      "id": "math-q2",
+      "quizId": "quiz-math",
+      "order": 2,
+      "text": "Как называется наибольшая сторона прямоугольного треугольника?",
+      "type": "single",
+      "options": [
+        { "id": "math-q2-a", "text": "Гипотенуза", "isCorrect": true },
+        { "id": "math-q2-b", "text": "Катет", "isCorrect": false },
+        { "id": "math-q2-c", "text": "Медиана", "isCorrect": false },
+        { "id": "math-q2-d", "text": "Биссектриса", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Гипотенуза — сторона, противолежащая прямому углу. По теореме Пифагора: c² = a² + b²."
+    },
+    {
+      "id": "math-q3",
+      "quizId": "quiz-math",
+      "order": 3,
+      "text": "Чему равно sin(30°)?",
+      "type": "single",
+      "options": [
+        { "id": "math-q3-a", "text": "1/2", "isCorrect": true },
+        { "id": "math-q3-b", "text": "√2/2", "isCorrect": false },
+        { "id": "math-q3-c", "text": "√3/2", "isCorrect": false },
+        { "id": "math-q3-d", "text": "1", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Таблица тригонометрии: sin(30°) = 0.5, cos(30°) = √3/2, sin(45°) = √2/2, sin(60°) = √3/2."
+    },
+    {
+      "id": "math-q4",
+      "quizId": "quiz-math",
+      "order": 4,
+      "text": "Формула площади круга с радиусом r — это:",
+      "type": "single",
+      "options": [
+        { "id": "math-q4-a", "text": "πr²", "isCorrect": true },
+        { "id": "math-q4-b", "text": "2πr", "isCorrect": false },
+        { "id": "math-q4-c", "text": "πr", "isCorrect": false },
+        { "id": "math-q4-d", "text": "2πr²", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Площадь круга S = πr². Длина окружности (периметр) — C = 2πr. Не путайте эти две формулы."
+    },
+    {
+      "id": "math-q5",
+      "quizId": "quiz-math",
+      "order": 5,
+      "text": "Какие из перечисленных чисел являются простыми?",
+      "type": "multiple",
+      "options": [
+        { "id": "math-q5-a", "text": "7", "isCorrect": true },
+        { "id": "math-q5-b", "text": "13", "isCorrect": true },
+        { "id": "math-q5-c", "text": "9", "isCorrect": false },
+        { "id": "math-q5-d", "text": "15", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Простое число делится только на 1 и на себя. 9 = 3×3, 15 = 3×5 — составные числа. 7 и 13 — простые."
+    },
+
+    {
+      "id": "eng-q1",
+      "quizId": "quiz-english",
+      "order": 1,
+      "text": "What is the plural form of the word \"child\"?",
+      "type": "single",
+      "options": [
+        { "id": "eng-q1-a", "text": "children", "isCorrect": true },
+        { "id": "eng-q1-b", "text": "childs", "isCorrect": false },
+        { "id": "eng-q1-c", "text": "childrens", "isCorrect": false },
+        { "id": "eng-q1-d", "text": "child's", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "\"Child\" имеет нерегулярное множественное число — \"children\". Аналогично: man → men, woman → women, tooth → teeth."
+    },
+    {
+      "id": "eng-q2",
+      "quizId": "quiz-english",
+      "order": 2,
+      "text": "Choose the correct preposition: \"I am interested ___ learning new languages.\"",
+      "type": "single",
+      "options": [
+        { "id": "eng-q2-a", "text": "in", "isCorrect": true },
+        { "id": "eng-q2-b", "text": "at", "isCorrect": false },
+        { "id": "eng-q2-c", "text": "on", "isCorrect": false },
+        { "id": "eng-q2-d", "text": "for", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Устойчивое выражение: be interested IN something. Аналогично: good at, keen on, responsible for."
+    },
+    {
+      "id": "eng-q3",
+      "quizId": "quiz-english",
+      "order": 3,
+      "text": "Which sentence uses the Present Perfect tense correctly?",
+      "type": "single",
+      "options": [
+        { "id": "eng-q3-a", "text": "She has lived in Paris for three years.", "isCorrect": true },
+        { "id": "eng-q3-b", "text": "She is living in Paris since three years.", "isCorrect": false },
+        { "id": "eng-q3-c", "text": "She lived in Paris since three years.", "isCorrect": false },
+        { "id": "eng-q3-d", "text": "She have lived in Paris for three years.", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Present Perfect: have/has + V3. С «for» (период) и «since» (точка отсчёта) используется Present Perfect, а не Past Simple."
+    },
+    {
+      "id": "eng-q4",
+      "quizId": "quiz-english",
+      "order": 4,
+      "text": "What does the word \"ambiguous\" mean?",
+      "type": "single",
+      "options": [
+        { "id": "eng-q4-a", "text": "Having more than one possible meaning", "isCorrect": true },
+        { "id": "eng-q4-b", "text": "Very clear and easy to understand", "isCorrect": false },
+        { "id": "eng-q4-c", "text": "Extremely ambitious and driven", "isCorrect": false },
+        { "id": "eng-q4-d", "text": "Difficult to achieve or reach", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Ambiguous (неоднозначный) — допускающий несколько толкований. Например: \"The ending of the film was ambiguous.\""
+    },
+    {
+      "id": "eng-q5",
+      "quizId": "quiz-english",
+      "order": 5,
+      "text": "Which words are synonyms of \"happy\"?",
+      "type": "multiple",
+      "options": [
+        { "id": "eng-q5-a", "text": "joyful", "isCorrect": true },
+        { "id": "eng-q5-b", "text": "content", "isCorrect": true },
+        { "id": "eng-q5-c", "text": "gloomy", "isCorrect": false },
+        { "id": "eng-q5-d", "text": "melancholy", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Синонимы «happy»: joyful, content, glad, pleased, cheerful. Антонимы: sad, gloomy, melancholy, miserable."
+    },
+
+    {
+      "id": "rus-q1",
+      "quizId": "quiz-russian",
+      "order": 1,
+      "text": "Сколько падежей в современном русском языке?",
+      "type": "single",
+      "options": [
+        { "id": "rus-q1-a", "text": "6", "isCorrect": true },
+        { "id": "rus-q1-b", "text": "5", "isCorrect": false },
+        { "id": "rus-q1-c", "text": "7", "isCorrect": false },
+        { "id": "rus-q1-d", "text": "8", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "В русском языке 6 падежей: именительный, родительный, дательный, винительный, творительный, предложный."
+    },
+    {
+      "id": "rus-q2",
+      "quizId": "quiz-russian",
+      "order": 2,
+      "text": "Как пишется частица «не» с глаголами?",
+      "type": "single",
+      "options": [
+        { "id": "rus-q2-a", "text": "Раздельно", "isCorrect": true },
+        { "id": "rus-q2-b", "text": "Слитно", "isCorrect": false },
+        { "id": "rus-q2-c", "text": "Через дефис", "isCorrect": false },
+        { "id": "rus-q2-d", "text": "Зависит от контекста", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "«Не» с глаголами пишется раздельно: не знаю, не читал. Исключение — слова, без «не» не употребляющиеся: ненавидеть, недоумевать."
+    },
+    {
+      "id": "rus-q3",
+      "quizId": "quiz-russian",
+      "order": 3,
+      "text": "Найдите слово, в котором нет орфографической ошибки:",
+      "type": "single",
+      "options": [
+        { "id": "rus-q3-a", "text": "агентство", "isCorrect": true },
+        { "id": "rus-q3-b", "text": "агенство", "isCorrect": false },
+        { "id": "rus-q3-c", "text": "агентсво", "isCorrect": false },
+        { "id": "rus-q3-d", "text": "агенсво", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Правильно: агентство (от слова «агент»). Проверка: агент → агентство, аналогично: комендант → комендантство."
+    },
+    {
+      "id": "rus-q4",
+      "quizId": "quiz-russian",
+      "order": 4,
+      "text": "В каком ряду все слова написаны верно?",
+      "type": "single",
+      "options": [
+        { "id": "rus-q4-a", "text": "жюри, парашют, брошюра", "isCorrect": true },
+        { "id": "rus-q4-b", "text": "жури, парашют, брошюра", "isCorrect": false },
+        { "id": "rus-q4-c", "text": "жюри, парашут, брошюра", "isCorrect": false },
+        { "id": "rus-q4-d", "text": "жюри, парашют, брошура", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Слова-исключения с «юра»/«ю»: жюри, брошюра, парашют. В остальных случаях после ж, ш, щ, ч пишутся а, у, и (не я, ю, ы)."
+    },
+    {
+      "id": "rus-q5",
+      "quizId": "quiz-russian",
+      "order": 5,
+      "text": "Какие из перечисленных слов являются именами существительными?",
+      "type": "multiple",
+      "options": [
+        { "id": "rus-q5-a", "text": "красота", "isCorrect": true },
+        { "id": "rus-q5-b", "text": "мудрость", "isCorrect": true },
+        { "id": "rus-q5-c", "text": "красивый", "isCorrect": false },
+        { "id": "rus-q5-d", "text": "быстро", "isCorrect": false }
+      ],
+      "required": true,
+      "explanation": "Существительные отвечают на вопросы кто? что? Красивый — прилагательное (какой?), быстро — наречие (как?)."
     }
   ],
   "inviteLinks": [
     {
-      "id": "il1",
-      "quizId": "1",
-      "token": "demo-token-ux",
-      "label": "Общая ссылка",
+      "id": "il-js-1",
+      "quizId": "quiz-js",
+      "token": "js-open-public",
+      "label": "Открытая ссылка",
       "maxUses": null,
-      "usedCount": 6,
+      "usedCount": 0,
       "expiresAt": null,
       "isActive": true,
-      "createdAt": "2023-10-12T00:00:00.000Z",
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "createdBy": "1"
     },
     {
-      "id": "il2",
-      "quizId": "1",
-      "token": "students-2024-ux",
-      "label": "Для студентов",
-      "maxUses": 50,
-      "usedCount": 12,
+      "id": "il-js-2",
+      "quizId": "quiz-js",
+      "token": "js-students-2026",
+      "label": "Для студентов 2026",
+      "maxUses": 100,
+      "usedCount": 0,
       "expiresAt": "2026-12-31T23:59:59.000Z",
       "isActive": true,
-      "createdAt": "2024-01-15T00:00:00.000Z",
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "createdBy": "1"
     },
     {
-      "id": "il3",
-      "quizId": "1",
-      "token": "expired-link-ux",
-      "label": "Архивная",
-      "maxUses": 20,
-      "usedCount": 20,
-      "expiresAt": "2024-06-01T00:00:00.000Z",
-      "isActive": true,
-      "createdAt": "2024-03-01T00:00:00.000Z",
-      "createdBy": "1"
-    },
-    {
-      "id": "il4",
-      "quizId": "3",
-      "token": "figma-open-link",
+      "id": "il-ts-1",
+      "quizId": "quiz-ts",
+      "token": "ts-open-public",
       "label": "Открытая ссылка",
       "maxUses": null,
-      "usedCount": 4,
+      "usedCount": 0,
       "expiresAt": null,
       "isActive": true,
-      "createdAt": "2023-10-12T00:00:00.000Z",
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "createdBy": "1"
     },
     {
-      "id": "il5",
-      "quizId": "3",
-      "token": "figma-team-link",
+      "id": "il-ts-2",
+      "quizId": "quiz-ts",
+      "token": "ts-team-link-2026",
       "label": "Для команды",
-      "maxUses": 4,
-      "usedCount": 3,
-      "expiresAt": null,
-      "isActive": false,
-      "createdAt": "2023-11-20T00:00:00.000Z",
+      "maxUses": 50,
+      "usedCount": 0,
+      "expiresAt": "2026-12-31T23:59:59.000Z",
+      "isActive": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "createdBy": "1"
     },
     {
-      "id": "il6",
-      "quizId": "3ua_U6o",
-      "token": "asdf-public-link",
-      "label": "Публичная ссылка",
+      "id": "il-html-1",
+      "quizId": "quiz-html",
+      "token": "html-open-public",
+      "label": "Открытая ссылка",
       "maxUses": null,
-      "usedCount": 1,
+      "usedCount": 0,
       "expiresAt": null,
       "isActive": true,
-      "createdAt": "2026-05-10T22:34:07.903Z",
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "createdBy": "1"
     },
     {
-      "quizId": "3ua_U6o",
-      "token": "g5lte-u096b-jskf8",
-      "label": "4311",
+      "id": "il-html-2",
+      "quizId": "quiz-html",
+      "token": "html-students-2026",
+      "label": "Для студентов 2026",
+      "maxUses": 100,
+      "usedCount": 0,
+      "expiresAt": "2026-12-31T23:59:59.000Z",
+      "isActive": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il-css-1",
+      "quizId": "quiz-css",
+      "token": "css-open-public",
+      "label": "Открытая ссылка",
+      "maxUses": null,
+      "usedCount": 0,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il-css-2",
+      "quizId": "quiz-css",
+      "token": "css-team-link-2026",
+      "label": "Для команды",
+      "maxUses": 50,
+      "usedCount": 0,
+      "expiresAt": "2026-12-31T23:59:59.000Z",
+      "isActive": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il-react-1",
+      "quizId": "quiz-react",
+      "token": "react-open-public",
+      "label": "Открытая ссылка",
+      "maxUses": null,
+      "usedCount": 0,
+      "expiresAt": null,
+      "isActive": true,
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "createdBy": "1"
+    },
+    {
+      "id": "il-react-2",
+      "quizId": "quiz-react",
+      "token": "react-students-2026",
+      "label": "Для студентов 2026",
       "maxUses": 1,
-      "usedCount": 1,
-      "expiresAt": null,
+      "usedCount": 0,
+      "expiresAt": "2026-05-24T23:59:59.000Z",
       "isActive": true,
-      "createdAt": "2026-05-11T17:20:44.373Z",
-      "createdBy": "1",
-      "id": "-G7Jp61"
-    },
-    {
-      "quizId": "1",
-      "token": "48sm6-8nr5q-rapjs",
-      "label": "Для аделя",
-      "maxUses": null,
-      "usedCount": 1,
-      "expiresAt": null,
-      "isActive": true,
-      "createdAt": "2026-05-12T08:49:55.387Z",
-      "createdBy": "1",
-      "id": "3bafvtF"
+      "createdAt": "2026-05-14T00:00:00.000Z",
+      "createdBy": "1"
     }
   ],
-  "attempts": [
-    {
-      "quizId": "3",
-      "quizTitle": "Figma Shortcuts Masterclass",
-      "inviteLinkToken": "figma-open-link",
-      "answers": [],
-      "score": 0,
-      "total": 0,
-      "label": "Открытая ссылка",
-      "completedAt": "2026-05-11T16:12:42.328Z",
-      "id": "1778515962676",
-      "createdAt": "2026-05-11T16:12:42.676Z"
-    },
-    {
-      "quizId": "3",
-      "quizTitle": "Figma Shortcuts Masterclass",
-      "inviteLinkToken": "figma-open-link",
-      "answers": [
-        {
-          "questionId": "HUYPzcs",
-          "selectedOptionIds": [
-            "488982e7-ecf4-40fa-a281-9a69378c1437"
-          ]
-        }
-      ],
-      "score": 0,
-      "total": 1,
-      "label": "Открытая ссылка",
-      "completedAt": "2026-05-11T16:16:50.331Z",
-      "id": "1778516210657",
-      "createdAt": "2026-05-11T16:16:50.657Z"
-    },
-    {
-      "quizId": "3",
-      "quizTitle": "Figma Shortcuts Masterclass",
-      "inviteLinkToken": "figma-open-link",
-      "answers": [
-        {
-          "questionId": "HUYPzcs",
-          "selectedOptionIds": [
-            "50294dbb-12b4-47a9-8d3c-881f967e53bb"
-          ]
-        }
-      ],
-      "score": 1,
-      "total": 1,
-      "label": "Открытая ссылка",
-      "completedAt": "2026-05-11T16:44:26.229Z",
-      "id": "1778517866561",
-      "createdAt": "2026-05-11T16:44:26.561Z"
-    },
-    {
-      "quizId": "3ua_U6o",
-      "quizTitle": "asdf",
-      "inviteLinkToken": "asdf-public-link",
-      "answers": [
-        {
-          "questionId": "kYfPtVj",
-          "selectedOptionIds": [
-            "4e338abb-0c71-4e91-884c-7cd2cc195d8d"
-          ]
-        },
-        {
-          "questionId": "1i7r5Yy",
-          "selectedOptionIds": [
-            "4e338abb-0c71-4e91-884c-7cd2cc195d8d",
-            "fc5ae04c-4328-464f-a3af-738358b50bfb"
-          ]
-        },
-        {
-          "questionId": "VyLSK3x",
-          "selectedOptionIds": [],
-          "textAnswer": "asdf"
-        }
-      ],
-      "score": 2,
-      "total": 2,
-      "label": "Публичная ссылка",
-      "completedAt": "2026-05-11T18:39:02.594Z",
-      "id": "1778524742922",
-      "createdAt": "2026-05-11T18:39:02.922Z"
-    },
-    {
-      "quizId": "3",
-      "quizTitle": "Figma Shortcuts Masterclass",
-      "inviteLinkToken": "figma-open-link",
-      "answers": [
-        {
-          "questionId": "HUYPzcs",
-          "selectedOptionIds": [
-            "50294dbb-12b4-47a9-8d3c-881f967e53bb"
-          ]
-        }
-      ],
-      "score": 1,
-      "total": 1,
-      "label": "Открытая ссылка",
-      "completedAt": "2026-05-11T18:40:29.071Z",
-      "id": "1778524829402",
-      "createdAt": "2026-05-11T18:40:29.402Z"
-    },
-    {
-      "quizId": "1",
-      "quizTitle": "UX/UI Best Practices Quiz",
-      "inviteLinkToken": "48sm6-8nr5q-rapjs",
-      "answers": [
-        {
-          "questionId": "JtuGTT-",
-          "selectedOptionIds": [
-            "a5f7f1ba-bc27-40ce-962a-db9526ffa742"
-          ]
-        },
-        {
-          "questionId": "q3",
-          "selectedOptionIds": [
-            "eabdb728-fff6-43c7-8b90-7764512eaf2c"
-          ]
-        },
-        {
-          "questionId": "q2",
-          "selectedOptionIds": [
-            "b"
-          ]
-        },
-        {
-          "questionId": "q1",
-          "selectedOptionIds": [
-            "a"
-          ]
-        },
-        {
-          "questionId": "L6O_8-G",
-          "selectedOptionIds": [
-            "8afaeee5-50bb-4a55-8c88-9a85bcb22f8b"
-          ]
-        }
-      ],
-      "score": 1,
-      "total": 5,
-      "label": "Для аделя",
-      "completedAt": "2026-05-12T09:40:46.177Z",
-      "id": "1778578846270",
-      "createdAt": "2026-05-12T09:40:46.270Z"
-    },
-    {
-      "quizId": "1",
-      "quizTitle": "UX/UI Best Practices Quiz",
-      "inviteLinkToken": "demo-token-ux",
-      "answers": [
-        {
-          "questionId": "q1",
-          "selectedOptionIds": [
-            "a"
-          ]
-        },
-        {
-          "questionId": "q2",
-          "selectedOptionIds": [
-            "b"
-          ]
-        },
-        {
-          "questionId": "q3",
-          "selectedOptionIds": [
-            "66487a21-6725-4188-b7cf-509a8d2d16df"
-          ]
-        }
-      ],
-      "score": 1,
-      "total": 3,
-      "label": "Общая ссылка",
-      "completedAt": "2026-05-15T18:32:08.630Z",
-      "id": "1778869928793",
-      "createdAt": "2026-05-15T18:32:08.793Z"
-    },
-    {
-      "quizId": "1",
-      "quizTitle": "UX/UI Best Practices Quiz",
-      "inviteLinkToken": "demo-token-ux",
-      "answers": [
-        {
-          "questionId": "q1",
-          "selectedOptionIds": [
-            "a"
-          ]
-        },
-        {
-          "questionId": "q2",
-          "selectedOptionIds": []
-        },
-        {
-          "questionId": "q3",
-          "selectedOptionIds": []
-        }
-      ],
-      "score": 2,
-      "total": 3,
-      "label": "Общая ссылка",
-      "completedAt": "2026-05-15T19:18:09.403Z",
-      "id": "1778872689489",
-      "createdAt": "2026-05-15T19:18:09.489Z"
-    },
-    {
-      "quizId": "3ua_U6o",
-      "quizTitle": "asdf",
-      "inviteLinkToken": "g5lte-u096b-jskf8",
-      "answers": [
-        {
-          "questionId": "kYfPtVj",
-          "selectedOptionIds": [
-            "4e338abb-0c71-4e91-884c-7cd2cc195d8d"
-          ]
-        },
-        {
-          "questionId": "1i7r5Yy",
-          "selectedOptionIds": [
-            "fc5ae04c-4328-464f-a3af-738358b50bfb"
-          ]
-        },
-        {
-          "questionId": "VyLSK3x",
-          "selectedOptionIds": [],
-          "textAnswer": "sdf"
-        }
-      ],
-      "score": 1,
-      "total": 2,
-      "label": "4311",
-      "completedAt": "2026-05-17T14:05:10.398Z",
-      "id": "1779026710465",
-      "createdAt": "2026-05-17T14:05:10.466Z"
-    }
-  ]
+  "attempts": []
 }
